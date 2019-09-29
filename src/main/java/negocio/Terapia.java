@@ -1,12 +1,13 @@
 package negocio;
 
-public class Terapia implements VOTerapia{
+public class Terapia extends Servicio implements VOTerapia{
 	private long idServicio;
 	private int numSesiones;
 	private String tipo;
 	
 	public Terapia() {
-		this.idServicio = 0;
+		this.idServicio = getId();
+		this.nombre = "Terapia";
 		this.numSesiones = 0;
 		this.tipo = "";
 	}
@@ -17,11 +18,11 @@ public class Terapia implements VOTerapia{
 	 * @param tipo
 	 */
 	public Terapia(long idServicio, int numSesiones, String tipo) {
-		this.idServicio = idServicio;
+		this.idServicio = getId();
 		this.numSesiones = numSesiones;
 		this.tipo = tipo;
 	}
-
+	
 	/**
 	 * @return the idServicio
 	 */

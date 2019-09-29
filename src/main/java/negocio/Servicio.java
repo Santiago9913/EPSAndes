@@ -1,21 +1,24 @@
 package negocio;
 
 public class Servicio implements VOServicio {
-	private long id;
-	private int capacidad;
+	protected long id;
+	protected int capacidad;
+	protected String nombre;
 	
 	public Servicio() {
 		this.id = 0;
 		this.capacidad = 0;
+		this.nombre = "";
 	}
 	
 	/**
 	 * @param id
 	 * @param capacidad
 	 */
-	public Servicio(long id, int capacidad) {
+	public Servicio(long id, int capacidad, String nombre) {
 		this.id = id;
 		this.capacidad = capacidad;
+		this.nombre = nombre;
 	}
 
 	/**
@@ -45,13 +48,27 @@ public class Servicio implements VOServicio {
 	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
 	}
+	
+	/**
+	 * @return the nombre
+	 */
+	public String getNombre() {
+		return nombre;
+	}
+
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
-		return "Servicio [id=" + id + ", capacidad=" + capacidad + "]";
+		return "Servicio [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + "]";
 	}
 	
 }

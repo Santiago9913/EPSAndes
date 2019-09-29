@@ -5,13 +5,17 @@ import java.util.List;
 
 import javax.jdo.JDODataStoreException;
 import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Transaction;
 
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+
+import negocio.Rol;
 
 
 public class PersistenciaEPSAndes {
@@ -583,7 +587,36 @@ public class PersistenciaEPSAndes {
 	}
 
 
+	/**
+	 * 
+	 * @param nombre
+	 * @return
+	 */
 	public Rol registrarRol(String nombre) {
+
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idRol = nextval(); 
+			long tuplasInsertadas = sqlRol.adicionarRol(pm, idRol, nombre);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Rol(idRol, nombre);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+
 
 	}
 

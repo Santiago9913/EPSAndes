@@ -3,6 +3,7 @@ package persistencia;
 import java.util.LinkedList;
 import java.util.List;
 
+import javax.jdo.JDODataStoreException;
 import javax.jdo.JDOHelper;
 import javax.jdo.PersistenceManagerFactory;
 
@@ -53,10 +54,78 @@ public class PersistenciaEPSAndes {
 	 */
 	private SQLUtil sqlUtil;
 
-	/**
-	 * 
-	 */
 	private SQLAdministrador sqlAdministrador; 
+
+	private SQLConsulta sqlConsulta; 
+
+	private SQLEps sqlEps; 
+
+	private SQLEpsAdministrador sqlEpsAdministrador; 
+
+	private SQLEpsGerentes sqlEpsGerente;
+
+	private SQLEpsIps sqlEpsIps; 
+
+	private SQLEpsPacientes sqlEpsPacientes; 
+
+	private SQLExamenDiagnostico sqlExamenDiagnostico; 
+
+	private SQLGerente sqlGerente; 
+
+	private SQLHorario sqlHorario; 
+
+	private SQLHospitalizacion sqlHospitalizacion; 
+
+	private SQLIps sqlIps; 
+
+	private SQLIpsHorario sqlIpsHorario; 
+
+	private SQLIpsMedico sqlIpsMedico; 
+
+	private SQLIpsSecretaria sqlIpsSecretaria; 
+
+	private SQLIpsServicios sqlIpsServicio; 
+
+	private SQLMedicamento sqlMedicamento; 
+
+	private SQLMedico sqlMedico; 
+
+	private SQLMedicoConsulta sqlMedicoConsulta; 
+
+	private SQLMedicoPaciente sqlMedicoPaciente; 
+
+	private SQLMedicoUrgencia sqlMedicoUrgencia; 
+
+	private SQLMedicoRegistro sqlMedicoRegistro; 
+
+	private SQLOrden sqlOrden; 
+
+	private SQLOrdenMedicamento sqlOrdenMedicamento; 
+
+	private SQLOrdenServicio sqlOrdenServicio; 
+
+	private SQLPaciente sqlPaciente; 
+
+	private SQLPacienteReserva sqlPacienteReserva;
+
+	private SQLPacienteUrgencia sqlPacienteUrgencia;
+
+	private SQLProcedimiento sqlProcedimiento;
+
+	private SQLRegistroMedico sqlRegistroMedico;
+
+	private SQLRol sqlRol;
+
+	private SQLSecretaria sqlSecretaria; 
+
+	private SQLServicio sqlServicio; 
+
+	private SQLServicioHorario sqlServicioHorario;
+
+	private SQLTerapia sqlTerapia;
+
+	private SQLUrgencia sqlUrgencia;
+
 
 	/**
 	 * 
@@ -88,7 +157,7 @@ public class PersistenciaEPSAndes {
 	private PersistenciaEPSAndes(JsonObject tableConifg) {
 
 		crearClasesSQL();
-		tablas = leerNombreTablas(tableConifg);
+		tablas = leerNombresTablas(tableConifg);
 
 		String unidadPersistencia = tableConifg.get("unidadPersistencia").getAsString();
 		log.trace("Accediendo unidad de persistencia: " + unidadPersistencia);
@@ -152,6 +221,369 @@ public class PersistenciaEPSAndes {
 	 * 
 	 */
 	private void crearClasesSQL() {
+		sqlAdministrador = new SQLAdministrador(this);
+		sqlConsulta = new SQLConsulta(this);
+		sqlEps = new SQLEps(this); 
+		sqlEpsAdministrador = new SQLEpsAdministrador(this);
+		sqlEpsGerente = new SQLEpsGerentes(this); 
+		sqlEpsIps = new SQLEpsIps(this); 
+		sqlEpsPacientes = new SQLEpsPacientes(this); 
+		sqlExamenDiagnostico = new SQLExamenDiagnostico(this); 
+		sqlGerente = new SQLGerente(this); 
+		sqlHorario = new SQLHorario(this); 
+		sqlHospitalizacion = new SQLHospitalizacion(this); 
+		sqlIps = new SQLIps(this);
+		sqlIpsHorario = new SQLIpsHorario(this);
+		sqlIpsMedico = new SQLIpsMedico(this);
+		sqlIpsSecretaria = new SQLIpsSecretaria(this);
+		sqlIpsServicio = new SQLIpsServicios(this);
+		sqlMedicamento = new SQLMedicamento(this);
+		sqlMedico = new SQLMedico(this); 
+		sqlMedicoConsulta = new SQLMedicoConsulta(this); 
+		sqlMedicoPaciente = new SQLMedicoPaciente(this); 
+		sqlMedicoUrgencia = new SQLMedicoUrgencia(this); 
+		sqlOrden = new SQLOrden(this); 
+		sqlOrdenMedicamento = new SQLOrdenMedicamento(this); 
+		sqlOrdenServicio = new SQLOrdenServicio(this);
+		sqlPaciente = new SQLPaciente(this); 
+		sqlPacienteReserva = new SQLPacienteReserva(this);
+		sqlPacienteUrgencia = new SQLPacienteUrgencia(this); 
+		sqlProcedimiento = new SQLProcedimiento(this); 
+		sqlRegistroMedico = new SQLRegistroMedico(this); 
+		sqlRol = new SQLRol(this); 
+		sqlSecretaria = new SQLSecretaria(this); 
+		sqlServicio = new SQLServicio(this); 
+		sqlServicioHorario = new SQLServicioHorario(this);
+		sqlTerapia = new SQLTerapia(this); 
+		sqlUrgencia = new SQLUrgencia(this); 
+	}
+
+	/**
+	 * @return La cadena de caracteres con el nombre del secuenciador de parranderos
+	 */
+	public String darSeqParranderos ()
+	{
+		return tablas.get (0);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaAdministrador() {
+		return tablas.get (1);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaConsulta() {
+		return tablas.get(3);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEps() {
+		return tablas.get(4);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsAdministrador() {
+		return tablas.get(5);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsGerente() {
+		return tablas.get(6);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsIps() {
+		return tablas.get(7);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsPacientes() {
+		return tablas.get(8);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaExamenDiagnostico() {
+		return tablas.get(9);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaGerente() {
+		return tablas.get(10);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaHorario() {
+		return tablas.get(11);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaHospitalizacion() {
+		return tablas.get(12);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIps() {
+		return tablas.get(2);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsHorario() {
+		return tablas.get(14);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsMedico() {
+		return tablas.get(15);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsSecretaria() {
+		return tablas.get(16);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsServicio() {
+		return tablas.get(17);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicamento() {
+		return tablas.get(18);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedico() {
+		return tablas.get(19);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoConsulta() {
+		return tablas.get(20);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoPaciente() {
+		return tablas.get(21);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoRegistro() {
+		return tablas.get(22);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoUrgencia() {
+		return tablas.get(23);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaOrden() {
+		return tablas.get(13);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaOrdenMedicamento() {
+		return tablas.get(25);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaOrdenServicio() {
+		return tablas.get(26);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaPaciente() {
+		return tablas.get(27);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaPacienteReserva() {
+		return tablas.get(28);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaPacienteUrgencia() {
+		return tablas.get(29);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaProcedimiento() {
+		return tablas.get(30);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaRegistroMedico() {
+		return tablas.get(22);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaRol() {
+		return tablas.get(35);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaSecretaria() {
+		return tablas.get(31);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaServicio() {
+		return tablas.get(32);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaServicioHorario() {
+		return tablas.get(33);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaTerapia() {
+		return tablas.get(34);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaUrgencia() {
+		return tablas.get(24);
+	}
+
+	/**
+	 * Transacción para el generador de secuencia de Parranderos
+	 * Adiciona entradas al log de la aplicación
+	 * @return El siguiente número del secuenciador de Parranderos
+	 */
+	private long nextval ()
+	{
+		long resp = sqlUtil.nextval (pmf.getPersistenceManager());
+		log.trace ("Generando secuencia: " + resp);
+		return resp;
+	}
+
+	/**
+	 * Extrae el mensaje de la exception JDODataStoreException embebido en la Exception e, que da el detalle específico del problema encontrado
+	 * @param e - La excepción que ocurrio
+	 * @return El mensaje de la excepción JDO
+	 */
+	private String darDetalleException(Exception e) 
+	{
+		String resp = "";
+		if (e.getClass().getName().equals("javax.jdo.JDODataStoreException"))
+		{
+			JDODataStoreException je = (javax.jdo.JDODataStoreException) e;
+			return je.getNestedExceptions() [0].getMessage();
+		}
+		return resp;
+	}
+
+
+	public Rol registrarRol(String nombre) {
 
 	}
 

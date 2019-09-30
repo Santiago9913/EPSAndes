@@ -233,40 +233,11 @@ public class PersistenciaEPSAndes {
 	 */
 	private void crearClasesSQL() {
 		sqlAdministrador = new SQLAdministrador(this);
-		sqlConsulta = new SQLConsulta(this);
-		sqlEps = new SQLEps(this); 
-		sqlEpsAdministrador = new SQLEpsAdministrador(this);
-		sqlEpsGerente = new SQLEpsGerentes(this); 
-		sqlEpsIps = new SQLEpsIps(this); 
-		sqlEpsPacientes = new SQLEpsPacientes(this); 
-		sqlExamenDiagnostico = new SQLExamenDiagnostico(this); 
-		sqlGerente = new SQLGerente(this); 
-		sqlHorario = new SQLHorario(this); 
-		sqlHospitalizacion = new SQLHospitalizacion(this); 
-		sqlIps = new SQLIps(this);
-		sqlIpsHorario = new SQLIpsHorario(this);
-		sqlIpsMedico = new SQLIpsMedico(this);
-		sqlIpsSecretaria = new SQLIpsSecretaria(this);
-		sqlIpsServicio = new SQLIpsServicios(this);
-		sqlMedicamento = new SQLMedicamento(this);
 		sqlMedico = new SQLMedico(this); 
-		sqlMedicoConsulta = new SQLMedicoConsulta(this); 
-		sqlMedicoPaciente = new SQLMedicoPaciente(this); 
-		sqlMedicoUrgencia = new SQLMedicoUrgencia(this); 
-		sqlOrden = new SQLOrden(this); 
-		sqlOrdenMedicamento = new SQLOrdenMedicamento(this); 
-		sqlOrdenServicio = new SQLOrdenServicio(this);
 		sqlPaciente = new SQLPaciente(this); 
-		sqlPacienteReserva = new SQLPacienteReserva(this);
-		sqlPacienteUrgencia = new SQLPacienteUrgencia(this); 
-		sqlProcedimiento = new SQLProcedimiento(this); 
-		sqlRegistroMedico = new SQLRegistroMedico(this); 
 		sqlRol = new SQLRol(this); 
 		sqlSecretaria = new SQLSecretaria(this); 
-		sqlServicio = new SQLServicio(this); 
-		sqlServicioHorario = new SQLServicioHorario(this);
-		sqlTerapia = new SQLTerapia(this); 
-		sqlUrgencia = new SQLUrgencia(this); 
+
 	}
 
 	/**

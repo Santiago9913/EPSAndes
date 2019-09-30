@@ -1,5 +1,6 @@
 package persistencia;
 
+import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,13 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
+import negocio.Administrador;
+import negocio.Gerente;
+import negocio.IPS;
+import negocio.Medico;
+import negocio.Paciente;
 import negocio.Rol;
+import negocio.Servicio;
 
 
 public class PersistenciaEPSAndes {
@@ -587,6 +594,10 @@ public class PersistenciaEPSAndes {
 	}
 
 
+
+	/* ****************************************************************
+	 * 			Métodos para manejar ROLES
+	 *****************************************************************/
 	/**
 	 * 
 	 * @param nombre
@@ -600,7 +611,7 @@ public class PersistenciaEPSAndes {
 		{
 			tx.begin();
 			long idRol = nextval(); 
-			long tuplasInsertadas = sqlRol.adicionarRol(pm, idRol, nombre);
+			long tuplasInsertadas = sqlAdministrador.adicionarRol(pm, idRol, nombre);
 			tx.commit();
 
 			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
@@ -616,8 +627,160 @@ public class PersistenciaEPSAndes {
 			}
 			pm.close();
 		}
+	}
 
+	/* ****************************************************************
+	 * 			Métodos para manejar USUARIO 
+	 *****************************************************************/
 
+	public Administrador registrarAdministrador(String nombre, String correo) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idAdmin = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarAdministrador(pm, idAdmin, nombre, correo);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Administrador(idAdmin, nombre, correo);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public Paciente registrarPaciente(String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idPac = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarPaciente(pm, idPac, nombre, correo, fNacimiento, estado, tipoDoc);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Paciente(idPac, nombre, correo, fNacimiento, estado, tipoDoc);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public Gerente registrarGerente(String nombre, String correo) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idGer = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarAdministrador(pm, idGer, nombre, correo);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Gerente(idGer, nombre, correo);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idIPS = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarIPS(pm, idIPS, nombre, capacidad, localizacion);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new IPS(idIPS, localizacion, capacidad);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public Medico registrarMedico(String nombre, String correo, String especialidad) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idMed = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarMedico(pm, idMed, nombre, correo, especialidad);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Medico(idMed, nombre, correo, especialidad);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public Servicio registrarServicio(String nombre, int capacidad) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idServicio = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarServicio(pm, idServicio, capacidad, nombre);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Servicio(idServicio, capacidad, nombre);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
 	}
 
 

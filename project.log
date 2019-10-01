@@ -1,0 +1,29 @@
+14:54:06,604 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema
+14:54:06,756 (main) INFO  [it.test.ConexionTest] - Se encontró un archivo de configuración de tablas válido
+14:54:10,184 (main) INFO  [it.test.ConexionTest] - Conexión realizada correstamente
+14:54:10,184 (main) INFO  [it.test.ConexionTest] - Cerrando la conexión
+14:54:10,194 (main) INFO  [it.test.ConexionTest] - Conexión cerrada
+15:03:49,545 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con una base de datos que no existe
+15:03:49,746 (main) INFO  [it.test.ConexionTest] - NO se encontró un archivo de configuración válido
+15:03:54,991 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepción generada es: java.lang.NullPointerException
+15:03:55,037 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos de usuario incorrectos
+15:03:55,038 (main) INFO  [it.test.ConexionTest] - Se encontró un archivo de configuración de tablas válido
+15:03:55,315 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepción generada es: javax.jdo.JDOFatalUserException
+15:03:55,315 (main) INFO  [it.test.ConexionTest] - La causa es: javax.jdo.JDOUserException: PersistenceManagerFactory debe usar "persistence-unit" con nombre "EPSAndesErrorUser" pero no hay ninguna con ese nombre
+15:03:55,316 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema
+15:03:55,316 (main) INFO  [it.test.ConexionTest] - Se encontró un archivo de configuración de tablas válido
+15:03:57,441 (main) INFO  [it.test.ConexionTest] - Conexión realizada correstamente
+15:03:57,441 (main) INFO  [it.test.ConexionTest] - Cerrando la conexión
+15:03:57,449 (main) INFO  [it.test.ConexionTest] - Conexión cerrada
+15:08:59,295 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con una base de datos que no existe
+15:08:59,448 (main) INFO  [it.test.ConexionTest] - NO se encontró un archivo de configuración válido
+15:09:01,313 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepción generada es: java.lang.NullPointerException
+15:09:01,320 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos de usuario incorrectos
+15:09:01,322 (main) INFO  [it.test.ConexionTest] - Se encontró un archivo de configuración de tablas válido
+15:09:01,759 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepción generada es: javax.jdo.JDOFatalUserException
+15:09:01,759 (main) INFO  [it.test.ConexionTest] - La causa es: javax.jdo.JDOUserException: PersistenceManagerFactory debe usar "persistence-unit" con nombre "EPSAndesErrorUser" pero no hay ninguna con ese nombre
+15:09:01,760 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos válidos (BD, credenciales, esquema
+15:09:01,761 (main) INFO  [it.test.ConexionTest] - Se encontró un archivo de configuración de tablas válido
+15:09:04,417 (main) INFO  [it.test.ConexionTest] - Conexión realizada correstamente
+15:09:04,417 (main) INFO  [it.test.ConexionTest] - Cerrando la conexión
+15:09:04,424 (main) INFO  [it.test.ConexionTest] - Conexión cerrada

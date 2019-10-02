@@ -3,7 +3,7 @@
 	"unidadPersistencia": "EPSAndesErrorDS",
 	"tablas":
 	[
-		"EPSAndes_sequence",
+		"	"EPSAndes_sequence",
 		"A_ADMINISTRADOR",
 		"A_CONSULTA", 
 		"A_EPS", 
@@ -37,6 +37,7 @@
 		"A_SERVICIO", 
 		"A_SERVICIO_HORARIO",
 		"A_TERAPIA",
-		"A_URGENCIA"
+		"A_URGENCIA",
+		"A_ROL"
 	]
 }

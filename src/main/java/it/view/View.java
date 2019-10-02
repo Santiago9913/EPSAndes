@@ -1,21 +1,38 @@
 package it.view;
 
-public class View {
+import javax.jdo.JDODataStoreException;
 
-	public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_BLACK = "\u001B[30m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_YELLOW = "\u001B[33m";
-	public static final String ANSI_BLUE = "\u001B[34m";
-	public static final String ANSI_PURPLE = "\u001B[35m";
-	public static final String ANSI_CYAN = "\u001B[36m";
-	public static final String ANSI_WHITE = "\u001B[37m";
+public class View {
 
 	public void printMenu() {
 		System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
 		System.out.println("---------------------Iteracion 1----------------------");
-		System.out.println("0. Crear conexion");
+		System.out.println("1. Agregar un rol");
+		System.out.println("2. Agregar un usuario");
+
+		System.out.println("10. Cerrar Conexion");
+
+		System.out.println("Digite el numero de opcion para ejecutar la tarea, luego presione enter: (Ej., 1):");
+
 	}
 
+	public void printMessage(String msj) {
+		System.out.println(msj);
+	}
+
+	public void printErrMessage(Exception e) {
+		String resultado = "************ Error en la ejecución\n";
+		resultado += e.getLocalizedMessage() + ", " + darDetalleException(e); 
+		resultado += "\n\nRevise datanucleus.log y project.log para más detalles";
+		System.out.println(resultado);
+	}
+
+	private String darDetalleException(Exception e) {
+		String resp = "";
+		if(e.getClass().getName().equals("javax.jdo.JDODataStoreException")) {
+			JDODataStoreException je = (JDODataStoreException) e;
+			return je.getNestedExceptions()[0].getMessage();
+		}
+		return resp; 
+	}
 }

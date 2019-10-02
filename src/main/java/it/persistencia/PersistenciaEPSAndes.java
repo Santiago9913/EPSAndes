@@ -237,6 +237,7 @@ public class PersistenciaEPSAndes {
 		sqlPaciente = new SQLPaciente(this); 
 		sqlRol = new SQLRol(this); 
 		sqlSecretaria = new SQLSecretaria(this); 
+		sqlUtil = new SQLUtil(this);
 
 	}
 
@@ -445,7 +446,7 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaOrdenServicio() {
-		return tablas.get(26);
+		return tablas.get(25);
 	}
 
 	/**
@@ -453,7 +454,7 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaPaciente() {
-		return tablas.get(27);
+		return tablas.get(26);
 	}
 
 	/**
@@ -585,7 +586,7 @@ public class PersistenciaEPSAndes {
 			long tuplasInsertadas = sqlAdministrador.adicionarRol(pm, idRol, nombre);
 			tx.commit();
 
-			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			log.trace("Insercion de rol: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
 			return new Rol(idRol, nombre);
 		}
 		catch(Exception e) {
@@ -629,13 +630,13 @@ public class PersistenciaEPSAndes {
 		}
 	}
 
-	public Paciente registrarPaciente(String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
+	public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			long idPac = nextval(); 
+			long idPac = id;
 			long tuplasInsertadas = sqlAdministrador.adicionarPaciente(pm, idPac, nombre, correo, fNacimiento, estado, tipoDoc);
 			tx.commit();
 
@@ -643,6 +644,7 @@ public class PersistenciaEPSAndes {
 			return new Paciente(idPac, nombre, correo, fNacimiento, estado, tipoDoc);
 		}
 		catch(Exception e) {
+			e.printStackTrace();
 			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
 			return null;
 		}

@@ -47,8 +47,8 @@ public class SQLAdministrador {
 	 * @param nombre
 	 * @return
 	 */
-	public long adicionarRol(PersistenceManager pm, long id, String nombre) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaRol() + "(id, nombre) VALUES(?, ?)" );
+	public long adicionarRol(PersistenceManager pm, long id, String nombre) throws Exception {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaRol() + "(id, nombre) VALUES(?, ?)" );
 		q.setParameters(id, nombre); 
 		return (long) q.executeUnique();
 	}
@@ -74,7 +74,7 @@ public class SQLAdministrador {
 	 * @return
 	 */
 	public long adicionarPaciente(PersistenceManager pm, long id, String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaPaciente() + "(id, nombre, correo, f_nacimiento, estado, tipo_doc) VALUES(?, ?, ?, ?, ?, ?)" );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaPaciente() + "(id, nombre, correo, f_nacimiento, estado, TIPO_DOC) VALUES(?, ?, ?, ?, ?, ?)" );
 		q.setParameters(id, nombre, correo, fNacimiento, estado, tipoDoc); 
 		return (long) q.executeUnique();
 	}

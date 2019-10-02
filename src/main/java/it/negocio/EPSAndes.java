@@ -35,9 +35,9 @@ public class EPSAndes {
 		return newRol;
 	}
 
-	public Paciente registrarPaciente(String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
+	public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
 		log.info("Registrando paciente: " + nombre);
-		Paciente pac = ep.registrarPaciente( nombre, correo, fNac, estado, tipoDoc);
+		Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
 		log.info("Registrando paciente: " + pac);
 		return pac;
 	}

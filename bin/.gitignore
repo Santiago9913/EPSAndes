@@ -1,6 +1,4 @@
-/negocio/
-/persistencia/
-/test/
-/log4j.properties
-/it/
+/META-INF/
 /config/
+/hbase-site.xml
+/it/

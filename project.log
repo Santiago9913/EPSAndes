@@ -191,3 +191,52 @@ ORA-00904: "TIPO_DOC": identificador no válido
 00:34:47,933 (main) INFO  [it.negocio.EPSAndes] - Registrando tupla: ( 123456 , 9492300223 )
 00:41:50,053 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
 01:04:23,791 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:26:02,192 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:33:42,061 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:33:48,630 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:50:45,837 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:52:06,063 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+11:52:53,153 (main) INFO  [it.negocio.EPSAndes] - Registrando recepcionista: 8934390 , Doris , doris@correo.com
+11:53:30,518 (main) INFO  [it.negocio.EPSAndes] - Registrando recepcionista: Doris
+12:22:37,847 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:23:06,363 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: Colsanitas
+12:23:52,312 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=41, nombre=Colsanitas]
+12:26:27,154 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:26:44,716 (main) INFO  [it.negocio.EPSAndes] - Registrando rol de usuario: MEDICO
+12:26:45,007 (main) INFO  [it.negocio.EPSAndes] - Registrando rol de usuario: Rol [id=42, nombre=MEDICO]
+12:27:18,429 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: SANTIAGO
+12:27:18,464 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Paciente [id=10792515, nombre=SANTIAGO, correo=SANTIAGO@HOTMAIL.COM, fNacimiento=1999-10-13 00:00:00.0, estado=SANO, tipoDocumento=CEDULA]
+12:27:45,303 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: ROSO
+12:27:45,364 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Medico [id=485498, nombre=ROSO, correo=ROSO@MEDICO.COM, especialidad=PEDIATRA]
+12:27:45,365 (main) INFO  [it.negocio.EPSAndes] - Registrando registro_medico: 114846148 , 485498
+12:27:45,410 (main) INFO  [it.negocio.EPSAndes] - Registrando tupla: ( 485498 , 114846148 )
+12:27:55,990 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COMPENSAR
+12:27:56,032 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=43, nombre=COMPENSAR]
+12:47:13,727 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:47:18,539 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:47:57,052 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: Marley
+12:47:57,336 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=44, localizacion=cra, capacidad=300]
+12:49:11,407 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:49:51,193 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:53:21,661 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:53:44,444 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:56:40,083 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:57:09,178 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:58:37,275 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+12:59:38,295 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:00:08,783 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:00:59,877 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:01:38,261 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:02:30,562 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:05:28,465 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:05:46,420 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:06:52,663 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:07:48,343 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:11:32,648 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:12:07,952 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: CLINICA MARLEY
+13:12:08,226 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=45, localizacion=CRA 68 # 23, capacidad=3000]
+13:27:57,323 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:28:00,832 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:29:02,505 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+13:29:36,377 (main) INFO  [it.negocio.EPSAndes] - Registrando gerente: SANTIAGO FAJARDO
+13:29:36,691 (main) INFO  [it.negocio.EPSAndes] - Registrando gerente: Gerente [id=899490348, nombre=SANTIAGO FAJARDO, correo=SANTIAGO@HOTMAIL.COM]

@@ -56,13 +56,12 @@ public class EPSAndes {
 		return regM;
 	}
 
-	//	public Secretaria registrarRecepcionista(String nombre, String correo) {
-	//		log.info("Registrando secretaria: " + nombre);
-	//		Secretaria sec = ep.registrarSecretaria(nombre, correo);
-	//		log.info("Registrando secretaria: " + sec);
-	//		return sec;
-	//	}
-
+	public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
+		log.info("Registrando recepcionista: " + id + " , " + nombre + " , " + correo);
+		Secretaria recep = ep.registrarRecepcionista(id, nombre, correo); 
+		log.info("Registrando recepcionista: " + nombre);
+		return recep; 
+	}
 	public Administrador registrarAdministrador(String nombre, String correo) {
 		log.info("Registrando administrador: " + nombre);
 		Administrador admin = ep.registrarAdministrador( nombre, correo);
@@ -70,11 +69,18 @@ public class EPSAndes {
 		return admin;
 	}
 
-	public Gerente registrarGerente(String nombre, String correo) {
+	public Gerente registrarGerente(long id, String nombre, String correo) {
 		log.info("Registrando gerente: " + nombre);
-		Gerente ger = ep.registrarGerente( nombre, correo);
+		Gerente ger = ep.registrarGerente(id, nombre, correo);
 		log.info("Registrando gerente: " + ger);
 		return ger;
+	}
+
+	public EPS registrarEPS(String nombre) {
+		log.info("Registrando EPS: " + nombre);
+		EPS eps = ep.registrarEPS(nombre);
+		log.info("Registrando EPS: " + eps);
+		return eps;
 	}
 
 	public IPS registrarIPS(String nombre, String localizacion, int cantidad) {

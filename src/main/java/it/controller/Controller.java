@@ -14,10 +14,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import it.negocio.EPSAndes;
+import it.negocio.VOEPS;
+import it.negocio.VOGerente;
+import it.negocio.VOIPS;
 import it.negocio.VOMedico;
 import it.negocio.VOPaciente;
 import it.negocio.VORegistroMedico;
 import it.negocio.VORol;
+import it.negocio.VOSecretaria;
 import it.view.View;
 
 public class Controller {
@@ -32,6 +36,7 @@ public class Controller {
 	private static final String AD = "ADMINISTRADOR";
 	private static final String PA = "PACIENTE";
 	private static final String ME = "MEDICO";
+	private static final String RE = "RECEPCIONISTA"; 
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -51,15 +56,18 @@ public class Controller {
 		Scanner sc = new Scanner(System.in);
 		boolean fin = false;
 		boolean inicia = false;
+
 		String usuario = "";
 		crearConexion();
 
 		while(!inicia) {
 			view.printInicioSesion();
-			usuario = sc.next();
+			usuario = sc.next().toUpperCase();
 			view.printMessage("Ingrese codigo:");
 			int clave = sc.nextInt();
-			inicia = true;
+			if(usuario.equals("ADMINISTRADOR")) {
+				inicia = true;				
+			}
 		}
 
 		boolean admin = usuario.toUpperCase().equals(AD) ? true : false;
@@ -67,41 +75,33 @@ public class Controller {
 		boolean med = usuario.toUpperCase().equals(ME) ? true : false;
 
 		while(!fin) {
-			view.printMenu();
+			if(admin) {
+				view.printMenuAdmin();	
+				int optionAdmin = sc.nextInt();
 
-			int option = sc.nextInt();
+				//Vista de administrador
+				switch(optionAdmin) {
 
-			switch(option) {
+				case 1: 
 
-			//Permiso Administrador
-			case 1: 
-				if(admin) {
 					view.printMessage("Ingrese el rol que desea registrar...");
 					String rol = sc.next();
-					agregarRol(rol);
-					break; 					
-				}
+					agregarRol(rol.toUpperCase());
+					break; 
 
-				view.printMessage("¡¡No posee permisos para esta operacion!!");
-				break;
-
-				//Permiso Administrador
-			case 2:
-				if(admin) {
-
-
+					//Permiso Administrador
+				case 2:
 					view.printMessage("Ingrese la informacion del usuario...");
 					view.printMessage("Rol: ");
-					view.printMessage("a) PACIENTE" + "\n"
-							+ "b) MEDICO" + "\n"
-							+ "c) GERENTE");
+					view.printRoles();
 					String rolUsuario = sc.next(); 
 
 					//Si el usuario es PACIENTE 
 					if(rolUsuario.toLowerCase().equals("a")) {
 						//Se ingresa el nombre
-						view.printMessage("Ingrese el nombre: ");
+						view.printMessage("Ingrese el nombre y apellido: ");
 						String nombrePaciente = sc.next(); 
+						nombrePaciente = nombrePaciente.concat(sc.nextLine());
 
 						//Se ingresa el correo y se realiza el check
 						view.printMessage("Ingrese el correo: ");
@@ -141,14 +141,15 @@ public class Controller {
 
 
 						//Agregar el paciente
-						agregarPaciente(idPaciente, nombrePaciente, correoPaciente, fechaPaciente, estadoPaciente, tipoDoc);
+						agregarPaciente(idPaciente, nombrePaciente.toUpperCase(), correoPaciente.toUpperCase(), fechaPaciente, estadoPaciente.toUpperCase(), tipoDoc.toUpperCase());
 					}
 
 					//Si el usuario es MEDICO
 					else if(rolUsuario.toLowerCase().equals("b")) {
 						//Se ingresa el nombre
-						view.printMessage("Ingrese el nombre: ");
-						String nombreMedico = sc.next(); 
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreMedico = sc.next();
+						nombreMedico = nombreMedico.concat(sc.nextLine());
 
 						//Se ingresa el correo y se realiza el check
 						view.printMessage("Ingrese el correo: ");
@@ -177,25 +178,106 @@ public class Controller {
 						long numRegistro = sc.nextLong(); 
 
 
-						//Agregar el paciente
-						agregarMedico(idMedico, nombreMedico, correoMedico, especialidadMedico);
-						agregarMedicoRegistro(idMedico, numRegistro); 
+						//Agregar el medico
+						agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
+						//Agregar el registro medico 
+						agregarMedicoRegistro(idMedico, numRegistro); 		
+					}
+
+					else if(rolUsuario.toLowerCase().endsWith("c")) {
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreGerente = sc.next();
+						nombreGerente = nombreGerente.concat(sc.nextLine());
+
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoGerente= sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!(correoGerente.contains("@") && correoGerente.contains(".com"))) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoGerente = sc.next();
+								if(correoGerente.contains("@") && correoGerente.contains(".com")) {
+									correoCorrecto = true;
+								}
+							}
+						}
+
+						//Se ingresa id 
+						view.printMessage("Ingrese el numero de documento: ");
+						long idGerente = sc.nextLong(); 
+
+						agregarGerente(idGerente, nombreGerente.toUpperCase(), correoGerente.toUpperCase());
+
+
+					}
+
+					//Si el usuario es recepcionista
+					else if(rolUsuario.toLowerCase().equals("d")) {
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreRecepcionista = sc.next();
+						nombreRecepcionista = nombreRecepcionista.concat(sc.nextLine());
+
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoRecepcionista = sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!(correoRecepcionista.contains("@") && correoRecepcionista.contains(".com"))) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoRecepcionista = sc.next();
+								if(correoRecepcionista.contains("@") && correoRecepcionista.contains(".com")) {
+									correoCorrecto = true;
+								}
+							}
+						}
+
+						//Se ingresa id 
+						view.printMessage("Ingrese el numero de documento: ");
+						long idRecepcionista = sc.nextLong(); 
+
+						agregarRecepcionista(idRecepcionista, nombreRecepcionista.toUpperCase(), correoRecepcionista.toUpperCase());
 					}
 					break; 
+
+					//Agregar una EPS
+				case 3: 
+					view.printMessage("Ingrese el nombre de la EPS que desea agregar");
+					String nombreEPS = sc.next();
+					nombreEPS = nombreEPS.concat(sc.nextLine());
+
+					//Agrega la eps
+					agregarEPS(nombreEPS.toUpperCase());
+					break;
+				case 4:
+					view.printMessage("Ingrese el nombre de la IPS:  ");
+					String nombreIPS = sc.next();
+					nombreIPS = nombreIPS.concat(sc.nextLine());
+
+					view.printMessage("Ingrese la capacidad de la IPS: ");
+					int capacidad = sc.nextInt();
+
+					view.printMessage("Ingrese la localizacion de la IPS");
+					String loc = sc.next();
+					loc = loc.concat(sc.nextLine());
+
+					//Agrega la IPS
+					agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
+
+
+
+					//Cierra la conexion 
+				case 10:	
+					fin = true;
+					epsAndes.cerrarUP();
+					sc.close();
+					System.out.println("Conexion Cerrada");
+					break;
 				}
-				view.printMessage("¡¡No posee permisos para esta operacion!!");
-				break;
-
-			case 10:	
-				fin = true;
-				epsAndes.cerrarUP();
-				sc.close();
-				System.out.println("Conexion Cerrada");
-				break;
-
 			}
 		}
 	}
+
 
 	/* ****************************************************************
 	 * 			Metodos
@@ -330,6 +412,94 @@ public class Controller {
 		}
 	}
 
+	public void agregarGerente(long id, String nombre, String correo) {
+		try {
+			long idGerente = id; 
+			String nomGerente = nombre; 
+			String correoGerente = correo; 
+
+			if(id > 0 && nomGerente != null && correoGerente != null) {
+				VOGerente re = epsAndes.registrarGerente(idGerente, nomGerente, correoGerente); 
+				if(re == null) {
+					throw new Exception("No se pudo agregar recepcionista");
+				}
+				String resultado = "En registrarRecepcionista\n\n";
+				resultado += "Recepcionista adicionado exitosamente: " + re;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarRecepcionista(long id, String nombre, String correo) {
+		try {
+			long idRecep = id; 
+			String nomRecep = nombre; 
+			String correoRecep = correo; 
+
+			if(id > 0 && nomRecep != null && correoRecep != null) {
+				VOSecretaria re = epsAndes.registrarRecepcionista(idRecep, nomRecep, correoRecep); 
+				if(re == null) {
+					throw new Exception("No se pudo agregar recepcionista");
+				}
+				String resultado = "En registrarRecepcionista\n\n";
+				resultado += "Recepcionista adicionado exitosamente: " + re;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarEPS(String nombre) {
+		try {
+			String nom = nombre; 
+			if(nom != null) {
+				VOEPS eps = epsAndes.registrarEPS(nom);
+				if(eps == null) {
+					throw new Exception("No se pudo agregar EPS");
+				}
+				String resultado = "En registrarEPS\n\n";
+				resultado += "EPS adicionado exitosamente: " + eps;
+				resultado += "\n Operacion terminada";
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarIPS(String nombre, int capacidad, String localizacion) {
+		try {
+			String nom = nombre;
+			int cap = capacidad;
+			String loc = localizacion;
+
+			if(nom != null && cap > 0 && loc != null) {
+				VOIPS ips = epsAndes.registrarIPS(nom, loc, cap);
+				if(ips == null) {
+					throw new Exception("No se puedo agregar IPS");
+				}
+				String resultado = "En registrarIPS\n\n";
+				resultado += "EPS adicionado exitosamente: " + ips;
+				resultado += "\n Operacion terminada";
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
 
 	/**
 	 * 

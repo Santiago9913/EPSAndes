@@ -17,12 +17,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import it.negocio.Administrador;
+import it.negocio.EPS;
 import it.negocio.Gerente;
 import it.negocio.IPS;
 import it.negocio.Medico;
 import it.negocio.Paciente;
 import it.negocio.RegistroMedico;
 import it.negocio.Rol;
+import it.negocio.Secretaria;
 import it.negocio.Servicio;
 
 
@@ -676,18 +678,17 @@ public class PersistenciaEPSAndes {
 		}
 	}
 
-	public Gerente registrarGerente(String nombre, String correo) {
+	public Gerente registrarGerente(long id, String nombre, String correo) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			long idGer = nextval(); 
-			long tuplasInsertadas = sqlAdministrador.adicionarAdministrador(pm, idGer, nombre, correo);
+			long tuplasInsertadas = sqlAdministrador.adicionarGerente(pm, id, nombre, correo);
 			tx.commit();
 
 			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-			return new Gerente(idGer, nombre, correo);
+			return new Gerente(id, nombre, correo);
 		}
 		catch(Exception e) {
 			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
@@ -699,6 +700,31 @@ public class PersistenciaEPSAndes {
 			}
 			pm.close();
 		}
+	}
+
+	public EPS registrarEPS(String nombre) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try
+		{
+			tx.begin();
+			long idEPS = nextval(); 
+			long tuplasInsertadas = sqlAdministrador.adicionarEPS(pm, idEPS, nombre);
+			tx.commit();
+
+			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new EPS(idEPS, nombre);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}	
 	}
 
 	public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
@@ -738,6 +764,29 @@ public class PersistenciaEPSAndes {
 
 			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
 			return new Medico(idMed, nombre, correo, especialidad);
+		}
+		catch(Exception e) {
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try {
+			tx.begin();
+			long tuplasInsertadas = sqlAdministrador.adicionarRecepcionista(pm, id, nombre, correo); 
+			tx.commit();
+			log.trace("Insercion de recepcionista: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new Secretaria(id, nombre, correo);
+
 		}
 		catch(Exception e) {
 			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));

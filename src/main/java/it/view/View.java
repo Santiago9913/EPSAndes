@@ -16,6 +16,11 @@ public class View {
 
 	}
 
+	public void printInicioSesion() {
+		System.out.println("---------Inicio Sesion----------");
+		System.out.println("Ingrese el usuario: ");
+	}
+
 	public void printMessage(String msj) {
 		System.out.println(msj);
 	}

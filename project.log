@@ -177,3 +177,17 @@ ORA-00904: "TIPO_DOC": identificador no válido
 16:52:46,362 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
 16:54:11,629 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Santiago
 16:54:52,737 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Paciente [id=123456, nombre=Santiago, correo=santiago@hotmail.com, fNacimiento=1999-10-13 00:00:00.0, estado=NA, tipoDocumento=CEDULA]
+23:48:17,562 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:50:48,948 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Roso
+23:51:34,154 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:52:43,195 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: 6s
+23:59:11,007 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+00:00:12,833 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Roso
+00:00:41,614 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Medico [id=123456, nombre=Roso, correo=medico123@hotmail.com, especialidad=Ortopedista]
+00:32:48,494 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+00:34:08,123 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Roso
+00:34:41,073 (main) INFO  [it.negocio.EPSAndes] - Registrando médico: Medico [id=123456, nombre=Roso, correo=medico123@hotmail.com, especialidad=ORTOPEDISTA]
+00:34:47,691 (main) INFO  [it.negocio.EPSAndes] - Registrando registro_medico: 9492300223 , 123456
+00:34:47,933 (main) INFO  [it.negocio.EPSAndes] - Registrando tupla: ( 123456 , 9492300223 )
+00:41:50,053 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+01:04:23,791 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD

@@ -115,8 +115,14 @@ public class SQLAdministrador {
 	 * @return
 	 */
 	public long adicionarMedico(PersistenceManager pm, long id, String nombre, String correo, String especialidad) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaMedico() + "(id, nombre, correo, especialidad) VALUES(?, ?, ?, ?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaMedico() + "(id, nombre, correo, especialidad) VALUES(?, ?, ?, ?)");
 		q.setParameters(id, nombre, correo, especialidad); 
+		return (long) q.executeUnique();
+	}
+
+	public long adicionarRegistroMedico(PersistenceManager pm, long idMedico, long numRegistro) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaMedicoRegistro() + "(id_medico, num_registro) VALUES(?,?)");
+		q.setParameters(idMedico, numRegistro);
 		return (long) q.executeUnique();
 	}
 

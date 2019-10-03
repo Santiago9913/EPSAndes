@@ -2,6 +2,7 @@ package it.negocio;
 
 public interface VORegistroMedico {
 	public long getIdMedico();
-	public int getNumRegistro();
+	public long getNumRegistro();
+	@Override
 	public String toString();
 }

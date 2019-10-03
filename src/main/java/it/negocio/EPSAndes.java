@@ -42,11 +42,18 @@ public class EPSAndes {
 		return pac;
 	}
 
-	public Medico registrarMedico(String id, String nombre, String correo, String especialidad, int numRegistro) {
+	public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
 		log.info("Registrando médico: " + nombre);
-		Medico med = ep.registrarMedico(nombre, correo, especialidad);
+		Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
 		log.info("Registrando médico: " + med);
 		return med;
+	}
+
+	public RegistroMedico registrarRegistroMedico(long idMedico, long numRegistro) {
+		log.info("Registrando registro_medico: " + numRegistro + " , " + idMedico);
+		RegistroMedico regM = ep.registrarRegistroMedico(idMedico, numRegistro);
+		log.info("Registrando tupla: " + "( " + idMedico +" , " + numRegistro + " )");
+		return regM;
 	}
 
 	//	public Secretaria registrarRecepcionista(String nombre, String correo) {

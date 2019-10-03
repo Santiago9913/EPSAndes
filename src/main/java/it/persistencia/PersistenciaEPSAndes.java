@@ -21,6 +21,7 @@ import it.negocio.Gerente;
 import it.negocio.IPS;
 import it.negocio.Medico;
 import it.negocio.Paciente;
+import it.negocio.RegistroMedico;
 import it.negocio.Rol;
 import it.negocio.Servicio;
 
@@ -262,86 +263,6 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaConsulta() {
-		return tablas.get(3);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaEps() {
-		return tablas.get(4);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaEpsAdministrador() {
-		return tablas.get(5);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaEpsGerente() {
-		return tablas.get(6);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaEpsIps() {
-		return tablas.get(7);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaEpsPacientes() {
-		return tablas.get(8);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaExamenDiagnostico() {
-		return tablas.get(9);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaGerente() {
-		return tablas.get(10);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaHorario() {
-		return tablas.get(11);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaHospitalizacion() {
-		return tablas.get(12);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaIps() {
 		return tablas.get(2);
 	}
 
@@ -349,87 +270,87 @@ public class PersistenciaEPSAndes {
 	 * 
 	 * @return
 	 */
+	public String getTablaEps() {
+		return tablas.get(3);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsAdministrador() {
+		return tablas.get(4);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsGerente() {
+		return tablas.get(5);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsIps() {
+		return tablas.get(6);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaEpsPacientes() {
+		return tablas.get(7);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaExamenDiagnostico() {
+		return tablas.get(8);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaGerente() {
+		return tablas.get(9);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaHorario() {
+		return tablas.get(10);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaHospitalizacion() {
+		return tablas.get(11);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIps() {
+		return tablas.get(12);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTablaIpsHorario() {
-		return tablas.get(14);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaIpsMedico() {
-		return tablas.get(15);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaIpsSecretaria() {
-		return tablas.get(16);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaIpsServicio() {
-		return tablas.get(17);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedicamento() {
-		return tablas.get(18);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedico() {
-		return tablas.get(19);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedicoConsulta() {
-		return tablas.get(20);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedicoPaciente() {
-		return tablas.get(21);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedicoRegistro() {
-		return tablas.get(22);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaMedicoUrgencia() {
-		return tablas.get(23);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaOrden() {
 		return tablas.get(13);
 	}
 
@@ -437,8 +358,88 @@ public class PersistenciaEPSAndes {
 	 * 
 	 * @return
 	 */
+	public String getTablaIpsMedico() {
+		return tablas.get(14);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsSecretaria() {
+		return tablas.get(15);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaIpsServicio() {
+		return tablas.get(16);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicamento() {
+		return tablas.get(17);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedico() {
+		return tablas.get(18);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoConsulta() {
+		return tablas.get(19);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoPaciente() {
+		return tablas.get(20);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoRegistro() {
+		return tablas.get(21);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaMedicoUrgencia() {
+		return tablas.get(22);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaOrden() {
+		return tablas.get(23);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTablaOrdenMedicamento() {
-		return tablas.get(25);
+		return tablas.get(24);
 	}
 
 	/**
@@ -462,7 +463,7 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaPacienteReserva() {
-		return tablas.get(28);
+		return tablas.get(27);
 	}
 
 	/**
@@ -470,7 +471,7 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaPacienteUrgencia() {
-		return tablas.get(29);
+		return tablas.get(28);
 	}
 
 	/**
@@ -478,6 +479,15 @@ public class PersistenciaEPSAndes {
 	 * @return
 	 */
 	public String getTablaProcedimiento() {
+		return tablas.get(29);
+	}
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaSecretaria() {
 		return tablas.get(30);
 	}
 
@@ -485,8 +495,34 @@ public class PersistenciaEPSAndes {
 	 * 
 	 * @return
 	 */
-	public String getTablaRegistroMedico() {
-		return tablas.get(22);
+	public String getTablaServicio() {
+		return tablas.get(31);
+	}
+
+
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaServicioHorario() {
+		return tablas.get(32);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaTerapia() {
+		return tablas.get(33);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTablaUrgencia() {
+		return tablas.get(34);
 	}
 
 	/**
@@ -495,46 +531,6 @@ public class PersistenciaEPSAndes {
 	 */
 	public String getTablaRol() {
 		return tablas.get(35);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaSecretaria() {
-		return tablas.get(31);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaServicio() {
-		return tablas.get(32);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaServicioHorario() {
-		return tablas.get(33);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaTerapia() {
-		return tablas.get(34);
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getTablaUrgencia() {
-		return tablas.get(24);
 	}
 
 	/**
@@ -640,8 +636,32 @@ public class PersistenciaEPSAndes {
 			long tuplasInsertadas = sqlAdministrador.adicionarPaciente(pm, idPac, nombre, correo, fNacimiento, estado, tipoDoc);
 			tx.commit();
 
-			log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+			log.trace("Insercion de paciente: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
 			return new Paciente(idPac, nombre, correo, fNacimiento, estado, tipoDoc);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+			return null;
+		}
+		finally {
+			if(tx.isActive()) {
+				tx.rollback();
+			}
+			pm.close();
+		}
+	}
+
+	public RegistroMedico registrarRegistroMedico(long idMedico, long numReg) {
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx=pm.currentTransaction();
+		try {
+			tx.begin();
+			long tuplasInsertadas = sqlAdministrador.adicionarRegistroMedico(pm, idMedico, numReg);
+			tx.commit();
+
+			log.trace("Insercion de registro medico: " + numReg + ": " + tuplasInsertadas + "tuplas insertadad");
+			return new RegistroMedico(idMedico, numReg);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -706,13 +726,13 @@ public class PersistenciaEPSAndes {
 		}
 	}
 
-	public Medico registrarMedico(String nombre, String correo, String especialidad) {
+	public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();
 		try
 		{
 			tx.begin();
-			long idMed = nextval(); 
+			long idMed = id; 
 			long tuplasInsertadas = sqlAdministrador.adicionarMedico(pm, idMed, nombre, correo, especialidad);
 			tx.commit();
 

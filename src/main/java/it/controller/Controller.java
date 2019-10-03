@@ -14,8 +14,14 @@ import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
 import it.negocio.EPSAndes;
+import it.negocio.VOEPS;
+import it.negocio.VOGerente;
+import it.negocio.VOIPS;
+import it.negocio.VOMedico;
 import it.negocio.VOPaciente;
+import it.negocio.VORegistroMedico;
 import it.negocio.VORol;
+import it.negocio.VOSecretaria;
 import it.view.View;
 
 public class Controller {
@@ -26,6 +32,11 @@ public class Controller {
 	 * Ruta de las tablas para la base de datos
 	 */
 	private static final String CONFIG_TABLAS = "./src/main/resources/config/TablasBD_A.json"; 
+
+	private static final String AD = "ADMINISTRADOR";
+	private static final String PA = "PACIENTE";
+	private static final String ME = "MEDICO";
+	private static final String RE = "RECEPCIONISTA"; 
 
 	/* ****************************************************************
 	 * 			Atributos
@@ -43,88 +54,230 @@ public class Controller {
 
 	public void run() {
 		Scanner sc = new Scanner(System.in);
-		boolean fin = false; 
+		boolean fin = false;
+		boolean inicia = false;
+
+		String usuario = "";
 		crearConexion();
 
+		while(!inicia) {
+			view.printInicioSesion();
+			usuario = sc.next().toUpperCase();
+			view.printMessage("Ingrese codigo:");
+			int clave = sc.nextInt();
+			if(usuario.equals("ADMINISTRADOR")) {
+				inicia = true;				
+			}
+		}
+
+		boolean admin = usuario.toUpperCase().equals(AD) ? true : false;
+		boolean pac = usuario.toUpperCase().equals(PA) ? true : false;
+		boolean med = usuario.toUpperCase().equals(ME) ? true : false;
+
 		while(!fin) {
-			view.printMenu();
+			if(admin) {
+				view.printMenuAdmin();	
+				int optionAdmin = sc.nextInt();
 
-			int option = sc.nextInt();
+				//Vista de administrador
+				switch(optionAdmin) {
 
-			switch(option) {
+				case 1: 
 
-			case 1: 
-				view.printMessage("Ingrese el rol que desea registrar...");
-				String rol = sc.next();
-				agregarRol(rol);
-				break; 
+					view.printMessage("Ingrese el rol que desea registrar...");
+					String rol = sc.next();
+					agregarRol(rol.toUpperCase());
+					break; 
 
-			case 2:
-				view.printMessage("Ingrese la informacion del usuario...");
-				view.printMessage("Rol: ");
-				String rolUsuario = sc.next().toUpperCase(); 
+					//Permiso Administrador
+				case 2:
+					view.printMessage("Ingrese la informacion del usuario...");
+					view.printMessage("Rol: ");
+					view.printRoles();
+					String rolUsuario = sc.next(); 
 
-				if(rolUsuario.toUpperCase().equals("PACIENTE")) {
-					//Se ingresa el nombre
-					view.printMessage("Ingrese el nombre: ");
-					String nombrePaciente = sc.next(); 
+					//Si el usuario es PACIENTE 
+					if(rolUsuario.toLowerCase().equals("a")) {
+						//Se ingresa el nombre
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombrePaciente = sc.next(); 
+						nombrePaciente = nombrePaciente.concat(sc.nextLine());
 
-					//Se ingresa el correo y se realiza el check
-					view.printMessage("Ingrese el correo: ");
-					String correoPaciente = sc.next(); 
-					boolean correoCorrecto = false; 
-					if(!correoPaciente.contains("@")) {
-						while(!correoCorrecto) {
-							view.printMessage("Ingrese un correo correcto...");
-							correoPaciente = sc.next();
-							if(correoPaciente.contains("@")) {
-								correoCorrecto = true;
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoPaciente = sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!correoPaciente.contains("@")) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoPaciente = sc.next();
+								if(correoPaciente.contains("@")) {
+									correoCorrecto = true;
+								}
+							}
+
+						}
+
+						//Se ingresa la fecha de naciemiento
+						view.printMessage("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
+						String nacimientoPaciente = sc.next(); 
+						String[] fechaSepa = nacimientoPaciente.split("-"); 
+						int year = Integer.parseInt(fechaSepa[0]); 
+						int mon = Integer.parseInt(fechaSepa[1]);
+						int day = Integer.parseInt(fechaSepa[2]);
+						Timestamp fechaPaciente = Timestamp.valueOf(LocalDateTime.of(year, mon, day, 0, 0)); 
+
+						//Se ingresa el estado del paciente
+						view.printMessage("Ingrese el estado del paciente: ");
+						String estadoPaciente = sc.next(); 
+
+						//Se ingresa el tipo de documento del paciente
+						view.printMessage("Ingrese el tipo de documento (Pasaporte, Cedula, Tarjeta Identidad) : ");
+						String tipoDoc = sc.next().toUpperCase();
+
+						//Se ingresa id (numero doc) del paciente
+						view.printMessage("Ingrese el numero de documento del paciente");
+						int idPaciente = sc.nextInt(); 
+
+
+						//Agregar el paciente
+						agregarPaciente(idPaciente, nombrePaciente.toUpperCase(), correoPaciente.toUpperCase(), fechaPaciente, estadoPaciente.toUpperCase(), tipoDoc.toUpperCase());
+					}
+
+					//Si el usuario es MEDICO
+					else if(rolUsuario.toLowerCase().equals("b")) {
+						//Se ingresa el nombre
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreMedico = sc.next();
+						nombreMedico = nombreMedico.concat(sc.nextLine());
+
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoMedico = sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!correoMedico.contains("@")) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoMedico = sc.next();
+								if(correoMedico.contains("@")) {
+									correoCorrecto = true;
+								}
+							}
+
+						}
+
+						//Se ingresa la especialidad del medico
+						view.printMessage("Ingrese la especialidad del medico: ");
+						String especialidadMedico = sc.next(); 
+
+						//Se ingresa id (numero doc) del medico
+						view.printMessage("Ingrese el numero de documento del medico: ");
+						long idMedico = sc.nextLong(); 
+
+						view.printMessage("Ingrese el numero de registro medico: ");
+						long numRegistro = sc.nextLong(); 
+
+
+						//Agregar el medico
+						agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
+						//Agregar el registro medico 
+						agregarMedicoRegistro(idMedico, numRegistro); 		
+					}
+
+					else if(rolUsuario.toLowerCase().endsWith("c")) {
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreGerente = sc.next();
+						nombreGerente = nombreGerente.concat(sc.nextLine());
+
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoGerente= sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!(correoGerente.contains("@") && correoGerente.contains(".com"))) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoGerente = sc.next();
+								if(correoGerente.contains("@") && correoGerente.contains(".com")) {
+									correoCorrecto = true;
+								}
 							}
 						}
 
+						//Se ingresa id 
+						view.printMessage("Ingrese el numero de documento: ");
+						long idGerente = sc.nextLong(); 
+
+						agregarGerente(idGerente, nombreGerente.toUpperCase(), correoGerente.toUpperCase());
+
+
 					}
 
-					//Se ingresa la fecha de naciemiento
-					view.printMessage("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
-					String nacimientoPaciente = sc.next(); 
-					String[] fechaSepa = nacimientoPaciente.split("-"); 
-					int year = Integer.parseInt(fechaSepa[0]); 
-					int mon = Integer.parseInt(fechaSepa[1]);
-					int day = Integer.parseInt(fechaSepa[2]);
-					Timestamp fechaPaciente = Timestamp.valueOf(LocalDateTime.of(year, mon, day, 0, 0)); 
+					//Si el usuario es recepcionista
+					else if(rolUsuario.toLowerCase().equals("d")) {
+						view.printMessage("Ingrese el nombre y apellido: ");
+						String nombreRecepcionista = sc.next();
+						nombreRecepcionista = nombreRecepcionista.concat(sc.nextLine());
 
-					//Se ingresa el estado del paciente
-					view.printMessage("Ingrese el estado del paciente: ");
-					String estadoPaciente = sc.next(); 
+						//Se ingresa el correo y se realiza el check
+						view.printMessage("Ingrese el correo: ");
+						String correoRecepcionista = sc.next(); 
+						boolean correoCorrecto = false; 
+						if(!(correoRecepcionista.contains("@") && correoRecepcionista.contains(".com"))) {
+							while(!correoCorrecto) {
+								view.printMessage("Ingrese un correo correcto...");
+								correoRecepcionista = sc.next();
+								if(correoRecepcionista.contains("@") && correoRecepcionista.contains(".com")) {
+									correoCorrecto = true;
+								}
+							}
+						}
 
-					//Se ingresa el tipo de documento del paciente
-					view.printMessage("Ingrese el tipo de documento (Pasaporte, Cedula, Tarjeta Identidad) : ");
-					String tipoDoc = sc.next().toUpperCase();
+						//Se ingresa id 
+						view.printMessage("Ingrese el numero de documento: ");
+						long idRecepcionista = sc.nextLong(); 
 
-					//Se ingresa id (numero doc) del paciente
-					view.printMessage("Ingrese el numero de documento del paciente");
-					int idPaciente = sc.nextInt(); 
+						agregarRecepcionista(idRecepcionista, nombreRecepcionista.toUpperCase(), correoRecepcionista.toUpperCase());
+					}
+					break; 
+
+					//Agregar una EPS
+				case 3: 
+					view.printMessage("Ingrese el nombre de la EPS que desea agregar");
+					String nombreEPS = sc.next();
+					nombreEPS = nombreEPS.concat(sc.nextLine());
+
+					//Agrega la eps
+					agregarEPS(nombreEPS.toUpperCase());
+					break;
+				case 4:
+					view.printMessage("Ingrese el nombre de la IPS:  ");
+					String nombreIPS = sc.next();
+					nombreIPS = nombreIPS.concat(sc.nextLine());
+
+					view.printMessage("Ingrese la capacidad de la IPS: ");
+					int capacidad = sc.nextInt();
+
+					view.printMessage("Ingrese la localizacion de la IPS");
+					String loc = sc.next();
+					loc = loc.concat(sc.nextLine());
+
+					//Agrega la IPS
+					agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
 
 
-					//Agregar el paciente
-					agregarPaciente(idPaciente, nombrePaciente, correoPaciente, fechaPaciente, estadoPaciente, tipoDoc);
 
-
-
+					//Cierra la conexion 
+				case 10:	
+					fin = true;
+					epsAndes.cerrarUP();
+					sc.close();
+					System.out.println("Conexion Cerrada");
+					break;
 				}
-
-				break; 
-
-			case 10:	
-				fin = true;
-				epsAndes.cerrarUP();
-				sc.close();
-				System.out.println("Conexion Cerrada");
-				break;
-
 			}
 		}
 	}
+
 
 	/* ****************************************************************
 	 * 			Metodos
@@ -138,6 +291,10 @@ public class Controller {
 		epsAndes = new EPSAndes(tableConfig);
 	}
 
+	/**
+	 * 
+	 * @param rol
+	 */
 	public void agregarRol(String rol) {
 		try {
 			String nombreRol = rol.toUpperCase();
@@ -159,6 +316,15 @@ public class Controller {
 		}
 	}
 
+	/**
+	 * 
+	 * @param idPaciente
+	 * @param nombrePaciente
+	 * @param correoPaciente
+	 * @param fechaNacimiento
+	 * @param estadoPaciente
+	 * @param tipoDoc
+	 */
 	public void agregarPaciente(long idPaciente, String nombrePaciente, String correoPaciente, Timestamp fechaNacimiento, String estadoPaciente, String tipoDoc) {
 
 		try {
@@ -182,12 +348,158 @@ public class Controller {
 		}
 		catch(Exception e) {
 			e.printStackTrace();
-			view.printMessage("Las restricciones fueron violadas");
 			view.printErrMessage(e);
-
 		}
 	}
 
+	/**
+	 * 
+	 * @param idMedico
+	 * @param nombre
+	 * @param correo
+	 * @param especialidad
+	 */
+	public void agregarMedico(long idMedico, String nombre, String correo, String especialidad) {
+
+		try {
+			long id = idMedico;
+			String nombreMedico = nombre; 
+			String correoMedico = correo; 
+			String espec = especialidad;
+
+			if(nombre != null && id != 0 && correoMedico != null) {
+				VOMedico me = epsAndes.registrarMedico(id, nombreMedico, correoMedico, espec);
+				if(me == null) {
+					throw new Exception ("No se pudo crear el medico");
+				}
+				String resultado = "En registrarMedico\n\n";
+				resultado += "Medico adicionado exitosamente: " + me;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	/**
+	 * 
+	 * @param id
+	 * @param num
+	 */
+	public void agregarMedicoRegistro(long id, long num) {
+		try {
+			long idMedico = id; 
+			long numeroReg = num; 
+
+			if(idMedico > 0 && numeroReg > 0 ) {
+				VORegistroMedico rm =  epsAndes.registrarRegistroMedico(idMedico, numeroReg);
+				if(rm == null) {
+					throw new Exception("No se pudo agregar el registro al medico");
+				}
+				String resultado = "En registrarRegistroMedico\n\n";
+				resultado += "Registro Medico adicionado exitosamente: " + rm;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarGerente(long id, String nombre, String correo) {
+		try {
+			long idGerente = id; 
+			String nomGerente = nombre; 
+			String correoGerente = correo; 
+
+			if(id > 0 && nomGerente != null && correoGerente != null) {
+				VOGerente re = epsAndes.registrarGerente(idGerente, nomGerente, correoGerente); 
+				if(re == null) {
+					throw new Exception("No se pudo agregar recepcionista");
+				}
+				String resultado = "En registrarRecepcionista\n\n";
+				resultado += "Recepcionista adicionado exitosamente: " + re;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarRecepcionista(long id, String nombre, String correo) {
+		try {
+			long idRecep = id; 
+			String nomRecep = nombre; 
+			String correoRecep = correo; 
+
+			if(id > 0 && nomRecep != null && correoRecep != null) {
+				VOSecretaria re = epsAndes.registrarRecepcionista(idRecep, nomRecep, correoRecep); 
+				if(re == null) {
+					throw new Exception("No se pudo agregar recepcionista");
+				}
+				String resultado = "En registrarRecepcionista\n\n";
+				resultado += "Recepcionista adicionado exitosamente: " + re;
+				resultado += "\n Operacion terminada"; 
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarEPS(String nombre) {
+		try {
+			String nom = nombre; 
+			if(nom != null) {
+				VOEPS eps = epsAndes.registrarEPS(nom);
+				if(eps == null) {
+					throw new Exception("No se pudo agregar EPS");
+				}
+				String resultado = "En registrarEPS\n\n";
+				resultado += "EPS adicionado exitosamente: " + eps;
+				resultado += "\n Operacion terminada";
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarIPS(String nombre, int capacidad, String localizacion) {
+		try {
+			String nom = nombre;
+			int cap = capacidad;
+			String loc = localizacion;
+
+			if(nom != null && cap > 0 && loc != null) {
+				VOIPS ips = epsAndes.registrarIPS(nom, loc, cap);
+				if(ips == null) {
+					throw new Exception("No se puedo agregar IPS");
+				}
+				String resultado = "En registrarIPS\n\n";
+				resultado += "EPS adicionado exitosamente: " + ips;
+				resultado += "\n Operacion terminada";
+				view.printMessage(resultado);
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+			view.printErrMessage(e);
+		}
+	}
 
 	/**
 	 * 

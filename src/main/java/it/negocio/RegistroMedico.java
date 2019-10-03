@@ -2,18 +2,18 @@ package it.negocio;
 
 public class RegistroMedico implements VORegistroMedico {
 	private long idMedico;
-	private int numRegistro;
+	private long numRegistro;
 
 	public RegistroMedico() {
 		this.idMedico = 0;
 		this.numRegistro = 0;
 	}
-	
+
 	/**
 	 * @param idMedico
 	 * @param numRegistro
 	 */
-	public RegistroMedico(long idMedico, int numRegistro) {
+	public RegistroMedico(long idMedico, long numRegistro) {
 		this.idMedico = idMedico;
 		this.numRegistro = numRegistro;
 	}
@@ -21,6 +21,7 @@ public class RegistroMedico implements VORegistroMedico {
 	/**
 	 * @return the idMedico
 	 */
+	@Override
 	public long getIdMedico() {
 		return idMedico;
 	}
@@ -35,14 +36,15 @@ public class RegistroMedico implements VORegistroMedico {
 	/**
 	 * @return the numRegistro
 	 */
-	public int getNumRegistro() {
+	@Override
+	public long getNumRegistro() {
 		return numRegistro;
 	}
 
 	/**
 	 * @param numRegistro the numRegistro to set
 	 */
-	public void setNumRegistro(int numRegistro) {
+	public void setNumRegistro(long numRegistro) {
 		this.numRegistro = numRegistro;
 	}
 

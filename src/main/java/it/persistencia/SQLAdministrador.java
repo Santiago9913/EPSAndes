@@ -87,8 +87,14 @@ public class SQLAdministrador {
 	 * @return
 	 */
 	public long adicionarGerente(PersistenceManager pm, long id, String nombre, String correo) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaGerente() + "(id, nombre, correo) VALUES(?, ?, ?)" );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaGerente() + "(id, nombre, correo) VALUES(?, ?, ?)" );
 		q.setParameters(id, nombre, correo); 
+		return (long) q.executeUnique();
+	}
+
+	public long adicionarEPS(PersistenceManager pm, long id, String nombre) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEps() + "(id, nombre) VALUES(?,?)");
+		q.setParameters(id, nombre); 
 		return (long) q.executeUnique();
 	}
 
@@ -100,7 +106,7 @@ public class SQLAdministrador {
 	 * @return
 	 */
 	public long adicionarIPS(PersistenceManager pm, long id, String nombre, int capacidad, String localizacion) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaGerente() + "(id, nombre, capacidad, localizacion) VALUES(?, ?, ?, ?)" );
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps() + "(id, nombre, capacidad, localizacion) VALUES(?, ?, ?, ?)" );
 		q.setParameters(id, nombre, capacidad, localizacion); 
 		return (long) q.executeUnique();
 	}
@@ -115,8 +121,20 @@ public class SQLAdministrador {
 	 * @return
 	 */
 	public long adicionarMedico(PersistenceManager pm, long id, String nombre, String correo, String especialidad) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaMedico() + "(id, nombre, correo, especialidad) VALUES(?, ?, ?, ?)");
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaMedico() + "(id, nombre, correo, especialidad) VALUES(?, ?, ?, ?)");
 		q.setParameters(id, nombre, correo, especialidad); 
+		return (long) q.executeUnique();
+	}
+
+	public long adicionarRegistroMedico(PersistenceManager pm, long idMedico, long numRegistro) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaMedicoRegistro() + "(id_medico, num_registro) VALUES(?,?)");
+		q.setParameters(idMedico, numRegistro);
+		return (long) q.executeUnique();
+	}
+
+	public long adicionarRecepcionista(PersistenceManager pm, long id, String nombre, String correo) {
+		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaSecretaria() + "(id, nombre, correo) VALUES(?,?,?)"); 
+		q.setParameters(id, nombre, correo);
 		return (long) q.executeUnique();
 	}
 

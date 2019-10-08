@@ -17,7 +17,22 @@ public class View {
 		System.out.println("Digite el numero de opcion para ejecutar la tarea, luego presione enter: (Ej., 1):");
 
 	}
-
+	
+	public void printMenuPaciente () {
+		System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
+		System.out.println("---------------------EPSAndes (Paciente) ----------------------");
+		System.out.println("0. Salir");
+		System.out.println("1. Reservar una cita");
+		
+	}
+	
+	public void printMenuMedico() {
+		System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
+		System.out.println("---------------------EPSAndes (Médico) ----------------------");
+		System.out.println("0. Salir");
+		System.out.println("1. Registrar Orden ");
+	}
+	
 	public void printInicioSesion() {
 		System.out.println("---------Inicio Sesion----------");
 		System.out.println("Ingrese el usuario: ");

@@ -1,6 +1,7 @@
 package it.negocio;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -95,5 +96,25 @@ public class EPSAndes {
 		Servicio ser = ep.registrarServicio(nombre, capacidad);
 		log.info("Registrando Servicio: " + ser);
 		return ser;
+	}
+
+	public void registrarOrden(String desc, Timestamp horario, String servicio, ArrayList<String> meds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void registrarConsulta(String servicio, Timestamp horario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void consultarHorarios() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void reservarConsulta(Timestamp horario) {
+		// TODO Auto-generated method stub
+		
 	}
 }

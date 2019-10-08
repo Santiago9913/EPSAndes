@@ -3,6 +3,7 @@ package it.controller;
 import java.io.FileReader;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -65,14 +66,15 @@ public class Controller {
 			usuario = sc.next().toUpperCase();
 			view.printMessage("Ingrese codigo:");
 			int clave = sc.nextInt();
-			if(usuario.equals("ADMINISTRADOR")) {
+			if(usuario.equals("ADMINISTRADOR") || usuario.equals(PA) || usuario.equals(ME) || usuario.equals(RE)) 
 				inicia = true;				
-			}
+
 		}
 
 		boolean admin = usuario.toUpperCase().equals(AD) ? true : false;
 		boolean pac = usuario.toUpperCase().equals(PA) ? true : false;
 		boolean med = usuario.toUpperCase().equals(ME) ? true : false;
+		boolean recp = usuario.equals(RE) ? true : false;
 
 		while(!fin) {
 			if(admin) {
@@ -272,6 +274,79 @@ public class Controller {
 					epsAndes.cerrarUP();
 					sc.close();
 					System.out.println("Conexion Cerrada");
+					break;
+				}
+			}
+			else if (med) {
+				view.printMenuMedico();	
+				int option = sc.nextInt();
+				
+				switch (option) {
+				case 1:
+					view.printMessage("Ingrese la descipción de la orden:  ");
+					String desc = sc.next();
+					
+					view.printMessage("¿Adicionar servicios adicionales? (Y/N) ");
+					String yn1 = sc.next();
+					String servicio = null;
+					Timestamp horario = null;
+					boolean sa = false;
+					if (yn1.equalsIgnoreCase("Y")) {
+						sa = true;
+						view.printMessage("Ingrese el nombre del servicio");
+						servicio = sc.next();
+						view.printMessage("Ingrese el horario (MM-dd-hh-mm): ");
+						String horar = sc.next(); 
+						String[] fechaSepa = horar.split("-"); 
+						int mon = Integer.parseInt(fechaSepa[0]);
+						int day = Integer.parseInt(fechaSepa[1]);
+						int hor = Integer.parseInt(fechaSepa[2]);
+						int min = Integer.parseInt(fechaSepa[3]);
+						horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
+					}
+					
+					view.printMessage("¿Adicionar una receta?");
+					String yn2 = sc.next();
+					ArrayList<String> meds = new ArrayList<>();
+					boolean ar = false;
+					if (yn2.equalsIgnoreCase("Y")) {
+						ar = true;
+						view.printMessage("Ingrese el número de medicamentos");
+						int noMed = sc.nextInt();
+						int temp = 0;
+						while (temp < noMed) {
+							view.printMessage("Ingrese medicamento #" + (temp+1) );
+							meds.add(sc.next());
+							temp++;
+						}
+					}
+					
+					epsAndes.registrarOrden(desc, horario, servicio, meds);
+					break;
+				case 0:	
+					fin = true;
+					epsAndes.cerrarUP();
+					sc.close();
+					System.out.println("Conexion Cerrada");
+					break;
+				}
+			}
+			else if (pac) {
+				view.printMenuPaciente();	
+				int option = sc.nextInt();
+				switch (option) {
+				case 1:
+					view.printMessage("Horarios disponibles: ");
+					epsAndes.consultarHorarios();
+					view.printMessage("Ingrese el horario para reservar (MM-dd-hh-mm): ");
+					String horar = sc.next(); 
+					String[] fechaSepa = horar.split("-"); 
+					int mon = Integer.parseInt(fechaSepa[0]);
+					int day = Integer.parseInt(fechaSepa[1]);
+					int hor = Integer.parseInt(fechaSepa[2]);
+					int min = Integer.parseInt(fechaSepa[3]);
+					Timestamp horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
+					epsAndes.reservarConsulta(horario);
 					break;
 				}
 			}

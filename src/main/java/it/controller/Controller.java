@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import it.negocio.EPS;
 import it.negocio.EPSAndes;
 import it.negocio.VOEPS;
 import it.negocio.VOGerente;
@@ -49,8 +51,11 @@ public class Controller {
 
 	private EPSAndes epsAndes; 
 
+	private List<EPS> listaEPS = new ArrayList<>();
+
 	public Controller() {
 		view = new View();
+		listaEPS = new ArrayList<>();
 	}
 
 	public void run() {
@@ -60,7 +65,10 @@ public class Controller {
 
 		String usuario = "";
 		crearConexion();
-
+		listaEPS = darListaEps();
+		for(EPS eps : listaEPS) {
+			System.out.println(eps.toString());
+		}
 		while(!inicia) {
 			view.printInicioSesion();
 			usuario = sc.next().toUpperCase();
@@ -305,13 +313,13 @@ public class Controller {
 			else if (med) {
 				view.printMenuMedico();	
 				int option = sc.nextInt();
-				
+
 				switch (option) {
 				case 1:
-					view.printMessage("Ingrese la descipción de la orden:  ");
+					view.printMessage("Ingrese la descipciï¿½n de la orden:  ");
 					String desc = sc.next();
-					
-					view.printMessage("¿Adicionar servicios adicionales? (Y/N) ");
+
+					view.printMessage("ï¿½Adicionar servicios adicionales? (Y/N) ");
 					String yn1 = sc.next();
 					String servicio = null;
 					Timestamp horario = null;
@@ -329,14 +337,14 @@ public class Controller {
 						int min = Integer.parseInt(fechaSepa[3]);
 						horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
 					}
-					
-					view.printMessage("¿Adicionar una receta?");
+
+					view.printMessage("ï¿½Adicionar una receta?");
 					String yn2 = sc.next();
 					ArrayList<String> meds = new ArrayList<>();
 					boolean ar = false;
 					if (yn2.equalsIgnoreCase("Y")) {
 						ar = true;
-						view.printMessage("Ingrese el número de medicamentos");
+						view.printMessage("Ingrese el nï¿½mero de medicamentos");
 						int noMed = sc.nextInt();
 						int temp = 0;
 						while (temp < noMed) {
@@ -345,7 +353,7 @@ public class Controller {
 							temp++;
 						}
 					}
-					
+
 					epsAndes.registrarOrden(desc, horario, servicio, meds);
 					break;
 				case 0:	
@@ -420,6 +428,18 @@ public class Controller {
 			view.printErrMessage(e);
 
 		}
+	}
+
+	public List<EPS> darListaEps(){
+		try {
+			List<EPS> lista = epsAndes.darListaEps();
+			return lista;
+		}
+		catch(Exception e) {
+			view.printMessage("Las restricciones fueron violadas");
+			view.printErrMessage(e);
+		}
+		return null;
 	}
 
 	/**
@@ -607,6 +627,15 @@ public class Controller {
 		}
 	}
 
+	public void agregarIPSaEPS(String IPS, String EPSAsociada) {
+		try {
+
+		}
+		catch(Exception e) {
+
+		}
+	}
+
 	/**
 	 * 
 	 * @param tipo
@@ -622,13 +651,13 @@ public class Controller {
 			FileReader file = new FileReader (archConfig);
 			JsonReader reader = new JsonReader ( file );
 			config = gson.fromJson(reader, JsonObject.class);
-			log.info ("Se encontró un archivo de configuración válido: " + tipo);
+			log.info ("Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: " + tipo);
 		} 
 		catch (Exception e)
 		{
 			//			e.printStackTrace ();
-			log.info ("NO se encontró un archivo de configuración válido");			
-			JOptionPane.showMessageDialog(null, "No se encontró un archivo de configuración de interfaz válido: " + tipo, "Parranderos App", JOptionPane.ERROR_MESSAGE);
+			log.info ("NO se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido");			
+			JOptionPane.showMessageDialog(null, "No se encontrï¿½ un archivo de configuraciï¿½n de interfaz vï¿½lido: " + tipo, "Parranderos App", JOptionPane.ERROR_MESSAGE);
 		}	
 		return config;
 	}

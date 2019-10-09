@@ -727,6 +727,10 @@ public class PersistenciaEPSAndes {
 		}	
 	}
 
+	public List<EPS> darListaEps(){
+		return sqlAdministrador.darListaEps(pmf.getPersistenceManager());
+	}
+
 	public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx=pm.currentTransaction();

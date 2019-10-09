@@ -117,4 +117,12 @@ public class EPSAndes {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public int rfc1(Timestamp fecha1, Timestamp fecha2) {
+		// TODO Auto-generated method stub
+		log.info("Consultando cantidad de servicios prestados desde " + fecha1.toString() + " hasta " + fecha2.toString());
+		int ser = ep.rfc1(fecha1, fecha2);
+		log.info("Saliendo de consultar cantidad de servicios prestados");
+		return ser;
+	}
 }

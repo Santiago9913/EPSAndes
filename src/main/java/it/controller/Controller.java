@@ -266,35 +266,33 @@ public class Controller {
 					//Agrega la IPS
 					agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
 				case 5:
-					view.printMessage("Ingrese el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
+					view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
 					String input = sc.next();
 					String[] periodos = input.split("/");
 					String[] periodo1 = periodos[0].split("-");
 					String[] periodo2 = periodos[1].split("-");
-					int y1 = Integer.parseInt(periodo1[0]); 
 					int m1 = Integer.parseInt(periodo1[1]);
 					int d1 = Integer.parseInt(periodo1[2]);
-					Timestamp fecha1 = Timestamp.valueOf(LocalDateTime.of(y1, m1, d1, 0, 0));
-					int y2 = Integer.parseInt(periodo2[0]); 
+					Timestamp fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)); 
 					int m2 = Integer.parseInt(periodo2[1]);
 					int d2 = Integer.parseInt(periodo2[2]);
-					Timestamp fecha2 = Timestamp.valueOf(LocalDateTime.of(y2, m2, d2, 0, 0));
+					Timestamp fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
 					while (fecha1.compareTo(fecha2) > 0 || fecha1.compareTo(fecha2) == 0) {
 						view.printMessage("La primera fecha debe ser menor que la segunda fecha");
 						view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
 						input = sc.next();
 						periodos = input.split("/");
 						periodo1 = periodos[0].split("-");
-						periodo2 = periodos[1].split("-");
-						y1 = Integer.parseInt(periodo1[0]); 
+						periodo2 = periodos[1].split("-"); 
 						m1 = Integer.parseInt(periodo1[1]);
 						d1 = Integer.parseInt(periodo1[2]);
-						fecha1 = Timestamp.valueOf(LocalDateTime.of(y1, m1, d1, 0, 0));
-						y2 = Integer.parseInt(periodo2[0]); 
+						fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0));
 						m2 = Integer.parseInt(periodo2[1]);
 						d2 = Integer.parseInt(periodo2[2]);
-						fecha2 = Timestamp.valueOf(LocalDateTime.of(y2, m2, d2, 0, 0));
+						fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
 					}
+					int resp = epsAndes.rfc1(fecha1, fecha2);
+					view.printMessage("Cantidad de servicios prestados por cada ips: " + resp);
 					//Cierra la conexion 
 				case 10:	
 					fin = true;

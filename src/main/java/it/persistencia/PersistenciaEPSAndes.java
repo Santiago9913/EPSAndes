@@ -825,5 +825,8 @@ public class PersistenciaEPSAndes {
 		}
 	}
 
-
+	public int rfc1(Timestamp f1, Timestamp f2) {
+		return sqlIps.rfc1(pmf.getPersistenceManager(), f1, f2);
+	}
+	
 }

@@ -7,11 +7,19 @@ public class View {
 	public void printMenuAdmin() {
 		System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
 		System.out.println("---------------------EPSAndes (Admin) ----------------------");
+		System.out.println("---------------FUNCIONES DE REGISTRO---------------");
 		System.out.println("1. Agregar un rol");
 		System.out.println("2. Agregar un usuario");
 		System.out.println("3. Agregar una EPS");
 		System.out.println("4. Agregar una IPS");
-
+		System.out.println("---------------FUNCIONES DE CONSULTA---------------");
+		System.out.println("5. Mostrar la cantidad de servicios prestados por cada ips durante un \n"
+							+ "periodo de tiempo y en el año corrido");
+		System.out.println("6. Mostrar los 20 servicios más solicitados");
+		System.out.println("7. Mostrar el índice de uso de cada uno de los servicios provistos");
+		System.out.println("8. Mostrar los servicios que cumplen con cierta característica");
+		System.out.println("9. Mostrar la utilización de servicios de EPSAndes por un afiliado dado, \n"
+							+ "en un rango de fechas indicado");
 		System.out.println("10. Cerrar Conexion");
 
 		System.out.println("Digite el numero de opcion para ejecutar la tarea, luego presione enter: (Ej., 1):");
@@ -30,7 +38,7 @@ public class View {
 		System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
 		System.out.println("---------------------EPSAndes (Médico) ----------------------");
 		System.out.println("0. Salir");
-		System.out.println("1. Registrar Orden ");
+		System.out.println("1. Registrar Orden");
 	}
 	
 	public void printInicioSesion() {

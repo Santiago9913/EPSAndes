@@ -6,6 +6,8 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
+import it.negocio.EPS;
+
 public class SQLAdministrador {
 
 
@@ -96,6 +98,12 @@ public class SQLAdministrador {
 		Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEps() + "(id, nombre) VALUES(?,?)");
 		q.setParameters(id, nombre); 
 		return (long) q.executeUnique();
+	}
+
+	public List<EPS> darListaEps(PersistenceManager pm){
+		Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaEps());
+		q.setResultClass(EPS.class);
+		return q.executeList();
 	}
 
 	/**

@@ -240,3 +240,47 @@ ORA-00904: "TIPO_DOC": identificador no válido
 13:29:02,505 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
 13:29:36,377 (main) INFO  [it.negocio.EPSAndes] - Registrando gerente: SANTIAGO FAJARDO
 13:29:36,691 (main) INFO  [it.negocio.EPSAndes] - Registrando gerente: Gerente [id=899490348, nombre=SANTIAGO FAJARDO, correo=SANTIAGO@HOTMAIL.COM]
+21:19:31,522 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:22:43,361 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:25:56,818 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:26:10,008 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:26:12,594 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+21:26:12,771 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 0 eps´s agregadas
+21:26:19,602 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:26:30,746 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:27:45,340 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:30:38,979 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:30:42,030 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+21:30:42,200 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 0 eps´s agregadas
+21:31:01,970 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+21:31:02,123 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=61, nombre=COLSANITAS]
+21:31:29,368 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:31:32,096 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+21:31:32,272 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 1 eps´s agregadas
+21:31:36,810 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:35:21,033 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:35:41,080 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:42:34,906 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:42:38,224 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+21:42:38,486 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 1 eps´s agregadas
+21:43:04,865 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:44:46,642 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:50:18,874 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+21:55:28,652 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:01:09,074 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:04:56,272 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:16:01,626 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:20:10,738 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:26:01,081 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:34:33,715 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:34:58,072 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:40:04,201 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+22:55:31,480 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:02:47,681 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:08:45,406 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:11:33,574 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:11:36,302 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+23:11:36,458 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 1 eps´s agregadas
+23:12:41,211 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
+23:12:43,754 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
+23:12:43,921 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 1 eps´s agregadas

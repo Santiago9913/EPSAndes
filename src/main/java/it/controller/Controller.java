@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import javax.swing.JOptionPane;
@@ -14,6 +15,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonReader;
 
+import it.negocio.EPS;
 import it.negocio.EPSAndes;
 import it.negocio.VOEPS;
 import it.negocio.VOGerente;
@@ -49,8 +51,11 @@ public class Controller {
 
 	private EPSAndes epsAndes; 
 
+	private List<EPS> listaEPS = new ArrayList<>();
+
 	public Controller() {
 		view = new View();
+		listaEPS = new ArrayList<>();
 	}
 
 	public void run() {
@@ -60,7 +65,10 @@ public class Controller {
 
 		String usuario = "";
 		crearConexion();
-
+		listaEPS = darListaEps();
+		for(EPS eps : listaEPS) {
+			System.out.println(eps.toString());
+		}
 		while(!inicia) {
 			view.printInicioSesion();
 			usuario = sc.next().toUpperCase();
@@ -266,6 +274,12 @@ public class Controller {
 					//Agrega la IPS
 					agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
 
+					view.printMessage("Ingrese el nombre de la eps al que pertenece: ");
+					String nombreAsociado = sc.next();
+					nombreAsociado = nombreAsociado.concat(sc.nextLine());
+
+					agregarIPSaEPS(nombreIPS.toUpperCase(), nombreAsociado.toUpperCase());
+
 
 
 					//Cierra la conexion 
@@ -280,12 +294,12 @@ public class Controller {
 			else if (med) {
 				view.printMenuMedico();	
 				int option = sc.nextInt();
-				
+
 				switch (option) {
 				case 1:
 					view.printMessage("Ingrese la descipción de la orden:  ");
 					String desc = sc.next();
-					
+
 					view.printMessage("¿Adicionar servicios adicionales? (Y/N) ");
 					String yn1 = sc.next();
 					String servicio = null;
@@ -304,7 +318,7 @@ public class Controller {
 						int min = Integer.parseInt(fechaSepa[3]);
 						horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
 					}
-					
+
 					view.printMessage("¿Adicionar una receta?");
 					String yn2 = sc.next();
 					ArrayList<String> meds = new ArrayList<>();
@@ -320,7 +334,7 @@ public class Controller {
 							temp++;
 						}
 					}
-					
+
 					epsAndes.registrarOrden(desc, horario, servicio, meds);
 					break;
 				case 0:	
@@ -389,6 +403,18 @@ public class Controller {
 			view.printErrMessage(e);
 
 		}
+	}
+
+	public List<EPS> darListaEps(){
+		try {
+			List<EPS> lista = epsAndes.darListaEps();
+			return lista;
+		}
+		catch(Exception e) {
+			view.printMessage("Las restricciones fueron violadas");
+			view.printErrMessage(e);
+		}
+		return null;
 	}
 
 	/**
@@ -573,6 +599,15 @@ public class Controller {
 		catch(Exception e) {
 			e.printStackTrace();
 			view.printErrMessage(e);
+		}
+	}
+
+	public void agregarIPSaEPS(String IPS, String EPSAsociada) {
+		try {
+
+		}
+		catch(Exception e) {
+
 		}
 	}
 

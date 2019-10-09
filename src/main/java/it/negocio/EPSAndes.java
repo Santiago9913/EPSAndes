@@ -84,6 +84,13 @@ public class EPSAndes {
 		return eps;
 	}
 
+	public List<EPS> darListaEps(){
+		log.info("Consultando Eps´s");
+		List<EPS> lista = ep.darListaEps();
+		log.info("Consultando las eps´s: " + lista.size() + " eps´s agregadas");
+		return lista;
+	}
+
 	public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
 		log.info("Registrando IPS: " + nombre);
 		IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
@@ -100,21 +107,21 @@ public class EPSAndes {
 
 	public void registrarOrden(String desc, Timestamp horario, String servicio, ArrayList<String> meds) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void registrarConsulta(String servicio, Timestamp horario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void consultarHorarios() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void reservarConsulta(Timestamp horario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }

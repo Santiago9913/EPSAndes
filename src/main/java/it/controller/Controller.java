@@ -265,9 +265,36 @@ public class Controller {
 
 					//Agrega la IPS
 					agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
-
-
-
+				case 5:
+					view.printMessage("Ingrese el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
+					String input = sc.next();
+					String[] periodos = input.split("/");
+					String[] periodo1 = periodos[0].split("-");
+					String[] periodo2 = periodos[1].split("-");
+					int y1 = Integer.parseInt(periodo1[0]); 
+					int m1 = Integer.parseInt(periodo1[1]);
+					int d1 = Integer.parseInt(periodo1[2]);
+					Timestamp fecha1 = Timestamp.valueOf(LocalDateTime.of(y1, m1, d1, 0, 0));
+					int y2 = Integer.parseInt(periodo2[0]); 
+					int m2 = Integer.parseInt(periodo2[1]);
+					int d2 = Integer.parseInt(periodo2[2]);
+					Timestamp fecha2 = Timestamp.valueOf(LocalDateTime.of(y2, m2, d2, 0, 0));
+					while (fecha1.compareTo(fecha2) > 0 || fecha1.compareTo(fecha2) == 0) {
+						view.printMessage("La primera fecha debe ser menor que la segunda fecha");
+						view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
+						input = sc.next();
+						periodos = input.split("/");
+						periodo1 = periodos[0].split("-");
+						periodo2 = periodos[1].split("-");
+						y1 = Integer.parseInt(periodo1[0]); 
+						m1 = Integer.parseInt(periodo1[1]);
+						d1 = Integer.parseInt(periodo1[2]);
+						fecha1 = Timestamp.valueOf(LocalDateTime.of(y1, m1, d1, 0, 0));
+						y2 = Integer.parseInt(periodo2[0]); 
+						m2 = Integer.parseInt(periodo2[1]);
+						d2 = Integer.parseInt(periodo2[2]);
+						fecha2 = Timestamp.valueOf(LocalDateTime.of(y2, m2, d2, 0, 0));
+					}
 					//Cierra la conexion 
 				case 10:	
 					fin = true;
@@ -347,6 +374,12 @@ public class Controller {
 					int min = Integer.parseInt(fechaSepa[3]);
 					Timestamp horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
 					epsAndes.reservarConsulta(horario);
+					break;
+				case 0:	
+					fin = true;
+					epsAndes.cerrarUP();
+					sc.close();
+					System.out.println("Conexion Cerrada");
 					break;
 				}
 			}

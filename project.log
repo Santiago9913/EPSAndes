@@ -508,3 +508,11 @@ ORA-00904: "TIPO_DOC": identificador no válido
 23:17:27,941 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
 23:18:12,181 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
 23:18:12,223 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+00:03:25,975 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+00:03:28,773 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+00:03:29,029 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+00:03:51,165 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+00:03:54,295 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+00:03:54,544 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+00:04:01,913 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+00:04:01,923 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas

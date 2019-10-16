@@ -372,7 +372,7 @@ public class Controller {
                             horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
                         }
 
-                        view.printMessage("�Adicionar una receta?");
+                        view.printMessage("Adicionar una receta?");
                         String yn2 = sc.next();
                         ArrayList<String> meds = new ArrayList<>();
                         boolean ar = false;

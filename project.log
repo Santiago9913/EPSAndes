@@ -284,3 +284,227 @@ ORA-00904: "TIPO_DOC": identificador no válido
 23:12:41,211 (main) INFO  [it.controller.Controller] - Se encontró un archivo de configuración válido: Tablas BD
 23:12:43,754 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps´s
 23:12:43,921 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps´s: 1 eps´s agregadas
+12:02:19,148 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:02:24,041 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:02:24,798 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+12:44:07,019 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:44:13,502 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:44:13,783 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:47:26,857 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:47:31,195 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:47:31,385 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:48:41,961 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:48:46,327 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:48:46,522 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:49:31,024 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:49:35,453 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:49:35,674 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:49:55,924 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con una base de datos que no existe
+12:49:56,157 (main) INFO  [it.test.ConexionTest] - NO se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido
+12:50:01,105 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepciï¿½n generada es: java.lang.NullPointerException
+12:50:01,159 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos de usuario incorrectos
+12:50:01,228 (main) INFO  [it.test.ConexionTest] - Se encontrï¿½ un archivo de configuraciï¿½n de tablas vï¿½lido
+12:50:01,535 (main) INFO  [it.test.ConexionTest] - Prueba realizada exitosamente. La excepciï¿½n generada es: javax.jdo.JDOFatalUserException
+12:50:01,535 (main) INFO  [it.test.ConexionTest] - La causa es: javax.jdo.JDOUserException: PersistenceManagerFactory debe usar "persistence-unit" con nombre "EPSAndesErrorUser" pero no hay ninguna con ese nombre
+12:50:01,536 (main) INFO  [it.test.ConexionTest] - Probando el acceso a la base de datos con datos vï¿½lidos (BD, credenciales, esquema
+12:50:01,536 (main) INFO  [it.test.ConexionTest] - Se encontrï¿½ un archivo de configuraciï¿½n de tablas vï¿½lido
+12:50:04,083 (main) INFO  [it.test.ConexionTest] - Conexiï¿½n realizada correstamente
+12:50:04,083 (main) INFO  [it.test.ConexionTest] - Cerrando la conexiï¿½n
+12:50:04,092 (main) INFO  [it.test.ConexionTest] - Conexiï¿½n cerrada
+12:51:24,085 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:51:28,394 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:51:28,592 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:51:51,138 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+12:51:51,323 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=101, nombre=COLSANITAS]
+12:52:31,406 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL HOLA
+12:52:31,450 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=102, localizacion=CRA 68, capacidad=800]
+12:53:11,113 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+12:53:15,337 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+12:53:15,533 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+12:53:34,942 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+12:53:35,086 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=103, nombre=COLSANITAS]
+12:53:54,155 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL HOLA
+12:53:54,200 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=104, localizacion=CRA 68 # 32, capacidad=800]
+13:46:27,152 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+13:46:31,599 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+13:46:31,813 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+21:55:28,346 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+21:55:34,943 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+21:55:35,206 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+21:56:10,517 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H
+21:56:10,694 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=121, localizacion=CRA 68 , capacidad=700]
+22:00:12,653 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:00:17,682 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:00:17,918 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:00:33,751 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:00:33,910 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=122, nombre=COLSANITAS]
+22:01:29,728 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:01:34,518 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:01:34,785 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:01:41,512 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:01:41,533 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:02:20,030 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:02:24,797 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:02:24,990 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:03:17,177 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:03:21,720 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:03:21,932 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:03:29,168 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:03:29,224 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:03:40,144 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:03:40,297 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=123, nombre=COLSANITAS]
+22:03:40,298 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:03:40,316 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:04:04,910 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: CLINICA COLOMBIA
+22:04:04,950 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=124, localizacion=CIUDAD SALITRE, capacidad=1300]
+22:06:50,800 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:06:50,824 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:07:13,268 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:07:18,072 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:07:18,278 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:07:23,789 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:07:23,810 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:07:44,143 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:07:44,291 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=125, nombre=COLSANITAS]
+22:07:44,291 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:07:44,310 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:08:02,351 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H
+22:08:02,390 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=126, localizacion=BOGOTA, capacidad=800]
+22:18:42,310 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:18:42,334 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:29:54,142 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:29:58,229 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:29:58,432 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:30:10,424 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:30:10,444 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:30:19,556 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:30:19,691 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=127, nombre=COLSANITAS]
+22:30:19,691 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:30:19,710 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:30:33,513 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+22:30:33,561 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=128, localizacion=BOGOTA, capacidad=800]
+22:33:15,257 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:33:19,520 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:33:19,721 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:33:26,213 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:33:26,233 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:33:57,987 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COMPENSAR
+22:34:04,741 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=129, nombre=COMPENSAR]
+22:34:10,783 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:34:10,823 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:35:43,945 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H
+22:35:44,025 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=130, localizacion=B, capacidad=8]
+22:39:04,577 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:39:08,692 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:39:08,873 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:39:14,682 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:39:14,700 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:39:20,912 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:39:21,050 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=131, nombre=COLSANITAS]
+22:39:21,050 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:39:21,070 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:46:53,179 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:46:57,429 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:46:57,641 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:47:09,193 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:47:09,214 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:47:24,635 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:47:24,786 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=132, nombre=COLSANITAS]
+22:47:24,786 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:47:24,811 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:47:31,604 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COMPENSAR
+22:47:31,647 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=133, nombre=COMPENSAR]
+22:47:31,647 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:47:31,665 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:47:42,042 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H
+22:47:42,087 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=134, localizacion=BOGOTA, capacidad=800]
+22:49:19,630 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:49:23,989 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:49:24,186 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:49:30,232 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:49:30,255 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+22:49:35,767 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COLSANITAS
+22:49:35,920 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=135, nombre=COLSANITAS]
+22:49:35,921 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:49:35,943 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 1 epsï¿½s agregadas
+22:49:42,336 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: COMPENSAR
+22:49:42,377 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=136, nombre=COMPENSAR]
+22:49:42,377 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:49:42,401 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:49:56,097 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H
+22:49:56,141 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=137, Nombre=HOSPITAL H, localizacion=BOGOTA, capacidad=800]
+22:51:22,575 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:51:26,904 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:51:27,086 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:51:35,705 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:51:35,728 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:51:51,542 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+22:51:51,698 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=138, Nombre=HOSPITAL, localizacion=BOGOTA, capacidad=700]
+22:56:34,050 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:56:39,232 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:56:39,547 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:56:53,209 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:56:53,232 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:57:02,996 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+22:57:03,184 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=139, Nombre=HOSPITAL, localizacion=BOGOTA, capacidad=700]
+22:57:32,029 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:57:32,077 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:59:22,696 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+22:59:28,396 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:59:28,712 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:59:40,214 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+22:59:40,234 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+22:59:57,723 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+22:59:57,888 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=140, Nombre=HOSPITAL, localizacion=BOGOTA, capacidad=1]
+23:00:23,979 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:00:24,025 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:06:40,349 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:06:46,951 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:06:47,256 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+23:08:50,736 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:08:55,704 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:08:55,993 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+23:09:22,560 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:09:27,363 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:09:27,648 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:10:31,636 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:10:51,301 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:10:56,163 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:10:56,475 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:11:01,784 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:11:01,802 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:11:12,834 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL HOLA
+23:11:13,009 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=141, Nombre=HOSPITAL HOLA, localizacion=BOGOTA, capacidad=8]
+23:11:28,972 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:11:29,023 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:12:08,634 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:12:13,625 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:12:13,918 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:12:20,904 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:12:20,925 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:12:30,937 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL SAN
+23:12:31,114 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=142, Nombre=HOSPITAL SAN, localizacion=2, capacidad=200]
+23:12:57,292 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:12:57,331 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:13:33,698 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:13:38,482 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:13:38,772 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:14:03,083 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:14:03,101 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:14:13,387 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+23:14:13,556 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=143, Nombre=HOSPITAL, localizacion=BOG, capacidad=53]
+23:14:25,724 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:14:25,767 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:15:53,726 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+23:15:58,593 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:15:58,870 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:16:06,302 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:16:06,322 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:16:20,425 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL 
+23:16:20,596 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=144, Nombre=HOSPITAL , localizacion=BOG, capacidad=700]
+23:16:33,283 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:16:33,328 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:17:27,893 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:17:27,941 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas
+23:18:12,181 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+23:18:12,223 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 2 epsï¿½s agregadas

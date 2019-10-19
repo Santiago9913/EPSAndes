@@ -59,6 +59,13 @@ public class View {
         System.out.println(resultado);
     }
 
+    public void printServiciosMenu() {
+        System.out.println("A) Procedimiento Medico");
+        System.out.println("B) Hospitalizacion ");
+        System.out.println("C) Examen Diagnostico");
+        System.out.println("D) Terapia");
+    }
+
     public void printRoles() {
         System.out.println("a) PACIENTE" + "\n"
                 + "b) MEDICO" + "\n"

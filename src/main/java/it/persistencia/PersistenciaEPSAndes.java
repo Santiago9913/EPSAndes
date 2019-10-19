@@ -685,6 +685,10 @@ public class PersistenciaEPSAndes {
         return sqlAdministrador.darListaEps(pmf.getPersistenceManager());
     }
 
+    public List<IPS> darListaIps() {
+        return sqlAdministrador.darListaIps(pmf.getPersistenceManager());
+    }
+
     public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -696,6 +700,30 @@ public class PersistenciaEPSAndes {
 
             log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
             return new IPS(idIPS, nombre, localizacion, capacidad);
+
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public EPSIPS registrarIpsEnEps(long ips, long eps) {
+
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplasInsertadas = sqlAdministrador.adicionarIpsEnEps(pm, ips, eps);
+            tx.commit();
+
+            log.trace("Insercion de Ips en eps: " + ips + " en: " + eps + ": " + tuplasInsertadas + "tuplas insertadad");
+            return new EPSIPS(ips, eps);
 
         } catch (Exception e) {
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
@@ -763,8 +791,29 @@ public class PersistenciaEPSAndes {
             long tuplasInsertadas = sqlAdministrador.adicionarServicio(pm, idServicio, capacidad, nombre);
             tx.commit();
 
-            log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
+            log.trace("Insercion de servicio: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
             return new Servicio(idServicio, capacidad, nombre);
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public IPSServicio registrarServicioIps(long idIps, long idSer) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplaInsertada = sqlAdministrador.adicionarServicioIps(pm, idIps, idSer);
+            tx.commit();
+
+            log.trace("Insercion de Servicio en IPS: " + "[" + idSer + "," + idIps + "]" + ": " + tuplaInsertada + "tuplas insertadas");
+            return new IPSServicio(idIps, idSer);
         } catch (Exception e) {
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
             return null;

@@ -1,62 +1,38 @@
 package it.negocio;
 
 public class EPSIPS implements VOEPSIPS {
-	private long idEps;
-	
-	private long idIps;
 
-	/**
-	 * @param idEps
-	 * @param idIps
-	 */
-	public EPSIPS() {
-		this.idEps = 0;
-		this.idIps = 0;
-	}
-	
-	/**
-	 * @param idEps
-	 * @param idIps
-	 */
-	public EPSIPS(long idEps, long idIps) {
-		this.idEps = idEps;
-		this.idIps = idIps;
-	}
+    private Long idEps;
 
-	/**
-	 * @return the idEps
-	 */
-	public long getIdEps() {
-		return idEps;
-	}
+    private Long idIps;
 
-	/**
-	 * @param idEps the idEps to set
-	 */
-	public void setIdEps(long idEps) {
-		this.idEps = idEps;
-	}
 
-	/**
-	 * @return the idIps
-	 */
-	public long getIdIps() {
-		return idIps;
-	}
+    public EPSIPS(Long idEps, Long idIps) {
+        this.idIps = idIps;
+        this.idEps = idEps;
+    }
 
-	/**
-	 * @param idIps the idIps to set
-	 */
-	public void setIdIps(long idIps) {
-		this.idIps = idIps;
-	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "EPSIPS [idEps=" + idEps + ", idIps=" + idIps + "]";
-	}
-	
+    @Override
+    public Long getIdEps() {
+        return idEps;
+    }
+
+    public void setIdEps(Long idEps) {
+        this.idEps = idEps;
+    }
+
+    @Override
+    public Long getIdIps() {
+        return idIps;
+    }
+
+    public void setIdIps(Long idIps) {
+        this.idIps = idIps;
+    }
+
+    @Override
+    public String toString() {
+        return "EPSIPS [idIps = " + idIps + ", idEps = " + idEps + "]";
+    }
 }

@@ -516,3 +516,92 @@ ORA-00904: "TIPO_DOC": identificador no v�lido
 00:03:54,544 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
 00:04:01,913 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 00:04:01,923 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+00:09:58,993 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+00:10:01,850 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+00:10:02,053 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+00:10:36,148 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+00:10:39,265 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+00:10:39,546 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:00:17,640 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+12:00:20,053 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:00:20,341 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:00:32,261 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:00:32,269 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:02:26,000 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: JAIME TORRES
+12:02:26,118 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Paciente [id=1000714066, nombre=JAIME TORRES, correo=J@U, fNacimiento=2000-02-11 00:00:00.0, estado=SANO, tipoDocumento=CEDULA]
+12:02:26,119 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:02:26,130 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:04:10,317 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+12:04:13,858 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:04:14,118 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:04:21,178 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:04:21,188 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:05:22,764 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL H 
+12:05:30,092 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=161, Nombre=HOSPITAL H , localizacion=BOGOTA, capacidad=800]
+12:09:20,822 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:09:20,879 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:09:30,661 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:09:30,715 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:10:32,969 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:10:33,026 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:10:36,390 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:10:36,443 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+12:11:30,249 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: 161 en: 135
+12:11:58,816 (main) INFO  [it.negocio.EPSAndes] - registrando  IPS: 161 en: " + eps) 
+12:12:15,382 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: 161 en: 136
+12:12:22,862 (main) INFO  [it.negocio.EPSAndes] - registrando  IPS: 161 en: " + eps) 
+12:15:31,331 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:15:31,348 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:27:15,671 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:27:30,696 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:27:31,474 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:27:38,967 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+14:27:38,980 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:28:13,519 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:28:17,343 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:28:17,646 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:28:26,237 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+14:28:42,129 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:38:13,543 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:38:16,713 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:38:16,970 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:38:16,970 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+14:38:16,980 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:38:22,941 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:38:22,950 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:38:38,268 (main) INFO  [it.negocio.EPSAndes] - Registrando Servicio: TERAPIA
+14:38:38,398 (main) INFO  [it.negocio.EPSAndes] - Registrando Servicio: Servicio [id=162, capacidad=10, nombre=TERAPIA]
+14:38:38,398 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:38:38,407 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:48:05,325 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:48:08,785 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:48:09,038 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:48:09,038 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+14:48:09,049 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:48:15,762 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:48:15,773 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+14:48:33,745 (main) INFO  [it.negocio.EPSAndes] - Registrando Servicio: PROCEDIMIENTO MEDICO
+14:48:33,879 (main) INFO  [it.negocio.EPSAndes] - Registrando Servicio: Servicio [id=163, capacidad=40, nombre=PROCEDIMIENTO MEDICO]
+14:48:33,879 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:48:33,888 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 2 eps�s agregadas
+17:20:41,094 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+17:20:44,797 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:20:45,068 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+17:20:45,068 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+17:20:45,076 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+17:32:31,319 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:32:31,328 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+17:32:51,958 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: SANITAS
+17:32:52,100 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=181, nombre=SANITAS]
+17:32:52,100 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:32:52,110 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+17:33:28,788 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL MOXI
+17:33:28,810 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=182, Nombre=HOSPITAL MOXI, localizacion=BOGOTA, capacidad=100]
+17:33:40,948 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:33:40,960 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+17:33:40,961 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:33:40,968 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+17:33:40,969 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: 182 en: 181
+17:33:40,984 (main) INFO  [it.negocio.EPSAndes] - registrando  IPS: 182 en: " + eps) 
+17:33:40,984 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+17:33:40,994 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas

@@ -1,9 +1,9 @@
 package it.negocio;
 
 public interface VOEPSIPS {
-	public long getIdEps();
-	
-	public long getIdIps();
-	
-	public String toString();
+    public Long getIdEps();
+
+    public Long getIdIps();
+
+    public String toString();
 }

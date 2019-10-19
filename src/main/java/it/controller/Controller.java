@@ -44,11 +44,14 @@ public class Controller {
 
     private EPSAndes epsAndes;
 
-    private List<EPS> listaEPS = new ArrayList<>();
+    private List<EPS> listaEPS;
+
+    private List<IPS> listaIPS;
 
     public Controller() {
         view = new View();
         listaEPS = new ArrayList<>();
+        listaIPS = new ArrayList<>();
     }
 
     public void run() {
@@ -59,6 +62,7 @@ public class Controller {
         String usuario = "";
         crearConexion();
         listaEPS = darListaEps();
+        listaIPS = darListaIps();
         for (EPS eps : listaEPS) {
             System.out.println(eps.toString());
         }
@@ -186,6 +190,11 @@ public class Controller {
                             agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
                             //Agregar el registro medico
                             agregarMedicoRegistro(idMedico, numRegistro);
+
+                            view.printMessage("Ingrese a cuantas IPS presta servicio el medico: ");
+                            int cantidadMedIPS = sc.nextInt();
+
+
                         } else if (rolUsuario.toLowerCase().endsWith("c")) {
                             view.printMessage("Ingrese el nombre y apellido: ");
                             String nombreGerente = sc.next();
@@ -264,19 +273,19 @@ public class Controller {
                         String loc = sc.next();
                         loc = loc.concat(sc.nextLine());
 
-                        agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
+                        VOIPS ipsAgregada = agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
 
                         view.printMessage("Indique a cuantas Eps presta servicio: ");
                         int cantidad = sc.nextInt();
                         int count = 0;
                         String eps = "";
-                        String[] listaIngresado = new String[cantidad];
+                        long[] listaIngresado = new long[cantidad];
                         view.printMessage("Ingrese los nombres de las eps");
                         while (count < cantidad) {
                             eps = sc.next();
                             eps = eps.concat(sc.nextLine()).toUpperCase();
                             if (containsEPS(eps)) {
-                                listaIngresado[count] = eps;
+                                listaIngresado[count] = getidEps(eps);
                                 count++;
                             } else {
                                 view.printMessage("Asegurese de que la eps exista en la BD...");
@@ -284,8 +293,8 @@ public class Controller {
                             }
                         }
 
-                        if (count == cantidad) {
-                            System.out.println("puede agregar");
+                        for (long ing : listaIngresado) {
+                            agregarIpsAEps(ipsAgregada.getId(), ing);
                         }
 
                         break;
@@ -293,15 +302,42 @@ public class Controller {
                     //Agregar un servicio
                     case 5:
                         view.printMessage("Ingresw el servicio que desea agregar");
-                        String servicio = sc.next();
-                        servicio = servicio.concat(sc.nextLine());
+                        view.printServiciosMenu();
+                        String respSer = sc.next();
+                        String servicio = "";
+                        if (respSer.equalsIgnoreCase("a")) {
+                            servicio = "Procedimiento Medico";
+                        } else if (respSer.equalsIgnoreCase("b")) {
+                            servicio = "Hospitalizacion";
+                        } else if (respSer.equalsIgnoreCase("c")) {
+                            servicio = "Examen Diagnostico";
+                        } else if (respSer.equalsIgnoreCase("d")) {
+                            servicio = "Terapia";
+                        }
 
                         view.printMessage("Ingrese la capacidad del servicio");
                         int capacidadServicio = sc.nextInt();
 
-                        agregarServicio(servicio.toUpperCase(), capacidadServicio);
+                        VOServicio ser = agregarServicio(servicio.toUpperCase(), capacidadServicio);
 
+                        view.printMessage("ingrese a cuantas IPS presta servicio");
+                        int presta = sc.nextInt();
+                        int countSer = 0;
+                        view.printMessage("ingrese a cuales IPS presta el servicio");
+                        long[] ipsIds = new long[presta];
 
+                        while (countSer < presta) {
+                            String ipsServicio = sc.next();
+                            ipsServicio = ipsServicio.concat(sc.nextLine());
+                            if (containsIPS(ipsServicio)) {
+                                ipsIds[countSer] = getidIps(ipsServicio);
+                                countSer++;
+                            }
+                        }
+
+                        for (Long idIps : ipsIds) {
+                            agregarServicioAIps(idIps, ser.getId());
+                        }
                         break;
 
 
@@ -472,6 +508,17 @@ public class Controller {
         return null;
     }
 
+    public List<IPS> darListaIps() {
+        try {
+            List<IPS> lista = epsAndes.darListaIps();
+            return lista;
+        } catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+    }
+
     /**
      * @param idPaciente
      * @param nombrePaciente
@@ -625,7 +672,7 @@ public class Controller {
         }
     }
 
-    public void agregarIPS(String nombre, int capacidad, String localizacion) {
+    public VOIPS agregarIPS(String nombre, int capacidad, String localizacion) {
         try {
             String nom = nombre;
             int cap = capacidad;
@@ -640,6 +687,30 @@ public class Controller {
                 resultado += "IPS adicionado exitosamente: " + ips;
                 resultado += "\n Operacion terminada";
                 view.printMessage(resultado);
+                return ips;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
+    }
+
+    public void agregarIpsAEps(Long idIps, Long idEps) {
+        try {
+            Long ips = idIps;
+            Long eps = idEps;
+
+            if (ips != null && ips > 0 && eps != null && eps > 0) {
+                VOEPSIPS ips_eps = epsAndes.registrarIpsEnEps(ips, eps);
+                if (ips_eps == null) {
+                    throw new Exception("No se puedo agregar IPS en la EPS");
+                }
+                String resultado = "En registrarIpsEnEps\n\n";
+                resultado += "IPS_EPS adicionado exitosamente: " + ips_eps;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -648,18 +719,42 @@ public class Controller {
     }
 
 
-    public void agregarServicio(String servicio, int capacidad) {
+    public VOServicio agregarServicio(String servicio, int capacidad) {
         try {
             String nombre = servicio;
             int cap = capacidad;
 
             if (nombre != null && cap > 0) {
-                VOServicio ser = epsAndes.registrarServicio(cap, null, nombre);
+                VOServicio ser = epsAndes.registrarServicio(cap, nombre);
                 if (ser == null) {
                     throw new Exception("No se puede agregar Servicio");
                 }
                 String resultado = "En registrarIPS\n\n";
                 resultado += "Servicio adicionado exitosamente: " + ser;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
+                return ser;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
+    }
+
+    public void agregarServicioAIps(long idIps, long idServicio) {
+        try {
+            long idI = idIps;
+            long idSer = idServicio;
+
+            if (idI > 0 && idSer > 0) {
+                VOIPSServicio ips_Servicio = epsAndes.registrarServicioIps(idI, idSer);
+                if (ips_Servicio == null) {
+                    throw new Exception("No se puede agregar Servicio en la IPS");
+                }
+                String resultado = "En registrarIPS\n\n";
+                resultado += "Servicio adicionado exitosamente en IPS: " + ips_Servicio;
                 resultado += "\n Operacion terminada";
                 view.printMessage(resultado);
             }
@@ -688,6 +783,57 @@ public class Controller {
         }
         return contains;
     }
+
+    private boolean containsIPS(String name) {
+        boolean contains = false;
+        listaIPS = darListaIps();
+        Iterator<IPS> it = listaIPS.iterator();
+
+        while (!contains) {
+            IPS ip = it.next();
+            System.out.println(ip.getNombre());
+            if (ip.getNombre().equals(name)) {
+                contains = true;
+            }
+        }
+        return contains;
+    }
+
+
+    private Long getidEps(String name) {
+        boolean contains = false;
+        long id = 0;
+        listaEPS = darListaEps();
+        Iterator<EPS> it = listaEPS.iterator();
+
+        while (!contains) {
+            EPS ep = it.next();
+            System.out.println(ep.getNombre());
+            if (ep.getNombre().equals(name)) {
+                id = ep.getId();
+                contains = true;
+            }
+        }
+        return id;
+    }
+
+    private Long getidIps(String name) {
+        boolean contains = false;
+        long id = 0;
+        listaIPS = darListaIps();
+        Iterator<IPS> it = listaIPS.iterator();
+
+        while (!contains) {
+            IPS ip = it.next();
+            System.out.println(ip.getNombre());
+            if (ip.getNombre().equals(name)) {
+                id = ip.getId();
+                contains = true;
+            }
+        }
+        return id;
+    }
+
 
     /**
      * @param tipo

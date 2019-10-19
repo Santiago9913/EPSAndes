@@ -92,6 +92,13 @@ public class EPSAndes {
         return lista;
     }
 
+    public List<IPS> darListaIps() {
+        log.info("Consultando Ips´s");
+        List<IPS> lista = ep.darListaIps();
+        log.info("Consultando las eps�s: " + lista.size() + " eps�s agregadas");
+        return lista;
+    }
+
     public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
         log.info("Registrando IPS: " + nombre);
         IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
@@ -99,11 +106,25 @@ public class EPSAndes {
         return ips;
     }
 
-    public Servicio registrarServicio(int capacidad, List<Horario> horarios, String nombre) {
+    public EPSIPS registrarIpsEnEps(Long ips, Long eps) {
+        log.info("Registrando IPS: " + ips + " en: " + eps);
+        EPSIPS ips_eps = ep.registrarIpsEnEps(ips, eps);
+        log.info("registrando  IPS: " + ips + " en: \" + eps) ");
+        return ips_eps;
+    }
+
+    public Servicio registrarServicio(int capacidad, String nombre) {
         log.info("Registrando Servicio: " + nombre);
         Servicio ser = ep.registrarServicio(nombre, capacidad);
         log.info("Registrando Servicio: " + ser);
         return ser;
+    }
+
+    public IPSServicio registrarServicioIps(long idIps, long idServicio) {
+        log.info("Registrar Servicio: " + idServicio + " en: " + idIps);
+        IPSServicio ips_Ser = ep.registrarServicioIps(idIps, idServicio);
+        log.info("Registrando Servicio: " + idServicio + " en: " + idIps);
+        return ips_Ser;
     }
 
     public void registrarOrden(String desc, Timestamp horario, String servicio, ArrayList<String> meds) {

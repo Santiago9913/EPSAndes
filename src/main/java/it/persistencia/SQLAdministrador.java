@@ -7,6 +7,7 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
 import it.negocio.EPS;
+import it.negocio.IPS;
 import it.negocio.VOEPS;
 
 public class SQLAdministrador {
@@ -37,7 +38,7 @@ public class SQLAdministrador {
     /**
      * Constructor
      *
-     * @param pp - El Manejador de persistencia de la aplicaci�n
+     * @param pe - El Manejador de persistencia de la aplicaci�n
      */
     public SQLAdministrador(PersistenciaEPSAndes pe) {
         this.pe = pe;
@@ -103,6 +104,12 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
+    public List<IPS> darListaIps(PersistenceManager pm) {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaIps());
+        q.setResultClass(IPS.class);
+        return q.executeList();
+    }
+
     /**
      * @param pm     - El manejador de persistencia
      * @param id
@@ -112,6 +119,12 @@ public class SQLAdministrador {
     public long adicionarIPS(PersistenceManager pm, long id, String nombre, int capacidad, String localizacion) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps() + "(id, nombre, capacidad, localizacion) VALUES(?, ?, ?, ?)");
         q.setParameters(id, nombre, capacidad, localizacion);
+        return (long) q.executeUnique();
+    }
+
+    public long adicionarIpsEnEps(PersistenceManager pm, long ips, long eps) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEpsIps() + "(id_eps, id_ips) VALUES (?,?)");
+        q.setParameters(eps, ips);
         return (long) q.executeUnique();
     }
 
@@ -151,6 +164,12 @@ public class SQLAdministrador {
     public long adicionarServicio(PersistenceManager pm, long id, int capacidad, String nombre) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaServicio() + "(id, capacidad, nombre) VALUES(?,?,?)");
         q.setParameters(id, capacidad, nombre);
+        return (long) q.executeUnique();
+    }
+
+    public long adicionarServicioIps(PersistenceManager pm, long idIps, long idServ) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIpsServicio() + "(id_ips, id_servicio) VALUES(?,?)");
+        q.setParameters(idIps, idServ);
         return (long) q.executeUnique();
     }
 

@@ -638,6 +638,29 @@ public class PersistenciaEPSAndes {
         }
     }
 
+    public IPSMedico registrarMedicoAIps(long idIps, long idMedco) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplasInesrtadas = sqlAdministrador.adicionarMedicoAIps(pm, idIps, idMedco);
+            tx.commit();
+
+            log.trace("Insercion de medico a IPS: " + tuplasInesrtadas + "tuplas insertadas");
+            return new IPSMedico(idIps, idMedco);
+        } catch (Exception e) {
+
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
     public Gerente registrarGerente(long id, String nombre, String correo) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -687,6 +710,18 @@ public class PersistenciaEPSAndes {
 
     public List<IPS> darListaIps() {
         return sqlAdministrador.darListaIps(pmf.getPersistenceManager());
+    }
+
+    public List<Servicio> darListaServicios() {
+        return sqlAdministrador.darListaServicios(pmf.getPersistenceManager());
+    }
+
+    public List<Medicamento> darListaMedicamentos() {
+        return sqlAdministrador.darListaMedicamentos(pmf.getPersistenceManager());
+    }
+
+    public List<Paciente> darListaPacientes() {
+        return sqlAdministrador.darListaPacientes(pmf.getPersistenceManager());
     }
 
     public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
@@ -824,6 +859,73 @@ public class PersistenciaEPSAndes {
             pm.close();
         }
     }
+
+    public Orden registrarOrden(String desc) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long idConsulta = nextval();
+            long tuplas = sqlMedico.adicionarOrden(pm, idConsulta, desc);
+            tx.commit();
+
+            log.trace("Insercion de orden: " + tuplas);
+            return new Orden(desc, idConsulta);
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public OrdenServicios registrarOrdenConServicio(long idOrden, long idSer) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplas = sqlMedico.adicionarOrdenConServicio(pm, idOrden, idSer);
+            tx.commit();
+
+            log.trace("Insercion de orden con servicio: " + tuplas);
+            return new OrdenServicios(idOrden, idSer);
+
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public OrdenMedicamento registrarOrdenConMedicamento(long idOrden, long idMed) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long tuplas = sqlMedico.adicionarOrdenConMedicamento(pm, idOrden, idMed);
+            tx.commit();
+
+            log.trace("Insercion de orden con medicamento: " + tuplas);
+            return new OrdenMedicamento(idOrden, idMed);
+
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
 
     public int rfc1(Timestamp f1, Timestamp f2) {
         return sqlIps.rfc1(pmf.getPersistenceManager(), f1, f2);

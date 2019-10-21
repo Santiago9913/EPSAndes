@@ -6,9 +6,7 @@ import java.util.List;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-import it.negocio.EPS;
-import it.negocio.IPS;
-import it.negocio.VOEPS;
+import it.negocio.*;
 
 public class SQLAdministrador {
 
@@ -110,6 +108,24 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
+    public List<Servicio> darListaServicios(PersistenceManager pm) {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaServicio());
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+    public List<Medicamento> darListaMedicamentos(PersistenceManager pm) {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaMedicamento());
+        q.setResultClass(Medicamento.class);
+        return q.executeList();
+    }
+
+    public List<Paciente> darListaPacientes(PersistenceManager pm) {
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaPaciente());
+        q.setResultClass(Paciente.class);
+        return q.executeList();
+    }
+
     /**
      * @param pm     - El manejador de persistencia
      * @param id
@@ -148,6 +164,12 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
+    public long adicionarMedicoAIps(PersistenceManager pm, long idIps, long idMedico) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIpsMedico() + "(id_ips, id_medico) VALUES(?,?)");
+        q.setParameters(idIps, idMedico);
+        return (long) q.executeUnique();
+    }
+
     public long adicionarRecepcionista(PersistenceManager pm, long id, String nombre, String correo) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaSecretaria() + "(id, nombre, correo) VALUES(?,?,?)");
         q.setParameters(id, nombre, correo);
@@ -172,6 +194,7 @@ public class SQLAdministrador {
         q.setParameters(idIps, idServ);
         return (long) q.executeUnique();
     }
+
 
     public long consultarServicioCaracteristica(PersistenceManager pm, String caracteristica, String aBuscar) {
         Query q = pm.newQuery(SQL, "SELECT * "

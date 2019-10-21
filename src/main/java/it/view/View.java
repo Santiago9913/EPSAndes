@@ -31,16 +31,16 @@ public class View {
     public void printMenuPaciente() {
         System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
         System.out.println("---------------------EPSAndes (Paciente) ----------------------");
-        System.out.println("0. Salir");
         System.out.println("1. Reservar una cita");
+        System.out.println("2. Salir");
 
     }
 
     public void printMenuMedico() {
         System.out.println("---------ISIS 2304 - Sistemas Transaccionales----------");
         System.out.println("---------------------EPSAndes (Medico) ----------------------");
-        System.out.println("0. Salir");
         System.out.println("1. Registrar Orden");
+        System.out.println("2. Salir");
     }
 
     public void printInicioSesion() {

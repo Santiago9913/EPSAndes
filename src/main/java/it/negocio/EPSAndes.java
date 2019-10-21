@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import oracle.net.aso.l;
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
@@ -57,6 +58,13 @@ public class EPSAndes {
         return regM;
     }
 
+    public IPSMedico registrarMedicoAIps(long idIps, long idMedico) {
+        log.info("Registrando medico: " + idMedico + " en IPS: " + idIps);
+        IPSMedico im = ep.registrarMedicoAIps(idIps, idMedico);
+        log.info("Registrando: " + im);
+        return im;
+    }
+
     public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
         log.info("Registrando recepcionista: " + id + " , " + nombre + " , " + correo);
         Secretaria recep = ep.registrarRecepcionista(id, nombre, correo);
@@ -99,6 +107,27 @@ public class EPSAndes {
         return lista;
     }
 
+    public List<Servicio> darListaServicios() {
+        log.info("Consultando servicios: ");
+        List<Servicio> lista = ep.darListaServicios();
+        log.info("Consultando los servicios: " + lista.size());
+        return lista;
+    }
+
+    public List<Medicamento> darListaMedicamentos() {
+        log.info("Consultando medicamentos: ");
+        List<Medicamento> lista = ep.darListaMedicamentos();
+        log.info("Consultando los medicamentos: " + lista.size());
+        return lista;
+    }
+
+    public List<Paciente> darListaPacientes() {
+        log.info("Consultando pacientes");
+        List<Paciente> lista = ep.darListaPacientes();
+        log.info("Consultando los pacientes: " + lista.size());
+        return lista;
+    }
+
     public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
         log.info("Registrando IPS: " + nombre);
         IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
@@ -127,12 +156,28 @@ public class EPSAndes {
         return ips_Ser;
     }
 
-    public void registrarOrden(String desc, Timestamp horario, String servicio, ArrayList<String> meds) {
-        // TODO Auto-generated method stub
-
+    public Orden registrarOrden(String desc) {
+        log.info("Registrando Orden con la descripcion: " + desc);
+        Orden orden = ep.registrarOrden(desc);
+        log.info("Registrando orden: " + orden);
+        return orden;
     }
 
-    public void registrarConsulta(String servicio, Timestamp horario) {
+    public OrdenServicios registrarOrdenConServicio(long idOrd, long idSer) {
+        log.info("Registrando Orden: " + idOrd + " con Servicio: " + idSer);
+        OrdenServicios ordenServicios = ep.registrarOrdenConServicio(idOrd, idSer);
+        log.info("Registrando orden: " + ordenServicios);
+        return ordenServicios;
+    }
+
+    public OrdenMedicamento registrarOrdenConMedicamento(long idOrden, long idMed) {
+        log.info("Registrando Orden: " + idOrden + " con Medicamento: " + idMed);
+        OrdenMedicamento om = ep.registrarOrdenConMedicamento(idOrden, idMed);
+        log.info("Registrar orden: " + om);
+        return om;
+    }
+
+    public void registrarConsulta() {
         // TODO Auto-generated method stub
 
     }

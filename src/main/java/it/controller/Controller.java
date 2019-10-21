@@ -48,10 +48,19 @@ public class Controller {
 
     private List<IPS> listaIPS;
 
+    private List<Servicio> listaServicios;
+
+    private List<Medicamento> listaMedicamentos;
+
+    private List<Paciente> listaPacientes;
+
     public Controller() {
         view = new View();
         listaEPS = new ArrayList<>();
         listaIPS = new ArrayList<>();
+        listaServicios = new ArrayList<>();
+        listaMedicamentos = new ArrayList<>();
+        listaPacientes = new ArrayList<>();
     }
 
     public void run() {
@@ -63,6 +72,9 @@ public class Controller {
         crearConexion();
         listaEPS = darListaEps();
         listaIPS = darListaIps();
+        listaServicios = darListaServicios();
+        listaMedicamentos = darListaMedicamentos();
+        listaPacientes = darListaPacientes();
         for (EPS eps : listaEPS) {
             System.out.println(eps.toString());
         }
@@ -186,14 +198,40 @@ public class Controller {
                             long numRegistro = sc.nextLong();
 
 
+                            view.printMessage("Ingrese a cuantas IPS presta servicio el medico: ");
+                            int cantidadMedIPS = sc.nextInt();
+                            int countIpsMed = 0;
+
+
+                            long[] ipsMedico = new long[cantidadMedIPS];
+                            view.printMessage("Ingrese los/el nombre de la IPS");
+
+                            while (countIpsMed < cantidadMedIPS) {
+                                String ipsMed = sc.next();
+                                ipsMed = ipsMed.concat(sc.nextLine());
+
+                                if (containsIPS(ipsMed.toUpperCase())) {
+                                    if (listaIPS.isEmpty()) {
+                                        view.printMessage("No hay ninguna IPS inscrita");
+                                        break;
+                                    }
+                                    ipsMedico[countIpsMed] = getidIps(ipsMed.toUpperCase());
+                                    countIpsMed++;
+                                } else {
+                                    view.printMessage("Asegurese de que la IPS se encuentra en la base de datos");
+                                    break;
+                                }
+                            }
+
                             //Agregar el medico
                             agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
                             //Agregar el registro medico
                             agregarMedicoRegistro(idMedico, numRegistro);
 
-                            view.printMessage("Ingrese a cuantas IPS presta servicio el medico: ");
-                            int cantidadMedIPS = sc.nextInt();
-
+                            //Agregar medico a una IPS ya existente
+                            for (long ips : ipsMedico) {
+                                agregarMedicoAIps(ips, idMedico);
+                            }
 
                         } else if (rolUsuario.toLowerCase().endsWith("c")) {
                             view.printMessage("Ingrese el nombre y apellido: ");
@@ -318,6 +356,7 @@ public class Controller {
                         view.printMessage("Ingrese la capacidad del servicio");
                         int capacidadServicio = sc.nextInt();
 
+
                         VOServicio ser = agregarServicio(servicio.toUpperCase(), capacidadServicio);
 
                         view.printMessage("ingrese a cuantas IPS presta servicio");
@@ -386,47 +425,71 @@ public class Controller {
 
                 switch (option) {
                     case 1:
-                        view.printMessage("Ingrese la descipci�n de la orden:  ");
+                        view.printMessage("Ingrese la descipcion de la orden:  ");
                         String desc = sc.next();
+                        desc = desc.concat(sc.nextLine());
 
-                        view.printMessage("�Adicionar servicios adicionales? (Y/N) ");
+                        view.printMessage("Adicionar servicios adicionales? (Y/N) ");
                         String yn1 = sc.next();
-                        String servicio = null;
-                        Timestamp horario = null;
                         boolean sa = false;
+                        long idSer_Or = 0;
+
+                        //Para agregar un servicio en la consulta
                         if (yn1.equalsIgnoreCase("Y")) {
                             sa = true;
                             view.printMessage("Ingrese el nombre del servicio");
-                            servicio = sc.next();
-                            view.printMessage("Ingrese el horario (MM-dd-hh-mm): ");
-                            String horar = sc.next();
-                            String[] fechaSepa = horar.split("-");
-                            int mon = Integer.parseInt(fechaSepa[0]);
-                            int day = Integer.parseInt(fechaSepa[1]);
-                            int hor = Integer.parseInt(fechaSepa[2]);
-                            int min = Integer.parseInt(fechaSepa[3]);
-                            horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
+                            String servicio = sc.next();
+                            servicio = servicio.concat(sc.nextLine());
+
+                            if (containsServicio(servicio.toUpperCase())) {
+                                idSer_Or = getIdServicio(servicio.toUpperCase());
+                            } else {
+                                view.printMessage("El servicio no existe, asegurese de ingresarlo correctamente...");
+                                break;
+                            }
+
                         }
 
-                        view.printMessage("Adicionar una receta?");
+                        //Para adicionar una receta a la orden
+                        view.printMessage("Adicionar una receta? (Y/N)");
                         String yn2 = sc.next();
-                        ArrayList<String> meds = new ArrayList<>();
+                        long[] meds = null;
                         boolean ar = false;
                         if (yn2.equalsIgnoreCase("Y")) {
                             ar = true;
-                            view.printMessage("Ingrese el n�mero de medicamentos");
-                            int noMed = sc.nextInt();
-                            int temp = 0;
-                            while (temp < noMed) {
-                                view.printMessage("Ingrese medicamento #" + (temp + 1));
-                                meds.add(sc.next());
-                                temp++;
+                            view.printMessage("Ingrese cuantos medicamentos va a recetar: ");
+                            int cantMed = sc.nextInt();
+                            meds = new long[cantMed];
+                            int countMed = 0;
+
+                            view.printMessage("Ingrese los nombres de los medicamentos");
+                            while (countMed < cantMed) {
+                                String medicamento = sc.next();
+                                medicamento = medicamento.concat(sc.nextLine());
+
+                                if (containsMedicamento(medicamento.toUpperCase())) {
+                                    meds[countMed] = getIdMedicamento(medicamento.toUpperCase());
+                                    countMed++;
+                                } else {
+                                    view.printMessage("Asegurese de que el medicamento este disponible en la eps");
+                                    break;
+                                }
                             }
                         }
 
-                        epsAndes.registrarOrden(desc, horario, servicio, meds);
+                        if (!ar && !sa) {
+                            VOOrden or = adicionarOrden(desc);
+                        } else if (sa && !ar) {
+                            VOOrden ordenSe = adicionarOrden(desc);
+                            adicionarOrdenConServicio(ordenSe.getId(), idSer_Or);
+                        } else if (!sa && ar) {
+                            VOOrden ordenAr = adicionarOrden(desc);
+                            for (long medLoop : meds) {
+                                adicionarOrdenConReceta(ordenAr.getId(), medLoop);
+                            }
+                        }
                         break;
-                    case 0:
+                    case 2:
                         fin = true;
                         epsAndes.cerrarUP();
                         sc.close();
@@ -438,18 +501,10 @@ public class Controller {
                 int option = sc.nextInt();
                 switch (option) {
                     case 1:
-                        view.printMessage("Horarios disponibles: ");
-                        epsAndes.consultarHorarios();
-                        view.printMessage("Ingrese el horario para reservar (MM-dd-hh-mm): ");
-                        String horar = sc.next();
-                        String[] fechaSepa = horar.split("-");
-                        int mon = Integer.parseInt(fechaSepa[0]);
-                        int day = Integer.parseInt(fechaSepa[1]);
-                        int hor = Integer.parseInt(fechaSepa[2]);
-                        int min = Integer.parseInt(fechaSepa[3]);
-                        Timestamp horario = Timestamp.valueOf(LocalDateTime.of(2019, mon, day, hor, min));
-                        epsAndes.reservarConsulta(horario);
-                        break;
+                        view.printMessage("Ingrese su numero de documento: ");
+                        long idPaciente = sc.nextInt();
+                        
+
                     case 0:
                         fin = true;
                         epsAndes.cerrarUP();
@@ -518,6 +573,42 @@ public class Controller {
         }
         return null;
     }
+
+    public List<Servicio> darListaServicios() {
+        try {
+            List<Servicio> lista = epsAndes.darListaServicios();
+            return lista;
+        } catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+    }
+
+    public List<Medicamento> darListaMedicamentos() {
+        try {
+            List<Medicamento> lista = epsAndes.darListaMedicamentos();
+            return lista;
+
+        } catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+    }
+
+    public List<Paciente> darListaPacientes() {
+        try {
+            List<Paciente> lista = epsAndes.darListaPacientes();
+            return lista;
+        } catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+
+    }
+
 
     /**
      * @param idPaciente
@@ -603,6 +694,27 @@ public class Controller {
                 view.printMessage(resultado);
             }
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void agregarMedicoAIps(long idIps, long idMedico) {
+        try {
+            long ips = idIps;
+            long medico = idMedico;
+
+            if (ips > 0 && medico > 0) {
+                VOIPSMedico im = epsAndes.registrarMedicoAIps(ips, medico);
+                if (im == null) {
+                    throw new Exception("No se pudo agregar el medico a la IPS");
+                }
+                String resultado = "En registrarMedicoAIps\n\n";
+                resultado += "Medico adicionado a IPS exitosamente: " + im;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
+            }
         } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);
@@ -764,6 +876,72 @@ public class Controller {
         }
     }
 
+    public VOOrden adicionarOrden(String desc) {
+        try {
+            String descripcion = desc;
+            if (desc != null) {
+                VOOrden orden = epsAndes.registrarOrden(descripcion);
+                if (orden == null) {
+                    throw new Exception("No se puede agregar la consulta");
+                }
+                String resultado = "En registrarConsulta\n\n";
+                resultado += "Orden adicionado exitosamente: " + orden;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
+                return orden;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
+    }
+
+    public void adicionarOrdenConServicio(long idOrden, long idServicio) {
+        try {
+            long orden = idOrden;
+            long ser = idServicio;
+
+            if (orden > 0 && ser > 0) {
+                VOOrdenServicios os = epsAndes.registrarOrdenConServicio(orden, ser);
+                if (os == null) {
+                    throw new Exception("No se pudo agregar la orden con el servicio");
+                }
+                String resultado = "En registrarOrdenConServicio\n\n";
+                resultado += "Orden con servicio adicionada exitosamente: " + os;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void adicionarOrdenConReceta(long idOrden, long idMedicamento) {
+        try {
+            long orden = idOrden;
+            long med = idMedicamento;
+
+            if (orden > 0 && med > 0) {
+                VOOrdenMedicamento om = epsAndes.registrarOrdenConMedicamento(orden, med);
+                if (om == null) {
+                    throw new Exception("No se pudo agregar la orden con el servicio");
+                }
+                String resultado = "En registrarOrdenConMedicamento\n\n";
+                resultado += "Orden con medicamento adicionada exitosamente: " + om;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
     /**
      * @param
      * @param word
@@ -797,6 +975,72 @@ public class Controller {
             }
         }
         return contains;
+    }
+
+    private boolean containsServicio(String servicio) {
+        boolean contains = false;
+        listaServicios = darListaServicios();
+        Iterator<Servicio> it = listaServicios.iterator();
+
+        while (!contains) {
+            Servicio ser = it.next();
+            if (ser.getNombre().equals(servicio)) {
+                contains = true;
+            }
+        }
+
+        return contains;
+    }
+
+    public boolean containsMedicamento(String nombre) {
+        boolean contains = false;
+        listaMedicamentos = darListaMedicamentos();
+        Iterator<Medicamento> it = listaMedicamentos.iterator();
+
+        while (!contains) {
+            Medicamento med = it.next();
+            if (med.getNombre().equals(nombre)) {
+                contains = true;
+            }
+        }
+
+        return contains;
+    }
+
+    public long getIdMedicamento(String nombre) {
+
+        long id = 0;
+        boolean contains = false;
+        listaMedicamentos = darListaMedicamentos();
+        Iterator<Medicamento> it = listaMedicamentos.iterator();
+
+        while (!contains) {
+            Medicamento med = it.next();
+            if (med.getNombre().equals(nombre)) {
+                id = med.getId();
+                contains = true;
+            }
+        }
+
+        return id;
+    }
+
+    private long getIdServicio(String servicio) {
+
+        boolean contains = false;
+        long id = 0;
+        listaServicios = darListaServicios();
+        Iterator<Servicio> it = darListaServicios().iterator();
+
+        while (!contains) {
+            Servicio ser = it.next();
+            if (ser.getNombre().equals(servicio)) {
+                contains = true;
+                id = ser.getId();
+            }
+        }
+
+        return id;
     }
 
 

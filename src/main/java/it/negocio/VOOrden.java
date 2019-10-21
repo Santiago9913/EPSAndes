@@ -1,7 +1,9 @@
 package it.negocio;
 
 public interface VOOrden {
-	public long getId();
-	public long getIdUrgencia();
-	public String toString();
+    public long getId();
+
+    public String getDescripcion();
+
+    public String toString();
 }

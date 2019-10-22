@@ -503,7 +503,7 @@ public class Controller {
                     case 1:
                         view.printMessage("Ingrese su numero de documento: ");
                         long idPaciente = sc.nextInt();
-                        
+
 
                     case 0:
                         fin = true;

@@ -1228,3 +1228,14 @@ ORA-00904: "ID_MEDICAMENTO": identificador no válido
 21:05:23,409 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Paciente [id=123, nombre=SANTIAGO FAJARDO, correo=S@HOTMAIL.COM, fNacimiento=1999-10-13 00:00:00.0, estado=SANO, tipoDocumento=CEDULA]
 21:05:23,409 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 21:05:23,427 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:47:57,060 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:48:00,071 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:48:00,367 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:48:00,367 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:48:00,367 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:48:00,367 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:48:00,383 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:48:00,383 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:48:00,430 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 20
+11:48:00,430 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:48:00,445 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0

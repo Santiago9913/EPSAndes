@@ -10,7 +10,6 @@ import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
-import com.sun.istack.internal.NotNull;
 import it.negocio.*;
 import org.apache.log4j.Logger;
 
@@ -104,11 +103,7 @@ public class Controller {
                     //Ingresa un rol al sistema(ADMINISTRADOR, PACIEMTE, MEDICO, GERENTE, SECRETARIA)
                     case 1:
 
-                        view.printMessage("Ingrese el rol que desea registrar...");
-                        String rol = sc.next();
-                        agregarRol(rol.toUpperCase());
                         break;
-
                     //Permiso Administrador
                     case 2:
                         view.printMessage("Ingrese la informacion del usuario...");
@@ -161,7 +156,7 @@ public class Controller {
 
 
                             //Agregar el paciente
-                            agregarPaciente(idPaciente, nombrePaciente.toUpperCase(), correoPaciente.toUpperCase(), fechaPaciente, estadoPaciente.toUpperCase(), tipoDoc.toUpperCase());
+//                            agregarPaciente(idPaciente, nombrePaciente.toUpperCase(), correoPaciente.toUpperCase(), fechaPaciente, estadoPaciente.toUpperCase(), tipoDoc.toUpperCase());
                         }
 
                         //Si el usuario es MEDICO
@@ -224,9 +219,9 @@ public class Controller {
                             }
 
                             //Agregar el medico
-                            agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
+//                            agregarMedico(idMedico, nombreMedico.toUpperCase(), correoMedico.toUpperCase(), especialidadMedico.toUpperCase());
                             //Agregar el registro medico
-                            agregarMedicoRegistro(idMedico, numRegistro);
+//                            agregarMedicoRegistro(idMedico, numRegistro);
 
                             //Agregar medico a una IPS ya existente
                             for (long ips : ipsMedico) {
@@ -256,7 +251,7 @@ public class Controller {
                             view.printMessage("Ingrese el numero de documento: ");
                             long idGerente = sc.nextLong();
 
-                            agregarGerente(idGerente, nombreGerente.toUpperCase(), correoGerente.toUpperCase());
+//                            agregarGerente(idGerente, nombreGerente.toUpperCase(), correoGerente.toUpperCase());
 
 
                         }
@@ -285,7 +280,7 @@ public class Controller {
                             view.printMessage("Ingrese el numero de documento: ");
                             long idRecepcionista = sc.nextLong();
 
-                            agregarRecepcionista(idRecepcionista, nombreRecepcionista.toUpperCase(), correoRecepcionista.toUpperCase());
+//                            agregarRecepcionista(idRecepcionista, nombreRecepcionista.toUpperCase(), correoRecepcionista.toUpperCase());
                         }
                         break;
 
@@ -332,7 +327,7 @@ public class Controller {
                         }
 
                         for (long ing : listaIngresado) {
-                            agregarIpsAEps(ipsAgregada.getId(), ing);
+//                            agregarIpsAEps(ipsAgregada.getId(), ing);
                         }
 
                         break;
@@ -481,7 +476,7 @@ public class Controller {
                             VOOrden or = adicionarOrden(desc);
                         } else if (sa && !ar) {
                             VOOrden ordenSe = adicionarOrden(desc);
-                            adicionarOrdenConServicio(ordenSe.getId(), idSer_Or);
+
                         } else if (!sa && ar) {
                             VOOrden ordenAr = adicionarOrden(desc);
                             for (long medLoop : meds) {
@@ -529,28 +524,6 @@ public class Controller {
         epsAndes = new EPSAndes(tableConfig);
     }
 
-    /**
-     * @param rol
-     */
-    public void agregarRol(String rol) {
-        try {
-            String nombreRol = rol.toUpperCase();
-            if (nombreRol != null) {
-                VORol ro = epsAndes.registrarRol(nombreRol);
-                if (ro == null) {
-                    throw new Exception("No se pudo crear un rol con el nombre: " + nombreRol);
-                }
-                String resultado = "En registrarRol\n\n";
-                resultado += "Rol de usuario adicionado exitosamente: " + ro;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            view.printMessage("Las restricciones fueron violadas");
-            view.printErrMessage(e);
-
-        }
-    }
 
     public List<EPS> darListaEps() {
         try {
@@ -610,95 +583,70 @@ public class Controller {
     }
 
 
-    /**
-     * @param idPaciente
-     * @param nombrePaciente
-     * @param correoPaciente
-     * @param fechaNacimiento
-     * @param estadoPaciente
-     * @param tipoDoc
-     */
-    public void agregarPaciente(long idPaciente, String nombrePaciente, String correoPaciente, Timestamp fechaNacimiento, String estadoPaciente, String tipoDoc) {
+//    /**
+//     * @param idPaciente
+//     * @param nombrePaciente
+//     * @param correoPaciente
+//     * @param fechaNacimiento
+//     * @param estadoPaciente
+//     * @param tipoDoc
+//     */
+//    public void agregarPaciente(long idPaciente, String nombrePaciente, String correoPaciente, Timestamp fechaNacimiento, String estadoPaciente, String tipoDoc) {
+//
+//        try {
+//            long id = idPaciente;
+//            String nombre = nombrePaciente;
+//            String correo = correoPaciente;
+//            Timestamp fechaNac = fechaNacimiento;
+//            String estado = estadoPaciente;
+//            String tipoDocumento = tipoDoc;
+//
+//            if (id != 0 && nombre != null && correo != null && fechaNac != null && tipoDoc != null) {
+//                VOPaciente pa = epsAndes.registrarPaciente(id, nombre, correo, fechaNac, estado, tipoDocumento);
+//                if (pa == null) {
+//                    throw new Exception("No se pudo crear el usuario con el rol: " + "PACIENTE");
+//                }
+//                String resultado = "En registrarPaciente\n\n";
+//                resultado += "Paciente adicionado exitosamente: " + pa;
+//                resultado += "\n Operacion terminada";
+//                view.printMessage(resultado);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            view.printErrMessage(e);
+//        }
+//    }
 
-        try {
-            long id = idPaciente;
-            String nombre = nombrePaciente;
-            String correo = correoPaciente;
-            Timestamp fechaNac = fechaNacimiento;
-            String estado = estadoPaciente;
-            String tipoDocumento = tipoDoc;
+//    /**
+//     * @param idMedico
+//     * @param nombre
+//     * @param correo
+//     * @param especialidad
+//     */
+//    public void agregarMedico(long idMedico, String nombre, String correo, String especialidad) {
+//
+//        try {
+//            long id = idMedico;
+//            String nombreMedico = nombre;
+//            String correoMedico = correo;
+//            String espec = especialidad;
+//
+//            if (nombre != null && id != 0 && correoMedico != null) {
+//                VOMedico me = epsAndes.registrarMedico(id, nombreMedico, correoMedico, espec);
+//                if (me == null) {
+//                    throw new Exception("No se pudo crear el medico");
+//                }
+//                String resultado = "En registrarMedico\n\n";
+//                resultado += "Medico adicionado exitosamente: " + me;
+//                resultado += "\n Operacion terminada";
+//                view.printMessage(resultado);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            view.printErrMessage(e);
+//        }
+//    }
 
-            if (id != 0 && nombre != null && correo != null && fechaNac != null && tipoDoc != null) {
-                VOPaciente pa = epsAndes.registrarPaciente(id, nombre, correo, fechaNac, estado, tipoDocumento);
-                if (pa == null) {
-                    throw new Exception("No se pudo crear el usuario con el rol: " + "PACIENTE");
-                }
-                String resultado = "En registrarPaciente\n\n";
-                resultado += "Paciente adicionado exitosamente: " + pa;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
-
-    /**
-     * @param idMedico
-     * @param nombre
-     * @param correo
-     * @param especialidad
-     */
-    public void agregarMedico(long idMedico, String nombre, String correo, String especialidad) {
-
-        try {
-            long id = idMedico;
-            String nombreMedico = nombre;
-            String correoMedico = correo;
-            String espec = especialidad;
-
-            if (nombre != null && id != 0 && correoMedico != null) {
-                VOMedico me = epsAndes.registrarMedico(id, nombreMedico, correoMedico, espec);
-                if (me == null) {
-                    throw new Exception("No se pudo crear el medico");
-                }
-                String resultado = "En registrarMedico\n\n";
-                resultado += "Medico adicionado exitosamente: " + me;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
-
-    /**
-     * @param id
-     * @param num
-     */
-    public void agregarMedicoRegistro(long id, long num) {
-        try {
-            long idMedico = id;
-            long numeroReg = num;
-
-            if (idMedico > 0 && numeroReg > 0) {
-                VORegistroMedico rm = epsAndes.registrarRegistroMedico(idMedico, numeroReg);
-                if (rm == null) {
-                    throw new Exception("No se pudo agregar el registro al medico");
-                }
-                String resultado = "En registrarRegistroMedico\n\n";
-                resultado += "Registro Medico adicionado exitosamente: " + rm;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
 
     public void agregarMedicoAIps(long idIps, long idMedico) {
         try {
@@ -706,7 +654,7 @@ public class Controller {
             long medico = idMedico;
 
             if (ips > 0 && medico > 0) {
-                VOIPSMedico im = epsAndes.registrarMedicoAIps(ips, medico);
+                VOMedicoIps im = epsAndes.registrarMedicoAIps(ips, medico);
                 if (im == null) {
                     throw new Exception("No se pudo agregar el medico a la IPS");
                 }
@@ -721,49 +669,49 @@ public class Controller {
         }
     }
 
-    public void agregarGerente(long id, String nombre, String correo) {
-        try {
-            long idGerente = id;
-            String nomGerente = nombre;
-            String correoGerente = correo;
+//    public void agregarGerente(long id, String nombre, String correo) {
+//        try {
+//            long idGerente = id;
+//            String nomGerente = nombre;
+//            String correoGerente = correo;
+//
+//            if (id > 0 && nomGerente != null && correoGerente != null) {
+//                VOUsuario re = epsAndes.registrarGerente(idGerente, nomGerente, correoGerente);
+//                if (re == null) {
+//                    throw new Exception("No se pudo agregar recepcionista");
+//                }
+//                String resultado = "En registrarRecepcionista\n\n";
+//                resultado += "Recepcionista adicionado exitosamente: " + re;
+//                resultado += "\n Operacion terminada";
+//                view.printMessage(resultado);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            view.printErrMessage(e);
+//        }
+//    }
 
-            if (id > 0 && nomGerente != null && correoGerente != null) {
-                VOGerente re = epsAndes.registrarGerente(idGerente, nomGerente, correoGerente);
-                if (re == null) {
-                    throw new Exception("No se pudo agregar recepcionista");
-                }
-                String resultado = "En registrarRecepcionista\n\n";
-                resultado += "Recepcionista adicionado exitosamente: " + re;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
-
-    public void agregarRecepcionista(long id, String nombre, String correo) {
-        try {
-            long idRecep = id;
-            String nomRecep = nombre;
-            String correoRecep = correo;
-
-            if (id > 0 && nomRecep != null && correoRecep != null) {
-                VOSecretaria re = epsAndes.registrarRecepcionista(idRecep, nomRecep, correoRecep);
-                if (re == null) {
-                    throw new Exception("No se pudo agregar recepcionista");
-                }
-                String resultado = "En registrarRecepcionista\n\n";
-                resultado += "Recepcionista adicionado exitosamente: " + re;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
+//    public void agregarRecepcionista(long id, String nombre, String correo) {
+//        try {
+//            long idRecep = id;
+//            String nomRecep = nombre;
+//            String correoRecep = correo;
+//
+//            if (id > 0 && nomRecep != null && correoRecep != null) {
+//                VOUsuario re = epsAndes.registrarRecepcionista(idRecep, nomRecep, correoRecep);
+//                if (re == null) {
+//                    throw new Exception("No se pudo agregar recepcionista");
+//                }
+//                String resultado = "En registrarRecepcionista\n\n";
+//                resultado += "Recepcionista adicionado exitosamente: " + re;
+//                resultado += "\n Operacion terminada";
+//                view.printMessage(resultado);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            view.printErrMessage(e);
+//        }
+//    }
 
     public void agregarEPS(String nombre) {
         try {
@@ -809,27 +757,6 @@ public class Controller {
         return null;
     }
 
-    public void agregarIpsAEps(Long idIps, Long idEps) {
-        try {
-            Long ips = idIps;
-            Long eps = idEps;
-
-            if (ips != null && ips > 0 && eps != null && eps > 0) {
-                VOEPSIPS ips_eps = epsAndes.registrarIpsEnEps(ips, eps);
-                if (ips_eps == null) {
-                    throw new Exception("No se puedo agregar IPS en la EPS");
-                }
-                String resultado = "En registrarIpsEnEps\n\n";
-                resultado += "IPS_EPS adicionado exitosamente: " + ips_eps;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
-
 
     public VOServicio agregarServicio(String servicio, int capacidad) {
         try {
@@ -861,7 +788,7 @@ public class Controller {
             long idSer = idServicio;
 
             if (idI > 0 && idSer > 0) {
-                VOIPSServicio ips_Servicio = epsAndes.registrarServicioIps(idI, idSer);
+                VOServicioIps ips_Servicio = epsAndes.registrarServicioIps(idI, idSer);
                 if (ips_Servicio == null) {
                     throw new Exception("No se puede agregar Servicio en la IPS");
                 }
@@ -899,26 +826,6 @@ public class Controller {
         return null;
     }
 
-    public void adicionarOrdenConServicio(long idOrden, long idServicio) {
-        try {
-            long orden = idOrden;
-            long ser = idServicio;
-
-            if (orden > 0 && ser > 0) {
-                VOOrdenServicios os = epsAndes.registrarOrdenConServicio(orden, ser);
-                if (os == null) {
-                    throw new Exception("No se pudo agregar la orden con el servicio");
-                }
-                String resultado = "En registrarOrdenConServicio\n\n";
-                resultado += "Orden con servicio adicionada exitosamente: " + os;
-                resultado += "\n Operacion terminada";
-                view.printMessage(resultado);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            view.printErrMessage(e);
-        }
-    }
 
     public void adicionarOrdenConReceta(long idOrden, long idMedicamento) {
         try {

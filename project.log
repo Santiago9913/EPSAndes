@@ -1243,3 +1243,102 @@ ORA-00904: "ID_MEDICAMENTO": identificador no válido
 00:13:31,580 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 00:13:44,491 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
 00:18:25,692 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:11:27,180 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:11:32,475 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:11:32,735 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:11:32,735 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:11:32,785 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:11:32,785 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:11:32,813 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:11:32,814 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:11:32,952 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:11:32,953 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:11:32,997 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:13:46,396 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:13:50,195 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:13:50,382 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:13:50,383 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:13:50,410 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:13:50,410 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:13:50,434 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:13:50,434 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:13:50,458 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:13:50,458 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:13:50,477 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:36:57,296 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:37:09,391 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:37:09,639 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:37:09,639 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:37:09,669 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:37:09,670 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:37:09,702 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:37:09,702 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:37:09,724 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:37:09,724 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:37:09,754 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:37:59,452 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:37:59,475 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:39:11,234 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1072674622
+11:40:20,644 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
+
+11:40:20,667 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+11:40:20,667 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:40:20,691 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:41:35,821 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:41:49,826 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:41:54,444 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:41:54,713 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:41:54,713 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:41:54,736 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:41:54,737 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:41:54,760 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:41:54,760 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:41:54,783 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:41:54,783 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:41:54,817 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:42:14,328 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:42:14,349 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:42:59,864 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1072674622
+11:43:26,736 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: Tipo Usuario = PACIENTE [ Nombre: SANTIAGO FAJARDO , ID: 1072674622, Tipo Doc: CEDULA, Correo: SANTIAGOFAK@GMAIL.CO ]
+11:43:52,764 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:10:50,003 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+13:10:54,756 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:10:55,050 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+13:10:55,050 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+13:10:55,072 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+13:10:55,072 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+13:10:55,101 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+13:10:55,101 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+13:10:55,129 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+13:10:55,129 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+13:10:55,173 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+13:11:31,761 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:11:31,786 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+13:12:33,978 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1072674622
+13:12:45,908 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-00001: restricción única (ISIS2304C041920.USUARIO_PK) violada
+
+13:13:00,388 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+13:13:00,388 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:13:50,784 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+13:13:55,564 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:13:55,849 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+13:13:55,849 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+13:13:55,873 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+13:13:55,873 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+13:13:55,897 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+13:13:55,897 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+13:13:55,919 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+13:13:55,919 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+13:13:55,946 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+13:14:04,458 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:14:04,476 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+13:14:57,457 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1072674622
+13:15:14,866 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: Tipo Usuario = PACIENTE [ Nombre: SANTIAGO FAJARDO, ID: 1072674622, Tipo Doc: CEDULA, Correo: SANTIAGOFAK@GMAIL.COM ]
+13:15:21,033 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:15:21,086 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+13:15:24,457 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: 1072674622
+13:16:10,354 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Tipo Usuario =  [ Nombre: , ID: 1072674622, Tipo Doc: , Correo: Estado Salud: SANO ]
+13:16:14,789 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+13:16:14,831 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas

@@ -43,19 +43,6 @@ public class SQLAdministrador {
     }
 
 
-    /**
-     * @param pm     - El manejador de persistencia
-     * @param id
-     * @param nombre
-     * @return
-     */
-    public long adicionarPaciente(PersistenceManager pm, long id, String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaPaciente() + "(id, nombre, correo, f_nacimiento, estado, TIPO_DOC) VALUES(?, ?, ?, ?, ?, ?)");
-        q.setParameters(id, nombre, correo, fNacimiento, estado, tipoDoc);
-        return (long) q.executeUnique();
-    }
-
-   
     public long adicionarEPS(PersistenceManager pm, long id, String nombre) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEps() + "(id, nombre) VALUES(?,?)");
         q.setParameters(id, nombre);
@@ -101,6 +88,20 @@ public class SQLAdministrador {
     public long adicionarIPS(PersistenceManager pm, long id, String nombre, int capacidad, String localizacion) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps() + "(id, nombre, capacidad, localizacion) VALUES(?, ?, ?, ?)");
         q.setParameters(id, nombre, capacidad, localizacion);
+        return (long) q.executeUnique();
+    }
+
+    public long adicionarUsuario(PersistenceManager pm, String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + "(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) "
+                + "VALUES(?,?,?,?,?,?,?,?,?)");
+        q.setParameters(numDoc, null, null, null, fechaNacimiento, nombre, correo, tipoDocumento, rol);
+        return (long) q.executeUnique();
+    }
+
+
+    public long adicionarPaciente(PersistenceManager pm, long numDocumento, long idEps, String estado) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaPaciente() + "(ID_USUARIO, ID_EPS, ESTADO_SALUD) VALUES (?,?,?)");
+        q.setParameters(numDocumento, idEps, estado);
         return (long) q.executeUnique();
     }
 

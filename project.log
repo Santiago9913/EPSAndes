@@ -1239,3 +1239,7 @@ ORA-00904: "ID_MEDICAMENTO": identificador no válido
 11:48:00,430 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 20
 11:48:00,430 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
 11:48:00,445 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+00:11:49,035 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+00:13:31,580 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+00:13:44,491 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+00:18:25,692 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s

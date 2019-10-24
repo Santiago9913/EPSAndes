@@ -42,29 +42,6 @@ public class SQLAdministrador {
         this.pe = pe;
     }
 
-    /**
-     * @param pm     - El manejador de persistencia
-     * @param id
-     * @param nombre
-     * @return
-     */
-    public long adicionarRol(PersistenceManager pm, long id, String nombre) throws Exception {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaRol() + "(id, nombre) VALUES(?, ?)");
-        q.setParameters(id, nombre);
-        return (long) q.executeUnique();
-    }
-
-    /**
-     * @param pm     - El manejador de persistencia
-     * @param id
-     * @param nombre
-     * @return
-     */
-    public long adicionarAdministrador(PersistenceManager pm, long id, String nombre, String correo) {
-        Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaAdministrador() + "(id, nombre, correo) VALUES(?, ?, ?)");
-        q.setParameters(id, nombre, correo);
-        return (long) q.executeUnique();
-    }
 
     /**
      * @param pm     - El manejador de persistencia
@@ -78,18 +55,7 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
-    /**
-     * @param pm     - El manejador de persistencia
-     * @param id
-     * @param nombre
-     * @return
-     */
-    public long adicionarGerente(PersistenceManager pm, long id, String nombre, String correo) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaGerente() + "(id, nombre, correo) VALUES(?, ?, ?)");
-        q.setParameters(id, nombre, correo);
-        return (long) q.executeUnique();
-    }
-
+   
     public long adicionarEPS(PersistenceManager pm, long id, String nombre) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEps() + "(id, nombre) VALUES(?,?)");
         q.setParameters(id, nombre);
@@ -138,11 +104,6 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
-    public long adicionarIpsEnEps(PersistenceManager pm, long ips, long eps) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaEpsIps() + "(id_eps, id_ips) VALUES (?,?)");
-        q.setParameters(eps, ips);
-        return (long) q.executeUnique();
-    }
 
     /**
      * @param pm
@@ -158,24 +119,6 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
-    public long adicionarRegistroMedico(PersistenceManager pm, long idMedico, long numRegistro) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaMedicoRegistro() + "(id_medico, num_registro) VALUES(?,?)");
-        q.setParameters(idMedico, numRegistro);
-        return (long) q.executeUnique();
-    }
-
-    public long adicionarMedicoAIps(PersistenceManager pm, long idIps, long idMedico) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIpsMedico() + "(id_ips, id_medico) VALUES(?,?)");
-        q.setParameters(idIps, idMedico);
-        return (long) q.executeUnique();
-    }
-
-    public long adicionarRecepcionista(PersistenceManager pm, long id, String nombre, String correo) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaSecretaria() + "(id, nombre, correo) VALUES(?,?,?)");
-        q.setParameters(id, nombre, correo);
-        return (long) q.executeUnique();
-    }
-
     /**
      * @param pm
      * @param id
@@ -188,13 +131,6 @@ public class SQLAdministrador {
         q.setParameters(id, capacidad, nombre);
         return (long) q.executeUnique();
     }
-
-    public long adicionarServicioIps(PersistenceManager pm, long idIps, long idServ) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIpsServicio() + "(id_ips, id_servicio) VALUES(?,?)");
-        q.setParameters(idIps, idServ);
-        return (long) q.executeUnique();
-    }
-
 
     public long consultarServicioCaracteristica(PersistenceManager pm, String caracteristica, String aBuscar) {
         Query q = pm.newQuery(SQL, "SELECT * "

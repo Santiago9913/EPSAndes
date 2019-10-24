@@ -29,20 +29,19 @@ public class EPSAndes {
     // M�todos
 
 
+//    public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
+//        log.info("Registrando paciente: " + nombre);
+//        Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
+//        log.info("Registrando paciente: " + pac);
+//        return pac;
+//    }
 
-    public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
-        log.info("Registrando paciente: " + nombre);
-        Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
-        log.info("Registrando paciente: " + pac);
-        return pac;
-    }
-
-    public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
-        log.info("Registrando m�dico: " + nombre);
-        Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
-        log.info("Registrando m�dico: " + med);
-        return med;
-    }
+//    public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
+//        log.info("Registrando m�dico: " + nombre);
+//        Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
+//        log.info("Registrando m�dico: " + med);
+//        return med;
+//    }
 
 
     public MedicoIps registrarMedicoAIps(long idIps, long idMedico) {
@@ -51,9 +50,6 @@ public class EPSAndes {
         log.info("Registrando: " + im);
         return im;
     }
-
-
-
 
 
     public EPS registrarEPS(String nombre) {
@@ -104,7 +100,6 @@ public class EPSAndes {
         log.info("Registrando IPS: " + ips);
         return ips;
     }
-
 
 
     public Servicio registrarServicio(int capacidad, String nombre) {

@@ -536,62 +536,14 @@ public class PersistenciaEPSAndes {
 
 
 
-    /* ****************************************************************
-     * 			M�todos para manejar ROLES
-     *****************************************************************/
 
-    /**
-     * @param nombre
-     * @return
-     */
-    public Rol registrarRol(String nombre) {
 
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long idRol = nextval();
-            long tuplasInsertadas = sqlAdministrador.adicionarRol(pm, idRol, nombre);
-            tx.commit();
-
-            log.trace("Insercion de rol: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new Rol(idRol, nombre);
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     /* ****************************************************************
      * 			M�todos para manejar USUARIO
      *****************************************************************/
 
-    public Administrador registrarAdministrador(String nombre, String correo) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long idAdmin = nextval();
-            long tuplasInsertadas = sqlAdministrador.adicionarAdministrador(pm, idAdmin, nombre, correo);
-            tx.commit();
 
-            log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new Administrador(idAdmin, nombre, correo);
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNacimiento, String estado, String tipoDoc) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -616,29 +568,9 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public RegistroMedico registrarRegistroMedico(long idMedico, long numReg) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplasInsertadas = sqlAdministrador.adicionarRegistroMedico(pm, idMedico, numReg);
-            tx.commit();
 
-            log.trace("Insercion de registro medico: " + numReg + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new RegistroMedico(idMedico, numReg);
-        } catch (Exception e) {
-            e.printStackTrace();
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
-    public IPSMedico registrarMedicoAIps(long idIps, long idMedco) {
+    public MedicoIps registrarMedicoAIps(long idIps, long idMedco) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -647,7 +579,7 @@ public class PersistenciaEPSAndes {
             tx.commit();
 
             log.trace("Insercion de medico a IPS: " + tuplasInesrtadas + "tuplas insertadas");
-            return new IPSMedico(idIps, idMedco);
+            return new MedicoIps(idIps, idMedco);
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -661,26 +593,7 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public Gerente registrarGerente(long id, String nombre, String correo) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplasInsertadas = sqlAdministrador.adicionarGerente(pm, id, nombre, correo);
-            tx.commit();
 
-            log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new Gerente(id, nombre, correo);
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     public EPS registrarEPS(String nombre) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -748,29 +661,7 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public EPSIPS registrarIpsEnEps(long ips, long eps) {
 
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplasInsertadas = sqlAdministrador.adicionarIpsEnEps(pm, ips, eps);
-            tx.commit();
-
-            log.trace("Insercion de Ips en eps: " + ips + " en: " + eps + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new EPSIPS(ips, eps);
-
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -796,26 +687,7 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplasInsertadas = sqlAdministrador.adicionarRecepcionista(pm, id, nombre, correo);
-            tx.commit();
-            log.trace("Insercion de recepcionista: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new Secretaria(id, nombre, correo);
 
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     public Servicio registrarServicio(String nombre, int capacidad) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -839,7 +711,7 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public IPSServicio registrarServicioIps(long idIps, long idSer) {
+    public ServicioIpsIps registrarServicioIps(long idIps, long idSer) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -848,7 +720,7 @@ public class PersistenciaEPSAndes {
             tx.commit();
 
             log.trace("Insercion de Servicio en IPS: " + "[" + idSer + "," + idIps + "]" + ": " + tuplaInsertada + "tuplas insertadas");
-            return new IPSServicio(idIps, idSer);
+            return new ServicioIpsIps(idIps, idSer);
         } catch (Exception e) {
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
             return null;
@@ -882,27 +754,7 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public OrdenServicios registrarOrdenConServicio(long idOrden, long idSer) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long tuplas = sqlMedico.adicionarOrdenConServicio(pm, idOrden, idSer);
-            tx.commit();
 
-            log.trace("Insercion de orden con servicio: " + tuplas);
-            return new OrdenServicios(idOrden, idSer);
-
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
 
     public OrdenMedicamento registrarOrdenConMedicamento(long idOrden, long idMed) {
         PersistenceManager pm = pmf.getPersistenceManager();

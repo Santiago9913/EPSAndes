@@ -1,35 +1,39 @@
 package it.negocio;
 
-public class OrdenServicios implements VOOrdenServicios {
-	private long idOrden;
+public class ServicioIpsIps implements VOServicioIps {
+	private long idIps;
 	private long idServicio;
 	
-	public OrdenServicios() {
-		this.idOrden = 0;
+	/**
+	 * @param idIps
+	 * @param idServicio
+	 */
+	public ServicioIpsIps() {
+		this.idIps = 0;
 		this.idServicio = 0;
 	}
 	
 	/**
-	 * @param idOrden
+	 * @param idIps
 	 * @param idServicio
 	 */
-	public OrdenServicios(long idOrden, long idServicio) {
-		this.idOrden = idOrden;
+	public ServicioIpsIps(long idIps, long idServicio) {
+		this.idIps = idIps;
 		this.idServicio = idServicio;
 	}
 
 	/**
-	 * @return the idOrden
+	 * @return the idIps
 	 */
-	public long getIdOrden() {
-		return idOrden;
+	public long getIdIps() {
+		return idIps;
 	}
 
 	/**
-	 * @param idOrden the idOrden to set
+	 * @param idIps the idIps to set
 	 */
-	public void setIdOrden(long idOrden) {
-		this.idOrden = idOrden;
+	public void setIdIps(long idIps) {
+		this.idIps = idIps;
 	}
 
 	/**
@@ -51,7 +55,7 @@ public class OrdenServicios implements VOOrdenServicios {
 	 */
 	@Override
 	public String toString() {
-		return "OrdenServicios [idOrden=" + idOrden + ", idServicio=" + idServicio + "]";
+		return "IPSServicio [idIps=" + idIps + ", idServicio=" + idServicio + "]";
 	}
 	
 }

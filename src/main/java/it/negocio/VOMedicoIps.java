@@ -1,6 +1,6 @@
 package it.negocio;
 
-public interface VOIPSMedico {
+public interface VOMedicoIps {
 	public long getIdIps();
 	public long getIdMedico();
 	public String toString();

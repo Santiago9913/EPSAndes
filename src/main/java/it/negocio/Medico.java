@@ -1,100 +1,45 @@
 package it.negocio;
 
-public class Medico implements VOMedico {
-	private long id;
-	private String nombre;
-	private String correo;
-	private String especialidad;
-	
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param correo
-	 * @param especialidad
-	 */
-	public Medico() {
-		this.id = 0;
-		this.nombre = "";
-		this.correo = "";
-		this.especialidad = "";
-	}
-	
-	/**
-	 * @param id
-	 * @param nombre
-	 * @param correo
-	 * @param especialidad
-	 */
-	public Medico(long id, String nombre, String correo, String especialidad) {
-		this.id = id;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.especialidad = especialidad;
-	}
+import java.util.Date;
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+public class Medico extends Usuario implements VOUsuario, VOMedico {
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    private long numeroRegistro;
+    private String tipoMedico;
 
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
+    public Medico() {
+        super();
+        this.tipoMedico = "";
+        this.numeroRegistro = 0;
+    }
 
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public Medico(String nombre, Date fechaNacimiento, long id, String correo, String tipoDocumento, String tipoUsuario, long numeroRegistro, String tipoMedico) {
+        super(nombre, fechaNacimiento, id, correo, tipoDocumento, tipoUsuario);
+        this.tipoMedico = tipoMedico;
+        this.numeroRegistro = numeroRegistro;
+    }
 
-	/**
-	 * @return the correo
-	 */
-	public String getCorreo() {
-		return correo;
-	}
 
-	/**
-	 * @param correo the correo to set
-	 */
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
+    public long getNumeroRegistro() {
+        return this.numeroRegistro;
+    }
 
-	/**
-	 * @return the especialidad
-	 */
-	public String getEspecialidad() {
-		return especialidad;
-	}
 
-	/**
-	 * @param especialidad the especialidad to set
-	 */
-	public void setEspecialidad(String especialidad) {
-		this.especialidad = especialidad;
-	}
+    public String getTipoMedico() {
+        return this.tipoMedico;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Medico [id=" + id + ", nombre=" + nombre + ", correo=" + correo + ", especialidad=" + especialidad
-				+ "]";
-	}
-	
+    public void setNumeroRegistro(long numeroRegistro) {
+        this.numeroRegistro = numeroRegistro;
+    }
+
+    public void setTipoMedico(String tipoMedico) {
+        this.tipoMedico = tipoMedico;
+    }
+
+    @Override
+    public String toString() {
+        return "Tipo Usuario = " + tipoUsuario + " [ " + "Nombre: " + nombre + ", " + "ID: " + id + ", " + "Tipo Doc: " + tipoDocumento + ", " + "Correo: " + correo +
+                "Numero Registro: " + numeroRegistro + ", " + "Tipo Medico: " + tipoMedico + " ]";
+    }
 }

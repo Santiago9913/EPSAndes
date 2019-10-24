@@ -1,6 +1,6 @@
 package it.negocio;
 
-public class IPSMedico implements VOIPSMedico {
+public class MedicoIps implements VOMedicoIps {
 	public long idIps;
 	public long idMedico;
 	
@@ -8,7 +8,7 @@ public class IPSMedico implements VOIPSMedico {
 	 * @param idIps
 	 * @param idMedico
 	 */
-	public IPSMedico() {
+	public MedicoIps() {
 		this.idIps = 0;
 		this.idMedico = 0;
 	}
@@ -17,7 +17,7 @@ public class IPSMedico implements VOIPSMedico {
 	 * @param idIps
 	 * @param idMedico
 	 */
-	public IPSMedico(long idIps, long idMedico) {
+	public MedicoIps(long idIps, long idMedico) {
 		this.idIps = idIps;
 		this.idMedico = idMedico;
 	}

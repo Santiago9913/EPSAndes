@@ -1,7 +1,7 @@
 package it.negocio;
 
-public interface VOOrdenServicios {
-	public long getIdOrden();
+public interface VOServicioIps {
+	public long getIdIps();
 	public long getIdServicio();
 	public String toString();
 }

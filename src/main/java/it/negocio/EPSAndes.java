@@ -1,10 +1,8 @@
 package it.negocio;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
-import oracle.net.aso.l;
 import org.apache.log4j.Logger;
 
 import com.google.gson.JsonObject;
@@ -30,12 +28,7 @@ public class EPSAndes {
 
     // M�todos
 
-    public Rol registrarRol(String nombre) {
-        log.info("Registrando rol de usuario: " + nombre);
-        Rol newRol = ep.registrarRol(nombre);
-        log.info("Registrando rol de usuario: " + newRol);
-        return newRol;
-    }
+
 
     public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
         log.info("Registrando paciente: " + nombre);
@@ -51,40 +44,17 @@ public class EPSAndes {
         return med;
     }
 
-    public RegistroMedico registrarRegistroMedico(long idMedico, long numRegistro) {
-        log.info("Registrando registro_medico: " + numRegistro + " , " + idMedico);
-        RegistroMedico regM = ep.registrarRegistroMedico(idMedico, numRegistro);
-        log.info("Registrando tupla: " + "( " + idMedico + " , " + numRegistro + " )");
-        return regM;
-    }
 
-    public IPSMedico registrarMedicoAIps(long idIps, long idMedico) {
+    public MedicoIps registrarMedicoAIps(long idIps, long idMedico) {
         log.info("Registrando medico: " + idMedico + " en IPS: " + idIps);
-        IPSMedico im = ep.registrarMedicoAIps(idIps, idMedico);
+        MedicoIps im = ep.registrarMedicoAIps(idIps, idMedico);
         log.info("Registrando: " + im);
         return im;
     }
 
-    public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
-        log.info("Registrando recepcionista: " + id + " , " + nombre + " , " + correo);
-        Secretaria recep = ep.registrarRecepcionista(id, nombre, correo);
-        log.info("Registrando recepcionista: " + nombre);
-        return recep;
-    }
 
-    public Administrador registrarAdministrador(String nombre, String correo) {
-        log.info("Registrando administrador: " + nombre);
-        Administrador admin = ep.registrarAdministrador(nombre, correo);
-        log.info("Registrando administrador: " + admin);
-        return admin;
-    }
 
-    public Gerente registrarGerente(long id, String nombre, String correo) {
-        log.info("Registrando gerente: " + nombre);
-        Gerente ger = ep.registrarGerente(id, nombre, correo);
-        log.info("Registrando gerente: " + ger);
-        return ger;
-    }
+
 
     public EPS registrarEPS(String nombre) {
         log.info("Registrando EPS: " + nombre);
@@ -135,12 +105,7 @@ public class EPSAndes {
         return ips;
     }
 
-    public EPSIPS registrarIpsEnEps(Long ips, Long eps) {
-        log.info("Registrando IPS: " + ips + " en: " + eps);
-        EPSIPS ips_eps = ep.registrarIpsEnEps(ips, eps);
-        log.info("registrando  IPS: " + ips + " en: \" + eps) ");
-        return ips_eps;
-    }
+
 
     public Servicio registrarServicio(int capacidad, String nombre) {
         log.info("Registrando Servicio: " + nombre);
@@ -149,9 +114,9 @@ public class EPSAndes {
         return ser;
     }
 
-    public IPSServicio registrarServicioIps(long idIps, long idServicio) {
+    public ServicioIpsIps registrarServicioIps(long idIps, long idServicio) {
         log.info("Registrar Servicio: " + idServicio + " en: " + idIps);
-        IPSServicio ips_Ser = ep.registrarServicioIps(idIps, idServicio);
+        ServicioIpsIps ips_Ser = ep.registrarServicioIps(idIps, idServicio);
         log.info("Registrando Servicio: " + idServicio + " en: " + idIps);
         return ips_Ser;
     }
@@ -163,12 +128,6 @@ public class EPSAndes {
         return orden;
     }
 
-    public OrdenServicios registrarOrdenConServicio(long idOrd, long idSer) {
-        log.info("Registrando Orden: " + idOrd + " con Servicio: " + idSer);
-        OrdenServicios ordenServicios = ep.registrarOrdenConServicio(idOrd, idSer);
-        log.info("Registrando orden: " + ordenServicios);
-        return ordenServicios;
-    }
 
     public OrdenMedicamento registrarOrdenConMedicamento(long idOrden, long idMed) {
         log.info("Registrando Orden: " + idOrden + " con Medicamento: " + idMed);

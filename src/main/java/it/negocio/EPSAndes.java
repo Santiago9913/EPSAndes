@@ -44,14 +44,6 @@ public class EPSAndes {
 //    }
 
 
-    public MedicoIps registrarMedicoAIps(long idIps, long idMedico) {
-        log.info("Registrando medico: " + idMedico + " en IPS: " + idIps);
-        MedicoIps im = ep.registrarMedicoAIps(idIps, idMedico);
-        log.info("Registrando: " + im);
-        return im;
-    }
-
-
     public EPS registrarEPS(String nombre) {
         log.info("Registrando EPS: " + nombre);
         EPS eps = ep.registrarEPS(nombre);
@@ -94,6 +86,21 @@ public class EPSAndes {
         return lista;
     }
 
+    public Usuario registrarUsuario(String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
+        log.info("Registrando usuario: " + numDoc);
+        Usuario us = ep.registrarUsuario(rol, nombre, fechaNacimiento, tipoDocumento, numDoc, correo);
+        log.info("Registrando usuario: " + us);
+        return us;
+    }
+
+    public Paciente registrarPaciente(long numDocumento, long idEps, String estado) {
+        log.info("Registrando paciente: " + numDocumento);
+        Paciente pa = ep.registrarPaciente(numDocumento, idEps, estado);
+        log.info("Registrando paciente: " + pa);
+        return pa;
+    }
+
+
     public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
         log.info("Registrando IPS: " + nombre);
         IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
@@ -109,12 +116,6 @@ public class EPSAndes {
         return ser;
     }
 
-    public ServicioIpsIps registrarServicioIps(long idIps, long idServicio) {
-        log.info("Registrar Servicio: " + idServicio + " en: " + idIps);
-        ServicioIpsIps ips_Ser = ep.registrarServicioIps(idIps, idServicio);
-        log.info("Registrando Servicio: " + idServicio + " en: " + idIps);
-        return ips_Ser;
-    }
 
     public Orden registrarOrden(String desc) {
         log.info("Registrando Orden con la descripcion: " + desc);
@@ -123,13 +124,6 @@ public class EPSAndes {
         return orden;
     }
 
-
-    public OrdenMedicamento registrarOrdenConMedicamento(long idOrden, long idMed) {
-        log.info("Registrando Orden: " + idOrden + " con Medicamento: " + idMed);
-        OrdenMedicamento om = ep.registrarOrdenConMedicamento(idOrden, idMed);
-        log.info("Registrar orden: " + om);
-        return om;
-    }
 
     public void registrarConsulta() {
         // TODO Auto-generated method stub
@@ -146,11 +140,5 @@ public class EPSAndes {
 
     }
 
-    public int rfc1(Timestamp fecha1, Timestamp fecha2) {
-        // TODO Auto-generated method stub
-        log.info("Consultando cantidad de servicios prestados desde " + fecha1.toString() + " hasta " + fecha2.toString());
-        int ser = ep.rfc1(fecha1, fecha2);
-        log.info("Saliendo de consultar cantidad de servicios prestados");
-        return ser;
-    }
+
 }

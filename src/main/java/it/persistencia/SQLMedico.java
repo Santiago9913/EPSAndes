@@ -43,16 +43,5 @@ public class SQLMedico {
         return (long) q.executeUnique();
     }
 
-    public long adicionarOrdenConServicio(PersistenceManager pm, long idOrden, long idSer) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaOrdenServicio() + "(id_orden, id_servicio) VALUES(?,?)");
-        q.setParameters(idOrden, idSer);
-        return (long) q.executeUnique();
-    }
-
-    public long adicionarOrdenConMedicamento(PersistenceManager pm, long idOrden, long idMed) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaOrdenMedicamento() + "(id_orden, id_medicamento) VALUES(?,?)");
-        q.setParameters(idOrden, idMed);
-        return (long) q.executeUnique();
-    }
 
 }

@@ -85,9 +85,9 @@ public class SQLAdministrador {
      * @param nombre
      * @return
      */
-    public long adicionarIPS(PersistenceManager pm, long id, String nombre, int capacidad, String localizacion) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps() + "(id, nombre, capacidad, localizacion) VALUES(?, ?, ?, ?)");
-        q.setParameters(id, nombre, capacidad, localizacion);
+    public long adicionarIPS(PersistenceManager pm, long id, String nombre, long idEps, int capacidad, String localizacion) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps() + "(ID, NOMBRE,  ID_EPS, CAPACIDAD, LOCALIZACION) VALUES(?,?,?,?,?)");
+        q.setParameters(id, nombre, idEps, capacidad, localizacion);
         return (long) q.executeUnique();
     }
 

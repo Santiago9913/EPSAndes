@@ -101,9 +101,9 @@ public class EPSAndes {
     }
 
 
-    public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
+    public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         log.info("Registrando IPS: " + nombre);
-        IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
+        IPS ips = ep.registrarIPS(nombre, idEps, capacidad, localizacion);
         log.info("Registrando IPS: " + ips);
         return ips;
     }

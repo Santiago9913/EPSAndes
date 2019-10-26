@@ -452,13 +452,13 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public IPS registrarIPS(String nombre, int capacidad, String localizacion) {
+    public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
             long idIPS = nextval();
-            long tuplasInsertadas = sqlAdministrador.adicionarIPS(pm, idIPS, nombre, capacidad, localizacion);
+            long tuplasInsertadas = sqlAdministrador.adicionarIPS(pm, idIPS, nombre, idEps, capacidad, localizacion);
             tx.commit();
 
             log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");

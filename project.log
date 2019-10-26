@@ -1342,3 +1342,22 @@ ORA-00001: restricción única (ISIS2304C041920.USUARIO_PK) violada
 13:16:10,354 (main) INFO  [it.negocio.EPSAndes] - Registrando paciente: Tipo Usuario =  [ Nombre: , ID: 1072674622, Tipo Doc: , Correo: Estado Salud: SANO ]
 13:16:14,789 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 13:16:14,831 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+18:12:51,947 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+18:13:03,109 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+18:13:04,012 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+18:13:04,012 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+18:13:04,030 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+18:13:04,030 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+18:13:04,059 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+18:13:04,060 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+18:13:04,079 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+18:13:04,079 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+18:13:04,121 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+18:13:26,910 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+18:13:26,921 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+18:13:53,138 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+18:13:53,151 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+18:14:08,914 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+18:14:44,828 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=141, Nombre=HOSPITAL, localizacion=BOGOTA, capacidad=10]
+18:15:16,996 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+18:15:17,015 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas

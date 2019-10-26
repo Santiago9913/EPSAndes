@@ -19,6 +19,11 @@ public class Medico extends Usuario implements VOUsuario, VOMedico {
         this.numeroRegistro = numeroRegistro;
     }
 
+    public Medico(long numregistro, String tipoMedico) {
+        this.numeroRegistro = numregistro;
+        this.tipoMedico = tipoMedico;
+    }
+
 
     public long getNumeroRegistro() {
         return this.numeroRegistro;

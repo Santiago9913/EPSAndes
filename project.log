@@ -1601,3 +1601,39 @@ ORA-00001: restricción única (ISIS2304C041920.SYS_C00656974) violada
 12:38:10,176 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
 12:38:10,177 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
 12:38:10,197 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+14:14:49,857 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:14:55,072 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:14:55,372 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:15:00,028 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+14:15:00,079 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+14:15:01,935 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+14:15:01,979 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+14:15:02,351 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+14:15:02,396 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+14:15:02,660 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+14:15:02,720 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+14:15:13,246 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:15:13,272 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:15:44,101 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+14:15:44,143 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+14:16:55,499 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+14:17:01,404 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:17:01,751 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:17:07,878 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+14:17:07,906 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+14:17:07,906 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+14:17:07,931 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+14:17:07,931 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+14:17:07,956 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+14:17:07,956 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+14:17:07,980 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+14:17:17,851 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+14:17:17,873 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+14:17:47,394 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+14:17:47,417 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+14:17:56,409 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+14:17:56,433 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+14:17:56,433 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 8945
+14:17:56,688 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: Tipo Usuario = MEDICO [ Nombre: NICOLAS, ID: 8945, Tipo Doc: CEDULA, Correo: N@HOTMIAL.COM ]
+14:18:01,529 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: 464464
+14:18:01,586 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: Tipo Usuario =  [ Nombre: , ID: 8945, Tipo Doc: , Correo: Numero Registro: 464464, Tipo Medico: PE ]

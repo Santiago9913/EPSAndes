@@ -323,9 +323,11 @@ public class Controller {
                             fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
                         }
                         break;
+                    case 6:
 
+                        break;
                     //Cierra la conexion
-                    case 10:
+                    case 0:
                         fin = true;
                         epsAndes.cerrarUP();
                         sc.close();

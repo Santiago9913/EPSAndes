@@ -22,6 +22,8 @@ import it.view.View;
 
 public class Controller {
 
+    public String hola; 
+
     private static Logger log = Logger.getLogger(Controller.class.getName());
 
     /**

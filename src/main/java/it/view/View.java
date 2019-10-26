@@ -1,6 +1,10 @@
 package it.view;
 
+import it.negocio.EPS;
+import it.negocio.IPS;
+
 import javax.jdo.JDODataStoreException;
+import java.util.List;
 
 public class View {
 
@@ -82,5 +86,21 @@ public class View {
             return je.getNestedExceptions()[0].getMessage();
         }
         return resp;
+    }
+
+    public void printEpsList(List<EPS> lista) {
+        for (EPS eps : lista) {
+            int i = 1;
+            System.out.println(i + ". " + eps.getNombre());
+            i++;
+        }
+    }
+
+    public void printIpsLista(List<IPS> list) {
+        for (IPS ips : list) {
+            int i = 1;
+            System.out.println(i + ". " + ips.getNombre());
+            i++;
+        }
     }
 }

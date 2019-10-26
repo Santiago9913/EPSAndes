@@ -151,8 +151,59 @@ public class Controller {
 
                         }
 
-                        //Si el usuario es MEDICO
+                        //crear usuario medico
                         else if (rolUsuario.toLowerCase().equals("b")) {
+                            view.printMessage("Ingrese el nombre y apellido: ");
+                            String nombreMedico = sc.next();
+                            nombreMedico = nombreMedico.concat(sc.nextLine());
+
+                            view.printMessage("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
+                            String fechaNacimientoMedico = sc.next();
+                            String[] splitFechaMedico = fechaNacimientoMedico.split("-");
+                            int year = Integer.parseInt(splitFechaMedico[0]);
+                            int mon = Integer.parseInt(splitFechaMedico[1]);
+                            int day = Integer.parseInt(splitFechaMedico[2]);
+                            Timestamp fechaMedico = Timestamp.valueOf(LocalDateTime.of(year, mon, day, 0, 0));
+
+                            view.printMessage("Ingrese el tipo de documento: ");
+                            String tipoDocMedico = sc.next();
+                            tipoDocMedico = tipoDocMedico.concat(sc.nextLine());
+
+                            view.printMessage("Ingrese el numero de documento: ");
+                            long numDocumentoMedico = sc.nextInt();
+
+                            view.printMessage("Ingrese el correo: ");
+                            String correoMedico = sc.next();
+
+                            view.printMessage("Ingrese el numero de registro medico: ");
+                            long numregistroMedico = sc.nextInt();
+
+                            view.printMessage("Ingrese la especialidad : ");
+                            String especialidadMedico = sc.next();
+                            especialidadMedico = especialidadMedico.concat(sc.nextLine());
+
+                            view.printMessage("Seleccione la(s) Ips a la que sera inscrito: ");
+                            view.printIpsLista(listaIPS);
+                            view.printMessage("Cantidad de Ips a las que sera agregado: ");
+                            int cantidadMedicoIps = sc.nextInt();
+                            long[] ipsMedicoId = new long[cantidadMedicoIps];
+                            int contadorIpsMedicoId = 0;
+                            String ipsMedico = "";
+                            view.printMessage("Ingrese los nombres de la(s) Ips:  ");
+                            while (contadorIpsMedicoId < ipsMedicoId.length) {
+                                ipsMedico = sc.next();
+                                ipsMedico = ipsMedico.concat(sc.nextLine());
+                                ipsMedicoId[contadorIpsMedicoId] = getidIps(ipsMedico);
+                                contadorIpsMedicoId++;
+                            }
+
+                            agregarUsuario(ME, nombreMedico.toUpperCase(), fechaMedico, tipoDocMedico.toUpperCase(), numDocumentoMedico, correoMedico.toUpperCase());
+                            agregarMedico(numregistroMedico, especialidadMedico);
+                            for (long lo : ipsMedicoId) {
+                                agregarMedicoAIps(numregistroMedico, lo);
+                            }
+
+
                             break;
 
 
@@ -173,46 +224,28 @@ public class Controller {
                         String nombreEPS = sc.next();
                         nombreEPS = nombreEPS.concat(sc.nextLine());
 
-                        //Agrega la eps
                         agregarEPS(nombreEPS.toUpperCase());
                         break;
                     //Agregar un IPS
                     case 3:
-                        view.printMessage("Ingrese el nombre de la IPS:  ");
-                        String nombreIPS = sc.next();
-                        nombreIPS = nombreIPS.concat(sc.nextLine());
+                        view.printMessage("Ingrese el nombre de la Ips: ");
+                        String nombreIps = sc.next();
+                        nombreIps = nombreIps.concat(sc.nextLine());
 
-                        view.printMessage("Ingrese la capacidad de la IPS: ");
-                        int capacidad = sc.nextInt();
+                        view.printMessage("Ingrese a la Eps que presta servicio: ");
+                        view.printEpsList(listaEPS);
+                        String prestaEps = sc.next();
+                        prestaEps = prestaEps.concat(sc.nextLine());
+                        long prestaEpsId = getidEps(prestaEps);
 
-                        view.printMessage("Ingrese la localizacion de la IPS");
-                        String loc = sc.next();
-                        loc = loc.concat(sc.nextLine());
+                        view.printMessage("Ingrese la capacidad de la Ips: ");
+                        int capacidadIps = sc.nextInt();
 
-                        VOIPS ipsAgregada = agregarIPS(nombreIPS.toUpperCase(), capacidad, loc.toUpperCase());
+                        view.printMessage("Ingrese la direccion de la Ips: ");
+                        String direccionIps = sc.next();
+                        direccionIps = direccionIps.concat(sc.nextLine());
 
-                        view.printMessage("Indique a cuantas Eps presta servicio: ");
-                        int cantidad = sc.nextInt();
-                        int count = 0;
-                        String eps = "";
-                        long[] listaIngresado = new long[cantidad];
-                        view.printMessage("Ingrese los nombres de las eps");
-                        while (count < cantidad) {
-                            eps = sc.next();
-                            eps = eps.concat(sc.nextLine()).toUpperCase();
-                            if (containsEPS(eps)) {
-                                listaIngresado[count] = getidEps(eps);
-                                count++;
-                            } else {
-                                view.printMessage("Asegurese de que la eps exista en la BD...");
-                                break;
-                            }
-                        }
-
-                        for (long ing : listaIngresado) {
-//                            agregarIpsAEps(ipsAgregada.getId(), ing);
-                        }
-
+                        agregarIPS(nombreIps.toUpperCase(), prestaEpsId, capacidadIps, direccionIps.toUpperCase());
                         break;
 
                     //Agregar un servicio
@@ -483,42 +516,31 @@ public class Controller {
         try {
             if (numDocumento > 0 && idEps > 0 && estado != null) {
                 VOPaciente pa = epsAndes.registrarPaciente(numDocumento, idEps, estado);
+                if/(pa == null) {
+                    throw new Exception("no se pudo crear paciente");
+                }
+                String resultado = "En registrar paciente \n\n";
+                resultado += "Paciente adicionado exitosamente: " + pa;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
             }
+
         } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);
         }
     }
 
-//    /**
-//     * @param idMedico
-//     * @param nombre
-//     * @param correo
-//     * @param especialidad
-//     */
-//    public void agregarMedico(long idMedico, String nombre, String correo, String especialidad) {
-//
-//        try {
-//            long id = idMedico;
-//            String nombreMedico = nombre;
-//            String correoMedico = correo;
-//            String espec = especialidad;
-//
-//            if (nombre != null && id != 0 && correoMedico != null) {
-//                VOMedico me = epsAndes.registrarMedico(id, nombreMedico, correoMedico, espec);
-//                if (me == null) {
-//                    throw new Exception("No se pudo crear el medico");
-//                }
-//                String resultado = "En registrarMedico\n\n";
-//                resultado += "Medico adicionado exitosamente: " + me;
-//                resultado += "\n Operacion terminada";
-//                view.printMessage(resultado);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            view.printErrMessage(e);
-//        }
-//    }
+    private void agregarMedico(long numRegistro, String tipo) {
+        try {
+            if (numRegistro > 0 && tipo != null) {
+                VOMedico me =
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
 
 
 //    public void agregarGerente(long id, String nombre, String correo) {
@@ -584,14 +606,11 @@ public class Controller {
         }
     }
 
-    public VOIPS agregarIPS(String nombre, int capacidad, String localizacion) {
+    public VOIPS agregarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         try {
-            String nom = nombre;
-            int cap = capacidad;
-            String loc = localizacion;
 
-            if (nom != null && cap > 0 && loc != null) {
-                VOIPS ips = epsAndes.registrarIPS(nom, loc, cap);
+            if (nombre != null && idEps > 0 && capacidad > 0 && localizacion != null) {
+                VOIPS ips = epsAndes.registrarIPS(nombre, idEps, capacidad, localizacion);
                 if (ips == null) {
                     throw new Exception("No se puedo agregar IPS");
                 }

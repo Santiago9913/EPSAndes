@@ -22,7 +22,7 @@ import it.view.View;
 
 public class Controller {
 
-    public String hola; 
+    public String hola;
 
     private static Logger log = Logger.getLogger(Controller.class.getName());
 
@@ -191,11 +191,7 @@ public class Controller {
                             long[] ipsMedicoId = new long[cantidadMedicoIps];
                             int contadorIpsMedicoId = 0;
                             String ipsMedico = "";
-                            for (IPS ips : listaIPS) {
-                                int i = 1;
-                                view.printMessage(i + ". " + ips.getNombre());
-                                i++;
-                            }
+
                             while (contadorIpsMedicoId < ipsMedicoId.length) {
                                 view.printMessage("Ingrese el nombre: ");
                                 ipsMedico = sc.next();
@@ -212,7 +208,6 @@ public class Controller {
 
 
                             break;
-
 
                         } else if (rolUsuario.toLowerCase().endsWith("c")) {
                             break;

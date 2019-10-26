@@ -1,7 +1,6 @@
 package it.negocio;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,110 +10,142 @@ import com.google.gson.JsonObject;
 import it.persistencia.PersistenciaEPSAndes;;
 
 public class EPSAndes {
-	private static Logger log = Logger.getLogger(EPSAndes.class.getName());
+    private static Logger log = Logger.getLogger(EPSAndes.class.getName());
 
-	private PersistenciaEPSAndes ep;
+    private PersistenciaEPSAndes ep;
 
-	public EPSAndes() {
-		ep = PersistenciaEPSAndes.getInstance();
-	}
+    public EPSAndes() {
+        ep = PersistenciaEPSAndes.getInstance();
+    }
 
-	public EPSAndes(JsonObject tableConfig) {
-		ep = PersistenciaEPSAndes.getInstance(tableConfig);
-	}
+    public EPSAndes(JsonObject tableConfig) {
+        ep = PersistenciaEPSAndes.getInstance(tableConfig);
+    }
 
-	public void cerrarUP() {
-		ep.cerrarUnidadPersistencia();
-	}
+    public void cerrarUP() {
+        ep.cerrarUnidadPersistencia();
+    }
 
-	// Métodos
+    // Mï¿½todos
 
-	public Rol registrarRol(String nombre) {
-		log.info ("Registrando rol de usuario: " + nombre);
-		Rol newRol = ep.registrarRol(nombre);
-		log.info("Registrando rol de usuario: " + newRol);
-		return newRol;
-	}
 
-	public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
-		log.info("Registrando paciente: " + nombre);
-		Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
-		log.info("Registrando paciente: " + pac);
-		return pac;
-	}
+//    public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
+//        log.info("Registrando paciente: " + nombre);
+//        Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
+//        log.info("Registrando paciente: " + pac);
+//        return pac;
+//    }
 
-	public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
-		log.info("Registrando médico: " + nombre);
-		Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
-		log.info("Registrando médico: " + med);
-		return med;
-	}
+//    public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
+//        log.info("Registrando mï¿½dico: " + nombre);
+//        Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
+//        log.info("Registrando mï¿½dico: " + med);
+//        return med;
+//    }
 
-	public RegistroMedico registrarRegistroMedico(long idMedico, long numRegistro) {
-		log.info("Registrando registro_medico: " + numRegistro + " , " + idMedico);
-		RegistroMedico regM = ep.registrarRegistroMedico(idMedico, numRegistro);
-		log.info("Registrando tupla: " + "( " + idMedico +" , " + numRegistro + " )");
-		return regM;
-	}
 
-	public Secretaria registrarRecepcionista(long id, String nombre, String correo) {
-		log.info("Registrando recepcionista: " + id + " , " + nombre + " , " + correo);
-		Secretaria recep = ep.registrarRecepcionista(id, nombre, correo); 
-		log.info("Registrando recepcionista: " + nombre);
-		return recep; 
-	}
-	public Administrador registrarAdministrador(String nombre, String correo) {
-		log.info("Registrando administrador: " + nombre);
-		Administrador admin = ep.registrarAdministrador( nombre, correo);
-		log.info("Registrando administrador: " + admin);
-		return admin;
-	}
+    public EPS registrarEPS(String nombre) {
+        log.info("Registrando EPS: " + nombre);
+        EPS eps = ep.registrarEPS(nombre);
+        log.info("Registrando EPS: " + eps);
+        return eps;
+    }
 
-	public Gerente registrarGerente(long id, String nombre, String correo) {
-		log.info("Registrando gerente: " + nombre);
-		Gerente ger = ep.registrarGerente(id, nombre, correo);
-		log.info("Registrando gerente: " + ger);
-		return ger;
-	}
+    public List<EPS> darListaEps() {
+        log.info("Consultando Epsï¿½s");
+        List<EPS> lista = ep.darListaEps();
+        log.info("Consultando las epsï¿½s: " + lista.size() + " epsï¿½s agregadas");
+        return lista;
+    }
 
-	public EPS registrarEPS(String nombre) {
-		log.info("Registrando EPS: " + nombre);
-		EPS eps = ep.registrarEPS(nombre);
-		log.info("Registrando EPS: " + eps);
-		return eps;
-	}
+    public List<IPS> darListaIps() {
+        log.info("Consultando Ips");
+        List<IPS> lista = ep.darListaIps();
+        log.info("Consultando las ips: " + lista.size());
+        return lista;
+    }
 
-	public IPS registrarIPS(String nombre, String localizacion, int cantidad) {
-		log.info("Registrando IPS: " + nombre);
-		IPS ips = ep.registrarIPS(nombre, cantidad, localizacion);
-		log.info("Registrando IPS: " + ips);
-		return ips;
-	}
+    public List<Servicio> darListaServicios() {
+        log.info("Consultando servicios: ");
+        List<Servicio> lista = ep.darListaServicios();
+        log.info("Consultando los servicios: " + lista.size());
+        return lista;
+    }
 
-	public Servicio registrarServicio(int capacidad, List<Horario> horarios, String nombre) {
-		log.info("Registrando Servicio: " + nombre);
-		Servicio ser = ep.registrarServicio(nombre, capacidad);
-		log.info("Registrando Servicio: " + ser);
-		return ser;
-	}
+    public List<Medicamento> darListaMedicamentos() {
+        log.info("Consultando medicamentos: ");
+        List<Medicamento> lista = ep.darListaMedicamentos();
+        log.info("Consultando los medicamentos: " + lista.size());
+        return lista;
+    }
 
-	public void registrarOrden(String desc, Timestamp horario, String servicio, ArrayList<String> meds) {
-		// TODO Auto-generated method stub
-		
-	}
+    public List<Paciente> darListaPacientes() {
+        log.info("Consultando pacientes");
+        List<Paciente> lista = ep.darListaPacientes();
+        log.info("Consultando los pacientes: " + lista.size());
+        return lista;
+    }
 
-	public void registrarConsulta(String servicio, Timestamp horario) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Usuario registrarUsuario(String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
+        log.info("Registrando usuario: " + numDoc);
+        Usuario us = ep.registrarUsuario(rol, nombre, fechaNacimiento, tipoDocumento, numDoc, correo);
+        log.info("Registrando usuario: " + us);
+        return us;
+    }
 
-	public void consultarHorarios() {
-		// TODO Auto-generated method stub
-		
-	}
+    public Paciente registrarPaciente(long numDocumento, long idEps, String estado) {
+        log.info("Registrando paciente: " + numDocumento);
+        Paciente pa = ep.registrarPaciente(numDocumento, idEps, estado);
+        log.info("Registrando paciente: " + pa);
+        return pa;
+    }
 
-	public void reservarConsulta(Timestamp horario) {
-		// TODO Auto-generated method stub
-		
-	}
+    public Medico registrarMedico(long numDoc, long numRegistro, String tipo) {
+        log.info("Registrando medico: " + numRegistro);
+        Medico me = ep.registrarMedico(numDoc, numRegistro, tipo);
+        log.info("Registrando medico: " + me);
+        return me;
+    }
+
+
+    public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
+        log.info("Registrando IPS: " + nombre);
+        IPS ips = ep.registrarIPS(nombre, idEps, capacidad, localizacion);
+        log.info("Registrando IPS: " + ips);
+        return ips;
+    }
+
+
+    public Servicio registrarServicio(int capacidad, String nombre) {
+        log.info("Registrando Servicio: " + nombre);
+        Servicio ser = ep.registrarServicio(nombre, capacidad);
+        log.info("Registrando Servicio: " + ser);
+        return ser;
+    }
+
+
+    public Orden registrarOrden(String desc) {
+        log.info("Registrando Orden con la descripcion: " + desc);
+        Orden orden = ep.registrarOrden(desc);
+        log.info("Registrando orden: " + orden);
+        return orden;
+    }
+
+
+    public void registrarConsulta() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void consultarHorarios() {
+        // TODO Auto-generated method stub
+
+    }
+
+    public void reservarConsulta(Timestamp horario) {
+        // TODO Auto-generated method stub
+
+    }
+
+
 }

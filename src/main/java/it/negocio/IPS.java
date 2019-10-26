@@ -1,80 +1,73 @@
 package it.negocio;
 
 public class IPS implements VOIPS {
-	private long id;
-	private String localizacion;
-	private int capacidad;
-	
-	/**
-	 * @param id
-	 * @param localizacion
-	 * @param capacidad
-	 */
-	public IPS() {
-		this.id = 0;
-		this.localizacion = "";
-		this.capacidad = 0;
-	}
-	
-	/**
-	 * @param id
-	 * @param localizacion
-	 * @param capacidad
-	 */
-	public IPS(long id, String localizacion, int capacidad) {
-		this.id = id;
-		this.localizacion = localizacion;
-		this.capacidad = capacidad;
-	}
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+    public long id;
+    public String nombre;
+    public long id_Eps;
+    public int capacidad;
+    public String localizacion;
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    public IPS(){
+        this.id = 0;
+        this.nombre = "";
+        this.id_Eps = 0;
+        this.capacidad = 0;
+        this.localizacion = "";
+    }
 
-	/**
-	 * @return the localizacion
-	 */
-	public String getLocalizacion() {
-		return localizacion;
-	}
+    public IPS(long id, String nombre, long id_Eps, int capacidad, String localizacion){
+        this.id = id;
+        this.nombre = nombre;
+        this.id_Eps = id_Eps;
+        this.capacidad = capacidad;
+        this.localizacion = localizacion;
+    }
 
-	/**
-	 * @param localizacion the localizacion to set
-	 */
-	public void setLocalizacion(String localizacion) {
-		this.localizacion = localizacion;
-	}
 
-	/**
-	 * @return the capacidad
-	 */
-	public int getCapacidad() {
-		return capacidad;
-	}
 
-	/**
-	 * @param capacidad the capacidad to set
-	 */
-	public void setCapacidad(int capacidad) {
-		this.capacidad = capacidad;
-	}
+    public long getId() {
+        return this.id;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "IPS [id=" + id + ", localizacion=" + localizacion + ", capacidad=" + capacidad + "]";
-	}
-	
+    public String getNombre() {
+        return this.nombre;
+    }
+
+    public long getId_Eps() {
+        return this.id_Eps;
+    }
+
+    public int getCapacidad() {
+        return this.capacidad;
+    }
+
+    public String getLocalizacion() {
+        return this.localizacion;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setId_Eps(long id_Eps) {
+        this.id_Eps = id_Eps;
+    }
+
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    public void setLocalizacion(String localizacion) {
+        this.localizacion = localizacion;
+    }
+
+    @Override
+    public String toString(){
+        return "IPS[ " + "ID: " + id + ", NOMBRE: " + nombre + ", ID_EPS: " + id_Eps + ", CAPACIDAD: " + capacidad + ", LOCALIZACION: " + localizacion + " ]";
+    }
 }

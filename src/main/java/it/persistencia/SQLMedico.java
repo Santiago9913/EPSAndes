@@ -5,42 +5,43 @@ import javax.jdo.Query;
 
 public class SQLMedico {
 
-	/* ****************************************************************
-	 * 			Constantes
-	 *****************************************************************/
-	/**
-	 * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
-	 * Se renombra acá para facilitar la escritura de las sentencias
-	 */
-	private final static String SQL = PersistenciaEPSAndes.SQL;
+    /* ****************************************************************
+     * 			Constantes
+     *****************************************************************/
+    /**
+     * Cadena que representa el tipo de consulta que se va a realizar en las sentencias de acceso a la base de datos
+     * Se renombra acï¿½ para facilitar la escritura de las sentencias
+     */
+    private final static String SQL = PersistenciaEPSAndes.SQL;
 
-	/* ****************************************************************
-	 * 			Atributos
-	 *****************************************************************/
-	/**
-	 * El manejador de persistencia general de la aplicación
-	 */
-	private PersistenciaEPSAndes pe;
-
-
-	/* ****************************************************************
-	 * 			Métodos
-	 *****************************************************************/
-
-	/**
-	 * Constructor
-	 * @param pp - El Manejador de persistencia de la aplicación
-	 */
-	public SQLMedico (PersistenciaEPSAndes pe)
-	{
-		this.pe = pe;
-	}
+    /* ****************************************************************
+     * 			Atributos
+     *****************************************************************/
+    /**
+     * El manejador de persistencia general de la aplicaciï¿½n
+     */
+    private PersistenciaEPSAndes pe;
 
 
-	public long adicionarOrden(PersistenceManager pm, long id, long idUrgencia) {
-		Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaConsulta() + "(id, id_urgencia) VALUES(?, ?) ");
-		q.setParameters(id, idUrgencia);
-		return (long) q.executeUnique();
-	}
+    /* ****************************************************************
+     * 			Mï¿½todos
+     *****************************************************************/
+
+    /**
+     * Constructor
+     *
+     * @param pe - El Manejador de persistencia de la aplicaciï¿½n
+     */
+    public SQLMedico(PersistenciaEPSAndes pe) {
+        this.pe = pe;
+    }
+
+
+    public long adicionarOrden(PersistenceManager pm, long id, String desc) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaOrden() + "(id, descripcion) VALUES(?,?)");
+        q.setParameters(id, desc);
+        return (long) q.executeUnique();
+    }
+
 
 }

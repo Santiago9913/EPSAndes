@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+             version="1.0">
 
     <!-- EPSAndes "unit" -->
     <persistence-unit name="EPSAndes">
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
+            <property name="javax.jdo.option.ConnectionURL"
+                      value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
-            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304C071920"/>
-            <property name="javax.jdo.option.ConnectionPassword" value="Sistrans20192"/>
+            <property name="javax.jdo.option.ConnectionUserName" value="ISIS2304C041920"/>
+            <property name="javax.jdo.option.ConnectionPassword" value="Sistrans201920"/>
             <property name="javax.jdo.option.Mapping" value="oracle"/>
 
             <property name="datanucleus.schema.autoCreateAll" value="false"/>
@@ -24,7 +26,8 @@
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:NN"/>
+            <property name="javax.jdo.option.ConnectionURL"
+                      value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:NN"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="Unknown"/>
             <property name="javax.jdo.option.ConnectionPassword" value="NN"/>
@@ -40,7 +43,8 @@
         <exclude-unlisted-classes/>
         <properties>
             <!-- ENABLE THESE FOR Oracle -->
-            <property name="javax.jdo.option.ConnectionURL" value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
+            <property name="javax.jdo.option.ConnectionURL"
+                      value="jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod"/>
             <property name="javax.jdo.option.ConnectionDriverName" value="oracle.jdbc.driver.OracleDriver"/>
             <property name="javax.jdo.option.ConnectionUserName" value="NN"/>
             <property name="javax.jdo.option.ConnectionPassword" value="NN"/>

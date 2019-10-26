@@ -1361,3 +1361,243 @@ ORA-00001: restricción única (ISIS2304C041920.USUARIO_PK) violada
 18:14:44,828 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=141, Nombre=HOSPITAL, localizacion=BOGOTA, capacidad=10]
 18:15:16,996 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 18:15:17,015 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:44:08,490 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:44:20,802 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:44:21,086 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:44:21,086 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:44:21,118 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:44:21,118 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:44:21,161 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:44:21,161 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:44:21,188 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:44:21,188 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:44:21,227 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:44:35,918 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:44:35,942 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:47:16,531 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:47:22,251 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:47:22,547 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:47:22,547 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:47:22,580 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:47:22,580 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:47:22,609 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:47:22,609 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:47:22,635 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:47:22,635 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:47:22,661 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:47:32,330 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:47:32,354 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:48:54,236 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:48:59,168 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:48:59,458 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:48:59,458 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:48:59,482 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:48:59,483 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:48:59,507 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:48:59,507 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:48:59,532 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:48:59,532 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:48:59,557 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:49:06,263 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:49:06,285 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:50:09,004 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:50:42,478 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:52:25,828 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:52:29,147 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:52:29,317 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:52:29,317 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:52:29,347 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:52:29,347 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:52:29,368 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:52:29,368 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:52:29,390 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:52:29,390 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:52:29,415 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:52:36,738 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:52:36,763 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:52:47,547 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:52:47,568 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:54:09,161 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:54:14,326 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:54:14,517 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:54:14,517 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:54:14,541 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:54:14,541 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:54:14,567 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:54:14,567 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:54:14,596 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:54:14,596 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:54:14,621 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:54:27,908 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:54:27,939 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:54:40,567 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:54:44,203 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:54:44,394 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:54:44,394 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:54:44,422 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:54:44,422 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:54:44,447 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:54:44,447 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:54:44,476 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:54:44,476 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:54:44,511 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:54:49,953 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:54:49,980 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:55:01,388 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:55:01,413 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:56:01,331 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:56:04,885 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:56:05,063 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:56:05,063 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:56:05,089 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:56:05,090 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:56:05,116 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:56:05,116 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:56:05,145 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:56:05,145 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:56:05,179 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:56:09,695 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:56:09,717 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:56:15,979 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:56:16,002 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:56:18,583 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:56:18,610 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:56:23,863 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: CENTRO
+10:56:24,028 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO IPS(ID, NOMBRE,  ID_EPS, CAPACIDAD, LOCALIZACION) VALUES(?,?,?,?,?)".
+ORA-00001: restricción única (ISIS2304C041920.SYS_C00656974) violada
+
+10:56:24,043 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: null
+10:56:24,043 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:56:24,067 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:57:21,781 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+10:57:26,466 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:57:26,744 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:57:26,744 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+10:57:26,771 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+10:57:26,771 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+10:57:26,799 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+10:57:26,799 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+10:57:26,825 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+10:57:26,825 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+10:57:26,853 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+10:57:43,474 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:57:43,499 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:57:47,974 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:57:47,997 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:57:50,485 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+10:57:50,508 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+10:58:17,362 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: CENTRO
+11:00:47,767 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO IPS(ID, NOMBRE,  ID_EPS, CAPACIDAD, LOCALIZACION) VALUES(?,?,?,?,?)".
+ORA-00001: restricción única (ISIS2304C041920.SYS_C00656974) violada
+
+11:00:47,787 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: null
+11:00:47,788 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:00:47,809 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:02:13,451 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:02:16,897 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:17,071 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:02:17,071 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:02:17,105 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:02:17,106 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:02:17,138 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:02:17,139 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:02:17,169 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:02:17,169 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:02:17,194 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:02:23,856 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:23,879 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:02:28,976 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: SANITAS
+11:02:29,142 (main) INFO  [it.negocio.EPSAndes] - Registrando EPS: EPS [id=181, nombre=SANITAS]
+11:02:29,142 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:29,165 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:02:38,995 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:39,021 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:02:42,528 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:42,549 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:02:49,016 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: HOSPITAL
+11:02:49,065 (main) INFO  [it.negocio.EPSAndes] - Registrando IPS: IPS [id=182, Nombre=HOSPITAL, localizacion=BPGPTA, capacidad=100]
+11:02:49,065 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:02:49,086 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:03:27,562 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:03:27,593 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:06:36,396 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:06:40,933 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:06:41,227 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:06:41,227 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:06:41,253 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:06:41,253 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:06:41,279 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:06:41,279 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:06:41,305 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:06:41,305 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:06:41,332 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:06:48,147 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:06:48,168 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:07:15,334 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips´s
+11:07:15,356 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+11:15:24,919 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:15:29,517 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:15:29,790 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:15:29,790 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+11:15:29,819 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+11:15:29,819 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:15:29,839 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:15:29,839 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:15:29,867 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+11:15:29,867 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+11:15:29,891 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+11:15:43,454 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:15:43,481 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:16:12,996 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+11:16:13,018 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+11:16:47,752 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:16:52,440 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:16:52,748 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:17:12,216 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+11:17:12,265 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+11:19:03,516 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:19:03,546 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:19:03,546 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:19:09,349 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:19:13,905 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:19:14,181 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:19:18,750 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+11:19:18,811 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+11:19:51,508 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+11:19:51,532 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+11:19:51,532 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+11:30:02,965 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+11:30:07,653 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+11:30:07,923 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+11:30:40,149 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+11:32:07,225 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+12:33:47,607 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+12:33:47,653 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+12:33:47,653 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+12:33:58,183 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+12:34:03,349 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:34:03,639 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+12:34:15,758 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+12:34:15,812 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+12:34:50,442 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+12:34:50,468 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+12:34:50,468 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+12:35:18,293 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+12:35:23,786 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:35:24,151 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+12:35:31,617 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+12:35:31,684 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 0
+12:36:47,502 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+12:36:47,530 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+12:36:47,530 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+12:37:52,199 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+12:37:57,060 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+12:37:57,376 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 1 eps�s agregadas
+12:38:01,440 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+12:38:01,517 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 1
+12:38:10,130 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+12:38:10,155 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+12:38:10,155 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+12:38:10,176 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+12:38:10,177 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+12:38:10,197 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0

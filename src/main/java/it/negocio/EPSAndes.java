@@ -59,9 +59,9 @@ public class EPSAndes {
     }
 
     public List<IPS> darListaIps() {
-        log.info("Consultando Ips´s");
+        log.info("Consultando Ips");
         List<IPS> lista = ep.darListaIps();
-        log.info("Consultando las eps�s: " + lista.size() + " eps�s agregadas");
+        log.info("Consultando las ips: " + lista.size());
         return lista;
     }
 
@@ -98,6 +98,13 @@ public class EPSAndes {
         Paciente pa = ep.registrarPaciente(numDocumento, idEps, estado);
         log.info("Registrando paciente: " + pa);
         return pa;
+    }
+
+    public Medico registrarMedico(long numDoc, long numRegistro, String tipo) {
+        log.info("Registrando medico: " + numRegistro);
+        Medico me = ep.registrarMedico(numDoc, numRegistro, tipo);
+        log.info("Registrando medico: " + me);
+        return me;
     }
 
 

@@ -5,9 +5,9 @@ public interface VOIPS {
 
     public String getNombre();
 
-    public String getLocalizacion();
+    public long getId_Eps();
 
     public int getCapacidad();
 
-    public String toString();
+    public String getLocalizacion();
 }

@@ -183,14 +183,19 @@ public class Controller {
                             especialidadMedico = especialidadMedico.concat(sc.nextLine());
 
                             view.printMessage("Seleccione la(s) Ips a la que sera inscrito: ");
-                            view.printIpsLista(listaIPS);
+                            view.printIpsLista(darListaIps());
                             view.printMessage("Cantidad de Ips a las que sera agregado: ");
                             int cantidadMedicoIps = sc.nextInt();
                             long[] ipsMedicoId = new long[cantidadMedicoIps];
                             int contadorIpsMedicoId = 0;
                             String ipsMedico = "";
-                            view.printMessage("Ingrese los nombres de la(s) Ips:  ");
+                            for (IPS ips : listaIPS) {
+                                int i = 1;
+                                view.printMessage(i + ". " + ips.getNombre());
+                                i++;
+                            }
                             while (contadorIpsMedicoId < ipsMedicoId.length) {
+                                view.printMessage("Ingrese el nombre: ");
                                 ipsMedico = sc.next();
                                 ipsMedico = ipsMedico.concat(sc.nextLine());
                                 ipsMedicoId[contadorIpsMedicoId] = getidIps(ipsMedico);
@@ -198,7 +203,7 @@ public class Controller {
                             }
 
                             agregarUsuario(ME, nombreMedico.toUpperCase(), fechaMedico, tipoDocMedico.toUpperCase(), numDocumentoMedico, correoMedico.toUpperCase());
-                            agregarMedico(numregistroMedico, especialidadMedico);
+                            agregarMedico(numDocumentoMedico, numregistroMedico, especialidadMedico.toUpperCase());
                             for (long lo : ipsMedicoId) {
                                 agregarMedicoAIps(numregistroMedico, lo);
                             }
@@ -233,10 +238,10 @@ public class Controller {
                         nombreIps = nombreIps.concat(sc.nextLine());
 
                         view.printMessage("Ingrese a la Eps que presta servicio: ");
-                        view.printEpsList(listaEPS);
+                        view.printEpsList(darListaEps());
                         String prestaEps = sc.next();
                         prestaEps = prestaEps.concat(sc.nextLine());
-                        long prestaEpsId = getidEps(prestaEps);
+                        long prestaEpsId = getidEps(prestaEps.toUpperCase());
 
                         view.printMessage("Ingrese la capacidad de la Ips: ");
                         int capacidadIps = sc.nextInt();
@@ -447,10 +452,10 @@ public class Controller {
     }
 
     public List<IPS> darListaIps() {
-        try {
+        try{
             List<IPS> lista = epsAndes.darListaIps();
             return lista;
-        } catch (Exception e) {
+        }catch (Exception e) {
             view.printMessage("Las restricciones fueron violadas");
             view.printErrMessage(e);
         }
@@ -516,7 +521,7 @@ public class Controller {
         try {
             if (numDocumento > 0 && idEps > 0 && estado != null) {
                 VOPaciente pa = epsAndes.registrarPaciente(numDocumento, idEps, estado);
-                if/(pa == null) {
+                if (pa == null) {
                     throw new Exception("no se pudo crear paciente");
                 }
                 String resultado = "En registrar paciente \n\n";
@@ -531,10 +536,21 @@ public class Controller {
         }
     }
 
-    private void agregarMedico(long numRegistro, String tipo) {
+    private void agregarMedico(long numDoc, long numRegistro, String tipo) {
         try {
-            if (numRegistro > 0 && tipo != null) {
-                VOMedico me =
+            if (numRegistro > 0 && tipo != null && numDoc > 0) {
+                VOMedico me = epsAndes.registrarMedico(numDoc, numRegistro, tipo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    private void agregarMedicoAIps(long numDoc, long idIps) {
+        try {
+            if (numDoc > 0 && idIps > 0) {
+
             }
         } catch (Exception e) {
             e.printStackTrace();

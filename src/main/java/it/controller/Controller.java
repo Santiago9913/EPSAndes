@@ -1,8 +1,10 @@
 package it.controller;
 
 import java.io.FileReader;
+import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,7 +24,6 @@ import it.view.View;
 
 public class Controller {
 
-    public String hola;
 
     private static Logger log = Logger.getLogger(Controller.class.getName());
 
@@ -220,6 +221,8 @@ public class Controller {
 
                             break;
                         }
+
+
                         //Agregar una EPS
                     case 2:
                         view.printMessage("Ingrese el nombre de la EPS que desea agregar");
@@ -291,9 +294,35 @@ public class Controller {
                         break;
                     //Agregar camapaña
                     case 5:
-                        break;
+                        System.out.println("Ingrese la cantidad de personas a inscribir");
+                        int c_personas = sc.nextInt();
+                        view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
+                        String input = sc.next();
+                        String[] periodos = input.split("/");
+                        String[] periodo1 = periodos[0].split("-");
+                        String[] periodo2 = periodos[1].split("-");
+                        int m1 = Integer.parseInt(periodo1[1]);
+                        int d1 = Integer.parseInt(periodo1[2]);
+                        Date f_inicio = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
+                        int m2 = Integer.parseInt(periodo2[1]);
+                        int d2 = Integer.parseInt(periodo2[2]);
+                        Date f_fin = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
+                        while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
+                            view.printMessage("La primera fecha debe ser menor que la segunda fecha");
+                            view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
+                            input = sc.next();
+                            periodos = input.split("/");
+                            periodo1 = periodos[0].split("-");
+                            periodo2 = periodos[1].split("-");
+                            m1 = Integer.parseInt(periodo1[1]);
+                            d1 = Integer.parseInt(periodo1[2]);
+                            Date fecha1 = Date.valueOf(LocalDate.of(2019, m1, d1));
+                            m2 = Integer.parseInt(periodo2[1]);
+                            d2 = Integer.parseInt(periodo2[2]);
+                            Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
+                        }
 
-                     // Cancelar servicio de la camppaña
+                        // Cancelar servicio de la camppaña
                     case 6:
                         break;
                     // Deshabilitar servicio
@@ -325,15 +354,15 @@ public class Controller {
                     case 13:
                         break;
 
-                     //RFC 6
+                    //RFC 6
                     case 14:
                         break;
 
-                     // RFC 7
+                    // RFC 7
                     case 15:
                         break;
 
-                     // RFC 8
+                    // RFC 8
                     case 16:
                         break;
 
@@ -467,10 +496,10 @@ public class Controller {
     }
 
     public List<IPS> darListaIps() {
-        try{
+        try {
             List<IPS> lista = epsAndes.darListaIps();
             return lista;
-        }catch (Exception e) {
+        } catch (Exception e) {
             view.printMessage("Las restricciones fueron violadas");
             view.printErrMessage(e);
         }

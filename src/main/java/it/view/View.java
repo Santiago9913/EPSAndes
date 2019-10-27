@@ -23,13 +23,13 @@ public class View {
         System.out.println();
         System.out.println("---------------FUNCIONES DE CONSULTA---------------");
         System.out.println("9. Mostrar la cantidad de servicios prestados por cada ips durante un \n"
-                + "periodo de tiempo y en el a�o corrido");
+                + "periodo de tiempo y en el año corrido");
         System.out.println("10. Mostrar los 20 servicios mas solicitados");
         System.out.println("11. Mostrar el indice de uso de cada uno de los servicios provistos");
         System.out.println("12. Mostrar los servicios que cumplen con cierta caracteristica");
         System.out.println("13. Mostrar la utilizacion de servicios de EPSAndes por un afiliado dado, \n"
                 + "en un rango de fechas indicado");
-        System.out.println("14. Analizar la operación de EPSAndes");
+        System.out.println("14. Analizar la operación de EP SAndes");
         System.out.println("15. Encontrar los afiliados exigentes");
         System.out.println("16. Encontrar los servicios que no tienen mucha demanda");
         System.out.println("0. Cerrar Conexion");

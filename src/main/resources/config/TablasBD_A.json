@@ -17,6 +17,9 @@
     "PACIENTE",
     "URGENCIA",
     "CONSULTA",
+    "MEDICOS_PACIENTES",
+    "CAMPAÑA",
+    "ORDENES_SERVICIOS",
     "MEDICOS_PACIENTES"
   ]
 }

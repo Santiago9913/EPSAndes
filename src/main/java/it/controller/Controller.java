@@ -289,38 +289,54 @@ public class Controller {
 
 
                         break;
-
-
+                    //Agregar camapaña
                     case 5:
-                        view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
-                        String input = sc.next();
-                        String[] periodos = input.split("/");
-                        String[] periodo1 = periodos[0].split("-");
-                        String[] periodo2 = periodos[1].split("-");
-                        int m1 = Integer.parseInt(periodo1[1]);
-                        int d1 = Integer.parseInt(periodo1[2]);
-                        Timestamp fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0));
-                        int m2 = Integer.parseInt(periodo2[1]);
-                        int d2 = Integer.parseInt(periodo2[2]);
-                        Timestamp fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
-                        while (fecha1.compareTo(fecha2) > 0 || fecha1.compareTo(fecha2) == 0) {
-                            view.printMessage("La primera fecha debe ser menor que la segunda fecha");
-                            view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
-                            input = sc.next();
-                            periodos = input.split("/");
-                            periodo1 = periodos[0].split("-");
-                            periodo2 = periodos[1].split("-");
-                            m1 = Integer.parseInt(periodo1[1]);
-                            d1 = Integer.parseInt(periodo1[2]);
-                            fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0));
-                            m2 = Integer.parseInt(periodo2[1]);
-                            d2 = Integer.parseInt(periodo2[2]);
-                            fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
-                        }
                         break;
+
+                     // Cancelar servicio de la camppaña
                     case 6:
+                        break;
+                    // Deshabilitar servicio
+                    case 7:
+                        break;
+
+                    // Registrar reapertura
+                    case 8:
+                        break;
+
+                    // RFC 1
+                    case 9:
 
                         break;
+
+                    //RFC 2
+                    case 10:
+
+                        break;
+                    // RFC 3
+                    case 11:
+                        break;
+
+                    // RFC 4
+                    case 12:
+                        break;
+
+                    // RFC 5
+                    case 13:
+                        break;
+
+                     //RFC 6
+                    case 14:
+                        break;
+
+                     // RFC 7
+                    case 15:
+                        break;
+
+                     // RFC 8
+                    case 16:
+                        break;
+
                     //Cierra la conexion
                     case 0:
                         fin = true;

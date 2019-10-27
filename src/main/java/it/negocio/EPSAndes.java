@@ -1,5 +1,6 @@
 package it.negocio;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -131,6 +132,12 @@ public class EPSAndes {
         return orden;
     }
 
+    public Campaña registrarCampaña(int participantes, Date f_inicio, Date f_fin) {
+        log.info("Adicionando campaña");
+        Campaña campaña = ep.registrarCampanha();
+        log.info("Saliendo de adicionar campaña");
+        return campaña;
+    }
 
     public void registrarConsulta() {
         // TODO Auto-generated method stub

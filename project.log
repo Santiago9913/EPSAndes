@@ -1637,3 +1637,4 @@ ORA-00001: restricción única (ISIS2304C041920.SYS_C00656974) violada
 14:17:56,688 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: Tipo Usuario = MEDICO [ Nombre: NICOLAS, ID: 8945, Tipo Doc: CEDULA, Correo: N@HOTMIAL.COM ]
 14:18:01,529 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: 464464
 14:18:01,586 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: Tipo Usuario =  [ Nombre: , ID: 8945, Tipo Doc: , Correo: Numero Registro: 464464, Tipo Medico: PE ]
+16:44:14,353 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s

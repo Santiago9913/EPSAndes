@@ -452,7 +452,30 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
+    public Medico registrarMedico(long numDoc, long numRegistro, String tipo) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+            long medicoInsertado = sqlAdministrador.adicionarMedico(pm, numDoc, numRegistro, tipo);
+            tx.commit();
+
+            log.trace("Insercion de medico: " + numRegistro + ": " + medicoInsertado + " Medico insertado");
+            return new Medico(numDoc, numRegistro, tipo);
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public IPS registrarIPS( String nombre, long idEps, int capacidad, String localizacion) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -462,7 +485,7 @@ public class PersistenciaEPSAndes {
             tx.commit();
 
             log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new IPS(idIPS, nombre, localizacion, capacidad);
+            return new IPS(idIPS, nombre, idEps, capacidad, localizacion);
 
         } catch (Exception e) {
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));

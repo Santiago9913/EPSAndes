@@ -1,5 +1,6 @@
 package it.negocio;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -59,9 +60,9 @@ public class EPSAndes {
     }
 
     public List<IPS> darListaIps() {
-        log.info("Consultando Ips´s");
+        log.info("Consultando Ips");
         List<IPS> lista = ep.darListaIps();
-        log.info("Consultando las eps�s: " + lista.size() + " eps�s agregadas");
+        log.info("Consultando las ips: " + lista.size());
         return lista;
     }
 
@@ -100,6 +101,13 @@ public class EPSAndes {
         return pa;
     }
 
+    public Medico registrarMedico(long numDoc, long numRegistro, String tipo) {
+        log.info("Registrando medico: " + numRegistro);
+        Medico me = ep.registrarMedico(numDoc, numRegistro, tipo);
+        log.info("Registrando medico: " + me);
+        return me;
+    }
+
 
     public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         log.info("Registrando IPS: " + nombre);
@@ -124,6 +132,12 @@ public class EPSAndes {
         return orden;
     }
 
+    public Campaña registrarCampaña(int participantes, Date f_inicio, Date f_fin) {
+        log.info("Adicionando campaña");
+        Campaña campaña = ep.registrarCampanha();
+        log.info("Saliendo de adicionar campaña");
+        return campaña;
+    }
 
     public void registrarConsulta() {
         // TODO Auto-generated method stub

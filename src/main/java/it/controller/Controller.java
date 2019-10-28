@@ -1,8 +1,10 @@
 package it.controller;
 
 import java.io.FileReader;
+import java.sql.Date;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,6 +23,7 @@ import com.google.gson.stream.JsonReader;
 import it.view.View;
 
 public class Controller {
+
 
     private static Logger log = Logger.getLogger(Controller.class.getName());
 
@@ -183,14 +186,15 @@ public class Controller {
                             especialidadMedico = especialidadMedico.concat(sc.nextLine());
 
                             view.printMessage("Seleccione la(s) Ips a la que sera inscrito: ");
-                            view.printIpsLista(listaIPS);
+                            view.printIpsLista(darListaIps());
                             view.printMessage("Cantidad de Ips a las que sera agregado: ");
                             int cantidadMedicoIps = sc.nextInt();
                             long[] ipsMedicoId = new long[cantidadMedicoIps];
                             int contadorIpsMedicoId = 0;
                             String ipsMedico = "";
-                            view.printMessage("Ingrese los nombres de la(s) Ips:  ");
+
                             while (contadorIpsMedicoId < ipsMedicoId.length) {
+                                view.printMessage("Ingrese el nombre: ");
                                 ipsMedico = sc.next();
                                 ipsMedico = ipsMedico.concat(sc.nextLine());
                                 ipsMedicoId[contadorIpsMedicoId] = getidIps(ipsMedico);
@@ -198,14 +202,13 @@ public class Controller {
                             }
 
                             agregarUsuario(ME, nombreMedico.toUpperCase(), fechaMedico, tipoDocMedico.toUpperCase(), numDocumentoMedico, correoMedico.toUpperCase());
-                            agregarMedico(numregistroMedico, especialidadMedico);
+                            agregarMedico(numDocumentoMedico, numregistroMedico, especialidadMedico.toUpperCase());
                             for (long lo : ipsMedicoId) {
                                 agregarMedicoAIps(numregistroMedico, lo);
                             }
 
 
                             break;
-
 
                         } else if (rolUsuario.toLowerCase().endsWith("c")) {
                             break;
@@ -218,6 +221,8 @@ public class Controller {
 
                             break;
                         }
+
+
                         //Agregar una EPS
                     case 2:
                         view.printMessage("Ingrese el nombre de la EPS que desea agregar");
@@ -233,10 +238,10 @@ public class Controller {
                         nombreIps = nombreIps.concat(sc.nextLine());
 
                         view.printMessage("Ingrese a la Eps que presta servicio: ");
-                        view.printEpsList(listaEPS);
+                        view.printEpsList(darListaEps());
                         String prestaEps = sc.next();
                         prestaEps = prestaEps.concat(sc.nextLine());
-                        long prestaEpsId = getidEps(prestaEps);
+                        long prestaEpsId = getidEps(prestaEps.toUpperCase());
 
                         view.printMessage("Ingrese la capacidad de la Ips: ");
                         int capacidadIps = sc.nextInt();
@@ -287,9 +292,10 @@ public class Controller {
 
 
                         break;
-
-
+                    //Agregar camapaña
                     case 5:
+                        System.out.println("Ingrese la cantidad de personas a inscribir");
+                        int c_personas = sc.nextInt();
                         view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
                         String input = sc.next();
                         String[] periodos = input.split("/");
@@ -297,11 +303,11 @@ public class Controller {
                         String[] periodo2 = periodos[1].split("-");
                         int m1 = Integer.parseInt(periodo1[1]);
                         int d1 = Integer.parseInt(periodo1[2]);
-                        Timestamp fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0));
+                        Date f_inicio = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
                         int m2 = Integer.parseInt(periodo2[1]);
                         int d2 = Integer.parseInt(periodo2[2]);
-                        Timestamp fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
-                        while (fecha1.compareTo(fecha2) > 0 || fecha1.compareTo(fecha2) == 0) {
+                        Date f_fin = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
+                        while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
                             view.printMessage("La primera fecha debe ser menor que la segunda fecha");
                             view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
                             input = sc.next();
@@ -310,15 +316,58 @@ public class Controller {
                             periodo2 = periodos[1].split("-");
                             m1 = Integer.parseInt(periodo1[1]);
                             d1 = Integer.parseInt(periodo1[2]);
-                            fecha1 = Timestamp.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0));
+                            Date fecha1 = Date.valueOf(LocalDate.of(2019, m1, d1));
                             m2 = Integer.parseInt(periodo2[1]);
                             d2 = Integer.parseInt(periodo2[2]);
-                            fecha2 = Timestamp.valueOf(LocalDateTime.of(2019, m2, d2, 0, 0));
+                            Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
                         }
+
+                        // Cancelar servicio de la camppaña
+                    case 6:
+                        break;
+                    // Deshabilitar servicio
+                    case 7:
+                        break;
+
+                    // Registrar reapertura
+                    case 8:
+                        break;
+
+                    // RFC 1
+                    case 9:
+
+                        break;
+
+                    //RFC 2
+                    case 10:
+
+                        break;
+                    // RFC 3
+                    case 11:
+                        break;
+
+                    // RFC 4
+                    case 12:
+                        break;
+
+                    // RFC 5
+                    case 13:
+                        break;
+
+                    //RFC 6
+                    case 14:
+                        break;
+
+                    // RFC 7
+                    case 15:
+                        break;
+
+                    // RFC 8
+                    case 16:
                         break;
 
                     //Cierra la conexion
-                    case 10:
+                    case 0:
                         fin = true;
                         epsAndes.cerrarUP();
                         sc.close();
@@ -516,7 +565,7 @@ public class Controller {
         try {
             if (numDocumento > 0 && idEps > 0 && estado != null) {
                 VOPaciente pa = epsAndes.registrarPaciente(numDocumento, idEps, estado);
-                if/(pa == null) {
+                if (pa == null) {
                     throw new Exception("no se pudo crear paciente");
                 }
                 String resultado = "En registrar paciente \n\n";
@@ -531,10 +580,21 @@ public class Controller {
         }
     }
 
-    private void agregarMedico(long numRegistro, String tipo) {
+    private void agregarMedico(long numDoc, long numRegistro, String tipo) {
         try {
-            if (numRegistro > 0 && tipo != null) {
-                VOMedico me =
+            if (numRegistro > 0 && tipo != null && numDoc > 0) {
+                VOMedico me = epsAndes.registrarMedico(numDoc, numRegistro, tipo);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    private void agregarMedicoAIps(long numDoc, long idIps) {
+        try {
+            if (numDoc > 0 && idIps > 0) {
+
             }
         } catch (Exception e) {
             e.printStackTrace();

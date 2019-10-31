@@ -27,23 +27,6 @@ public class EPSAndes {
         ep.cerrarUnidadPersistencia();
     }
 
-    // M�todos
-
-
-//    public Paciente registrarPaciente(long id, String nombre, String correo, Timestamp fNac, String estado, String tipoDoc) {
-//        log.info("Registrando paciente: " + nombre);
-//        Paciente pac = ep.registrarPaciente(id, nombre, correo, fNac, estado, tipoDoc);
-//        log.info("Registrando paciente: " + pac);
-//        return pac;
-//    }
-
-//    public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
-//        log.info("Registrando m�dico: " + nombre);
-//        Medico med = ep.registrarMedico(id, nombre, correo, especialidad);
-//        log.info("Registrando m�dico: " + med);
-//        return med;
-//    }
-
 
     public EPS registrarEPS(String nombre) {
         log.info("Registrando EPS: " + nombre);
@@ -108,6 +91,13 @@ public class EPSAndes {
         return me;
     }
 
+    public MedicoIps registrarMedicoAIps(long numDoc, long idIps) {
+        log.info("Registrando medico: " + numDoc + " a Ips: " + idIps);
+        MedicoIps mip = ep.registrarMedicoAIps(numDoc, idIps);
+        log.info("Registrando medico: " + numDoc + " en Ips: " + idIps);
+        return mip;
+    }
+
 
     public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         log.info("Registrando IPS: " + nombre);
@@ -132,11 +122,9 @@ public class EPSAndes {
         return orden;
     }
 
-    public Campaña registrarCampaña(int participantes, Date f_inicio, Date f_fin) {
+    public void registrarCampana(int participantes, Date f_inicio, Date f_fin) {
         log.info("Adicionando campaña");
-        Campaña campaña = ep.registrarCampanha();
         log.info("Saliendo de adicionar campaña");
-        return campaña;
     }
 
     public void registrarConsulta() {

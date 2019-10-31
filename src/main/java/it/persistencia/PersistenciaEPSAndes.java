@@ -302,6 +302,14 @@ public class PersistenciaEPSAndes {
         return tablas.get(15);
     }
 
+    public String getTablaCamapana() {
+        return tablas.get(16);
+    }
+
+    public String getTablaOrdenes_Servicios() {
+        return tablas.get(17);
+    }
+
 
     /**
      * Transacci�n para el generador de secuencia de Parranderos
@@ -475,7 +483,30 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public IPS registrarIPS( String nombre, long idEps, int capacidad, String localizacion) {
+    public MedicoIps registrarMedicoAIps(long numDoc, long idIps) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+
+        try {
+            tx.begin();
+            long medicoIpsInsertado = sqlAdministrador.adicionarMedicoAIps(pm, numDoc, idIps);
+            tx.commit();
+
+            log.trace("Insercion de medico: " + numDoc + ", en Ips: " + idIps);
+            return new MedicoIps(idIps, numDoc);
+        } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public IPS registrarIPS(String nombre, long idEps, int capacidad, String localizacion) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {

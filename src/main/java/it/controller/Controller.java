@@ -36,6 +36,7 @@ public class Controller {
     private static final String PA = "PACIENTE";
     private static final String ME = "MEDICO";
     private static final String RE = "RECEPCIONISTA";
+    private static final String OR = "ORGANIZADOR CAMPANA";
 
     /* ****************************************************************
      * 			Atributos
@@ -222,6 +223,34 @@ public class Controller {
                             break;
                         }
 
+                        //Si el usuario es Organizador Campaña
+                        else if (rolUsuario.toLowerCase().equals("e")) {
+                            view.printMessage("Ingrese el nombre y apellido: ");
+                            String nombreOrganizador = sc.next();
+                            nombreOrganizador = nombreOrganizador.concat(sc.nextLine());
+
+                            view.printMessage("Ingrese la fecha de nacimiento (yyyy-MM-dd): ");
+                            String fechaNacimientoOrganizador = sc.next();
+                            String[] splitFechaOrganizador = fechaNacimientoOrganizador.split("-");
+                            int year = Integer.parseInt(splitFechaOrganizador[0]);
+                            int mon = Integer.parseInt(splitFechaOrganizador[1]);
+                            int day = Integer.parseInt(splitFechaOrganizador[2]);
+                            Timestamp fechaOrganizador = Timestamp.valueOf(LocalDateTime.of(year, mon, day, 0, 0));
+
+                            view.printMessage("Ingrese el tipo de documento: ");
+                            String tipoDocOrganizador = sc.next();
+                            tipoDocOrganizador = tipoDocOrganizador.concat(sc.nextLine());
+
+                            view.printMessage("Ingrese el numero de documento: ");
+                            long numDocumentoOrganizador = sc.nextInt();
+
+                            view.printMessage("Ingrese el correo: ");
+                            String correoOrganizador = sc.next();
+
+                            agregarUsuario(OR, nombreOrganizador.toUpperCase(), fechaOrganizador, tipoDocOrganizador.toUpperCase(), numDocumentoOrganizador, correoOrganizador.toUpperCase());
+
+                            break;
+                        }
 
                         //Agregar una EPS
                     case 2:
@@ -294,6 +323,7 @@ public class Controller {
                         break;
                     //Agregar camapaña
                     case 5:
+                        view
                         System.out.println("Ingrese la cantidad de personas a inscribir");
                         int c_personas = sc.nextInt();
                         view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
@@ -594,6 +624,14 @@ public class Controller {
     private void agregarMedicoAIps(long numDoc, long idIps) {
         try {
             if (numDoc > 0 && idIps > 0) {
+                VOMedicoIps mip = epsAndes.registrarMedicoAIps(numDoc, idIps);
+                if (mip == null) {
+                    throw new Exception("No se pudo agregar el medico a la Ips");
+                }
+                String resultado = "En registrar Medico A Ips \n\n";
+                resultado += "Medico: " + numDoc + " Registrado en Ips: " + idIps;
+                resultado += "\n Operacion terminada";
+                view.printMessage(resultado);
 
             }
         } catch (Exception e) {

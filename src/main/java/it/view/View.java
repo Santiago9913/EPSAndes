@@ -80,7 +80,8 @@ public class View {
         System.out.println("a) PACIENTE" + "\n"
                 + "b) MEDICO" + "\n"
                 + "c) GERENTE" + "\n"
-                + "d) RECEPCIONISTA "
+                + "d) RECEPCIONISTA " + "\n"
+                + "e) ORGANIZADOR CAMPAÑA"
         );
     }
 

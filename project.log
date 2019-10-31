@@ -1638,3 +1638,162 @@ ORA-00001: restricciÃ³n Ãºnica (ISIS2304C041920.SYS_C00656974) violada
 14:18:01,529 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: 464464
 14:18:01,586 (main) INFO  [it.negocio.EPSAndes] - Registrando medico: Tipo Usuario =  [ Nombre: , ID: 8945, Tipo Doc: , Correo: Numero Registro: 464464, Tipo Medico: PE ]
 16:44:14,353 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+13:16:31,201 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+13:25:59,627 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+13:28:08,783 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:29:10,055 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:29:14,326 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:29:14,626 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:29:14,626 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:29:14,643 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:29:14,643 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:29:14,657 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:29:14,657 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:29:14,668 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:29:14,668 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:29:14,679 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:30:08,552 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:30:08,565 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:32:21,094 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:32:25,129 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:32:25,402 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:32:25,402 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:32:25,411 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:32:25,411 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:32:25,418 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:32:25,418 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:32:25,423 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:32:25,423 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:32:25,427 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:32:42,364 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:32:42,376 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:33:37,543 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:33:41,027 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:33:41,332 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:33:41,332 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:33:41,352 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:33:41,352 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:33:41,366 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:33:41,366 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:33:41,377 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:33:41,377 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:33:41,387 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:33:52,066 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:33:52,078 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:34:16,025 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1
+15:34:16,170 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
+
+15:34:16,182 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+15:34:16,183 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:34:16,195 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:36:13,341 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:36:42,238 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:36:43,046 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:36:43,046 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:36:43,082 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:36:43,082 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:36:43,108 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:36:43,109 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:36:43,124 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:36:43,124 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:36:43,144 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:36:52,822 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:36:52,837 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:38:07,511 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:38:11,486 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:38:11,782 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:38:11,782 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:38:11,802 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:38:11,802 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:38:11,815 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:38:11,815 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:38:11,824 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:38:11,825 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:38:11,835 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:38:23,353 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:38:23,365 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:39:37,087 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 1072674622
+15:39:37,226 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
+
+15:39:37,236 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+15:39:37,238 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:39:37,250 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:40:10,801 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:40:20,593 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:40:21,185 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:40:21,185 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:40:21,211 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:40:21,211 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:40:21,969 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:40:21,969 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:40:21,986 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:40:21,987 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:40:22,007 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:41:39,124 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:41:39,139 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:47:26,896 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 12
+15:47:26,988 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-00942: la tabla o vista no existe
+
+15:47:26,994 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+15:47:26,994 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:47:27,002 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:48:11,718 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:48:15,371 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:48:15,674 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:48:15,674 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:48:15,696 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:48:15,697 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:48:15,710 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:48:15,710 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:48:15,720 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:48:15,720 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:48:15,730 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:48:29,517 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:48:29,527 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:48:50,317 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 10
+15:48:50,458 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
+
+15:48:50,469 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+15:48:50,470 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:48:50,483 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:49:22,668 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:49:26,612 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:49:26,831 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:49:26,831 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:49:26,841 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:49:26,841 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:49:26,847 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:49:26,847 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:49:26,852 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:49:26,852 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:49:26,858 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:49:38,089 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:49:38,096 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:50:07,322 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 3535
+15:50:34,474 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTO USUARIO(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) VALUES(?,?,?,?,?,?,?,?,?)".
+ORA-02290: restricción de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
+
+15:50:34,483 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: null
+15:50:34,485 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:50:34,496 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:50:44,272 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+15:50:48,203 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:50:48,510 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:50:48,510 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+15:50:48,530 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+15:50:48,530 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+15:50:48,543 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+15:50:48,543 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+15:50:48,553 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+15:50:48,553 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+15:50:48,564 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+15:51:07,064 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:51:07,078 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+15:51:27,157 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: 435434
+15:51:27,283 (main) INFO  [it.negocio.EPSAndes] - Registrando usuario: Tipo Usuario = ORGANIZADOR CAMPANA [ Nombre: S, ID: 435434, Tipo Doc: CEDULA, Correo: D ]
+15:51:27,284 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+15:51:27,295 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas

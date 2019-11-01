@@ -301,7 +301,7 @@ public class Controller {
                         }
 
                         view.printMessage("Ingrese en que horario atiende este servicio: ");
-                        view.printHorarios();
+//                        view.printHorarios();
                         int idHorarioServicio = sc.nextInt();
 
                         view.printMessage("ingrese la capacidad del servicio");

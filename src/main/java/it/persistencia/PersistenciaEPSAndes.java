@@ -606,13 +606,13 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Campana registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
             long idCampana = nextval();
-            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, participantes, f_inicio, f_fin);
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, idOrg, participantes, f_inicio, f_fin);
             tx.commit();
 
             log.trace("Inserción de campaña: " + tuplasInsertadas);

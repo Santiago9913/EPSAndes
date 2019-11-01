@@ -122,9 +122,9 @@ public class EPSAndes {
         return orden;
     }
 
-    public Campaña registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
         log.info("Adicionando campaña");
-        Campaña campana = ep.registrarCampana(participantes, f_inicio, f_fin);
+        Campana campana = ep.registrarCampana(idOrg, participantes, f_inicio, f_fin);
         log.info("Saliendo de adicionar campaña");
         return campana;
     }

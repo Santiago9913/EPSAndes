@@ -191,7 +191,7 @@ public class PersistenciaEPSAndes {
         sqlPaciente = new SQLPaciente(this);
         sqlSecretaria = new SQLSecretaria(this);
         sqlUtil = new SQLUtil(this);
-
+        sqlCampana = new SQLCampana(this);
     }
 
     /**
@@ -606,17 +606,17 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Campaña registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
             long idCampana = nextval();
-            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, participantes, f_inicio, f_fin);
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, idOrg, participantes, f_inicio, f_fin);
             tx.commit();
 
             log.trace("Inserción de campaña: " + tuplasInsertadas);
-            return new Campaña(idCampana, participantes, f_inicio, f_fin);
+            return new Campana(idCampana, participantes, f_inicio, f_fin);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));

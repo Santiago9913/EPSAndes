@@ -58,6 +58,8 @@ public class Controller {
 
     private List<Paciente> listaPacientes;
 
+    private List<Horario> listaHorarios;
+
     public Controller() {
         view = new View();
         listaEPS = new ArrayList<>();
@@ -284,40 +286,29 @@ public class Controller {
 
                     //Agregar un servicio
                     case 4:
-                        view.printMessage("Ingresw el servicio que desea agregar");
+                        view.printMessage("Ingrese el servicio que desea agregar");
                         view.printServiciosMenu();
                         String respSer = sc.next();
-                        String servicio = "";
+                        String servicioNombre = "";
                         if (respSer.equalsIgnoreCase("a")) {
-                            servicio = "Procedimiento Medico";
+                            servicioNombre = "Procedimiento Medico".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("b")) {
-                            servicio = "Hospitalizacion";
+                            servicioNombre = "Hospitalizacion".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("c")) {
-                            servicio = "Examen Diagnostico";
+                            servicioNombre = "Examen Diagnostico".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("d")) {
-                            servicio = "Terapia";
+                            servicioNombre = "Terapia".toUpperCase();
                         }
 
-                        view.printMessage("Ingrese la capacidad del servicio");
+                        view.printMessage("Ingrese en que horario atiende este servicio: ");
+                        view.printHorarios();
+                        int idHorarioServicio = sc.nextInt();
+
+                        view.printMessage("ingrese la capacidad del servicio");
                         int capacidadServicio = sc.nextInt();
 
-
-                        VOServicio ser = agregarServicio(servicio.toUpperCase(), capacidadServicio);
-
-                        view.printMessage("ingrese a cuantas IPS presta servicio");
-                        int presta = sc.nextInt();
-                        int countSer = 0;
-                        view.printMessage("ingrese a cuales IPS presta el servicio");
-                        long[] ipsIds = new long[presta];
-
-                        while (countSer < presta) {
-                            String ipsServicio = sc.next();
-                            ipsServicio = ipsServicio.concat(sc.nextLine());
-                            if (containsIPS(ipsServicio)) {
-                                ipsIds[countSer] = getidIps(ipsServicio);
-                                countSer++;
-                            }
-                        }
+                        view.printMessage("Ingrese a cuantas Ips se agrega este servicio: ");
+                        int cantidadServiciosIps = sc.nextInt();
 
 
                         break;
@@ -785,8 +776,7 @@ public class Controller {
             resultado += "Campana adicionada exitosamente: " + c;
             resultado += "\n Operacion terminada";
             view.printMessage(resultado);
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);
         }

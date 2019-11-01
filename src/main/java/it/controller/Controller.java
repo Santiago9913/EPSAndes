@@ -323,7 +323,6 @@ public class Controller {
                         break;
                     //Agregar camapaña
                     case 5:
-                        view
                         System.out.println("Ingrese la cantidad de personas a inscribir");
                         int c_personas = sc.nextInt();
                         view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
@@ -775,6 +774,9 @@ public class Controller {
         return null;
     }
 
+    public void registrarCampana(int cant, Date inicio, Date fin) {
+        //TODO
+    }
 
     /**
      * @param

@@ -1912,3 +1912,74 @@ ORA-02290: restricci�n de control (ISIS2304C041920.CHK_TIPO_USUARIO) violada
 19:42:25,274 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
 19:42:25,280 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
 19:43:35,090 (main) INFO  [it.negocio.EPSAndes] - Adicionando campaña
+08:46:37,549 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: null
+
+08:46:37,554 (main) INFO  [it.negocio.EPSAndes] - Saliendo de adicionar campaña
+08:46:37,554 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:46:41,132 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+08:46:42,586 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:46:42,704 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:46:42,704 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+08:46:42,713 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+08:46:42,713 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+08:46:42,721 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+08:46:42,721 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+08:46:42,727 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+08:46:42,727 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+08:46:42,737 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+08:46:51,784 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:46:51,790 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:47:07,561 (main) INFO  [it.negocio.EPSAndes] - Adicionando campaña
+08:47:07,576 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: null
+
+08:47:07,579 (main) INFO  [it.negocio.EPSAndes] - Saliendo de adicionar campaña
+08:47:07,579 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:47:07,584 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:51:47,762 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+08:51:49,239 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:51:49,346 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:51:49,346 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+08:51:49,353 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+08:51:49,353 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+08:51:49,358 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+08:51:49,358 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+08:51:49,363 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+08:51:49,363 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+08:51:49,368 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+08:51:54,199 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:51:54,204 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:52:03,880 (main) INFO  [it.negocio.EPSAndes] - Adicionando campaña
+08:52:03,904 (main) ERROR [it.persistencia.PersistenciaEPSAndes] - Exception: Error con la ejecucion de Query de SQL "INSERT INTOCAMPANA(id, cantidad_inscritos, fecha_inicio, fecha_fin) VALUES (?, ?, ?, ?)".
+ORA-00925: falta la palabra clave INTO
+
+08:52:03,906 (main) INFO  [it.negocio.EPSAndes] - Saliendo de adicionar campaña
+08:52:03,906 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:52:03,911 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:53:21,390 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+08:53:22,908 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:53:23,013 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:53:23,014 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+08:53:23,021 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+08:53:23,021 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+08:53:23,027 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+08:53:23,027 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+08:53:23,031 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+08:53:23,031 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+08:53:23,036 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+08:53:35,353 (main) INFO  [it.controller.Controller] - Se encontr� un archivo de configuraci�n v�lido: Tablas BD
+08:53:36,829 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:53:36,940 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:53:36,940 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+08:53:36,948 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+08:53:36,948 (main) INFO  [it.negocio.EPSAndes] - Consultando servicios: 
+08:53:36,953 (main) INFO  [it.negocio.EPSAndes] - Consultando los servicios: 0
+08:53:36,953 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+08:53:36,957 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+08:53:36,957 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+08:53:36,963 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+08:53:44,908 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:53:44,913 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas
+08:53:59,614 (main) INFO  [it.negocio.EPSAndes] - Adicionando campaña
+08:53:59,662 (main) INFO  [it.negocio.EPSAndes] - Saliendo de adicionar campaña
+08:53:59,662 (main) INFO  [it.negocio.EPSAndes] - Consultando Eps�s
+08:53:59,666 (main) INFO  [it.negocio.EPSAndes] - Consultando las eps�s: 0 eps�s agregadas

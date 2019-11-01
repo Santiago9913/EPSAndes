@@ -330,12 +330,12 @@ public class Controller {
                         String[] periodos = input.split("/");
                         String[] periodo1 = periodos[0].split("-");
                         String[] periodo2 = periodos[1].split("-");
-                        int m1 = Integer.parseInt(periodo1[1]);
-                        int d1 = Integer.parseInt(periodo1[2]);
-                        Date f_inicio = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
-                        int m2 = Integer.parseInt(periodo2[1]);
-                        int d2 = Integer.parseInt(periodo2[2]);
-                        Date f_fin = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
+                        int m1 = Integer.parseInt(periodo1[0]);
+                        int d1 = Integer.parseInt(periodo1[1]);
+                        Date f_inicio = Date.valueOf(LocalDate.of(2019, m1, d1));
+                        int m2 = Integer.parseInt(periodo2[0]);
+                        int d2 = Integer.parseInt(periodo2[1]);
+                        Date f_fin = Date.valueOf(LocalDate.of(2019, m2, d2));
                         while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
                             view.printMessage("La primera fecha debe ser menor que la segunda fecha");
                             view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
@@ -350,7 +350,7 @@ public class Controller {
                             d2 = Integer.parseInt(periodo2[2]);
                             Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
                         }
-
+                        registrarCampana(c_personas, f_inicio, f_fin);
                         // Cancelar servicio de la camppaña
                     case 6:
                         break;
@@ -775,7 +775,20 @@ public class Controller {
     }
 
     public void registrarCampana(int cant, Date inicio, Date fin) {
-        //TODO
+        try {
+            Campana c = epsAndes.registrarCampana(cant, inicio, fin);
+            if (c == null)
+                throw new Exception("La campana es nula");
+            String resultado = "En registrar campana \n\n";
+            resultado += "Campana adicionada exitosamente: " + c;
+            resultado += "\n Operacion terminada";
+            view.printMessage(resultado);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
     }
 
     /**

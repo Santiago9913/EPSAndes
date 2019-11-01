@@ -606,7 +606,7 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Campaña registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(int participantes, Date f_inicio, Date f_fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
@@ -616,7 +616,7 @@ public class PersistenciaEPSAndes {
             tx.commit();
 
             log.trace("Inserción de campaña: " + tuplasInsertadas);
-            return new Campaña(idCampana, participantes, f_inicio, f_fin);
+            return new Campana(idCampana, participantes, f_inicio, f_fin);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));

@@ -1,5 +1,6 @@
 package it.persistencia;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,6 +69,9 @@ public class PersistenciaEPSAndes {
 
     private SQLSecretaria sqlSecretaria;
 
+    private SQLCampana sqlCampana;
+
+    private SQLServicio sqlServicio;
 
     /**
      *
@@ -602,4 +606,31 @@ public class PersistenciaEPSAndes {
     }
 
 
+    public Campaña registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long idCampana = nextval();
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, participantes, f_inicio, f_fin);
+            tx.commit();
+
+            log.trace("Inserción de campaña: " + tuplasInsertadas);
+            return new Campaña(idCampana, participantes, f_inicio, f_fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));
+            return null;
+        }
+        finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
+        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, año);
+    }
 }

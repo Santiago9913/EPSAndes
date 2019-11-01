@@ -336,6 +336,8 @@ public class Controller {
                         int m2 = Integer.parseInt(periodo2[0]);
                         int d2 = Integer.parseInt(periodo2[1]);
                         Date f_fin = Date.valueOf(LocalDate.of(2019, m2, d2));
+                        System.out.println("Ingrese el ID del organizador de la campana");
+                        int idOrg = sc.nextInt();
                         while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
                             view.printMessage("La primera fecha debe ser menor que la segunda fecha");
                             view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
@@ -350,7 +352,7 @@ public class Controller {
                             d2 = Integer.parseInt(periodo2[2]);
                             Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
                         }
-                        registrarCampana(c_personas, f_inicio, f_fin);
+                        registrarCampana(idOrg, c_personas, f_inicio, f_fin);
                         // Cancelar servicio de la camppaña
                     case 6:
                         break;
@@ -774,9 +776,9 @@ public class Controller {
         return null;
     }
 
-    public void registrarCampana(int cant, Date inicio, Date fin) {
+    public void registrarCampana(int idOrg, int cant, Date inicio, Date fin) {
         try {
-            Campana c = epsAndes.registrarCampana(cant, inicio, fin);
+            Campana c = epsAndes.registrarCampana(idOrg, cant, inicio, fin);
             if (c == null)
                 throw new Exception("La campana es nula");
             String resultado = "En registrar campana \n\n";
@@ -789,6 +791,15 @@ public class Controller {
             view.printErrMessage(e);
         }
 
+    }
+
+    public void reqConsulta1(Date f_inicio, Date f_fin, int año) {
+        try {
+            epsAndes.reqConsulta1(f_inicio, f_fin, año);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
     }
 
     /**

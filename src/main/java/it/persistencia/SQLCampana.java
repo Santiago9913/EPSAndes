@@ -13,7 +13,7 @@ class SQLCampana {
     public SQLCampana(PersistenciaEPSAndes pe) { this.pe = pe; }
 
     public long adicionarCampana(PersistenceManager pm, long idCampana, int participantes, Date f_inicio, Date f_fin) {
-        Query q = pm.newQuery(SQL, "INSERT INTO" + pe.getTablaCamapana()+ "(id, participantes, f_inicio, f_fin) VALUES (?, ?, ?, ?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " +pe.getTablaCamapana()+ "(id, cantidad_inscritos, fecha_inicio, fecha_fin) VALUES (?, ?, ?, ?)");
         q.setParameters(idCampana, participantes, f_inicio, f_fin);
         return (long) q.executeUnique();
     }

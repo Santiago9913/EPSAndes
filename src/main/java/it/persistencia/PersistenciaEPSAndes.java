@@ -191,7 +191,7 @@ public class PersistenciaEPSAndes {
         sqlPaciente = new SQLPaciente(this);
         sqlSecretaria = new SQLSecretaria(this);
         sqlUtil = new SQLUtil(this);
-
+        sqlCampana = new SQLCampana(this);
     }
 
     /**

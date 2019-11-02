@@ -569,7 +569,7 @@ public class PersistenciaEPSAndes {
             tx.commit();
 
             log.trace("Inserción de campaña: " + tuplasInsertadas);
-            return new Campana(idCampana, participantes, f_inicio, f_fin);
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
@@ -598,7 +598,7 @@ public class PersistenciaEPSAndes {
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return false;
+            return null;
         } finally {
             if (tx.isActive()) {
                 tx.rollback();
@@ -606,7 +606,6 @@ public class PersistenciaEPSAndes {
             pm.close();
         }
     }
-
 
 
     public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
@@ -630,8 +629,6 @@ public class PersistenciaEPSAndes {
             pm.close();
         }
     }
-
-
 
 
     public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {

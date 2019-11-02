@@ -327,7 +327,7 @@ public class Controller {
                         }
                         ArrayList<Integer> servs = new ArrayList<>();
                         int i = 0;
-                        while(numSer > i++) {
+                        while (numSer > i++) {
                             System.out.println("Ingrese el ID del servicio");
                             servs.add(sc.nextInt());
                         }
@@ -846,7 +846,7 @@ public class Controller {
         }
     }
 
-    public void reqConsulta1(Date f_inicio, Date f_fin, int año) {
+    public void reqConsulta1(Date f_inicio, Date f_fin, int ano) {
         try {
             epsAndes.reqConsulta1(f_inicio, f_fin, ano);
         } catch (Exception e) {
@@ -864,7 +864,7 @@ public class Controller {
         }
     }
 
-    public void reqConsulta5 (Date f_inicio, Date f_fin, int idPac) {
+    public void reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
         try {
             epsAndes.reqConsulta5(f_inicio, f_fin, idPac);
         } catch (Exception e) {
@@ -873,7 +873,7 @@ public class Controller {
         }
     }
 
-    public void reqConsulta7 () {
+    public void reqConsulta7() {
         try {
             epsAndes.reqConsulta7();
         } catch (Exception e) {

@@ -1,74 +1,120 @@
 package it.negocio;
 
+import java.sql.Date;
+
 public class Servicio implements VOServicio {
-	protected long id;
-	protected int capacidad;
-	protected String nombre;
-	
-	public Servicio() {
-		this.id = 0;
-		this.capacidad = 0;
-		this.nombre = "";
-	}
-	
-	/**
-	 * @param id
-	 * @param capacidad
-	 */
-	public Servicio(long id, int capacidad, String nombre) {
-		this.id = id;
-		this.capacidad = capacidad;
-		this.nombre = nombre;
-	}
+    private long id;
+    private int capacidad;
+    private String nombre;
+    private String inhabilitado;
+    private Date inicioInhabilitacion;
+    private Date finInhabilitacion;
+    private String reservado;
 
-	/**
-	 * @return the id
-	 */
-	public long getId() {
-		return id;
-	}
+    public Servicio() {
+        this.id = 0;
+        this.capacidad = 0;
+        this.nombre = "";
+        this.inhabilitado = "";
+        this.inicioInhabilitacion = null;
+        this.finInhabilitacion = null;
+        this.reservado = "";
+    }
 
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+    /**
+     * @param id
+     * @param capacidad
+     */
+    public Servicio(long id, int capacidad, String nombre, String inhabilitado, Date inicioInhabilitacion, Date finInhabilitacion, String reservado) {
+        this.id = id;
+        this.capacidad = capacidad;
+        this.nombre = nombre;
+        this.inhabilitado = inhabilitado;
+        this.inicioInhabilitacion = inicioInhabilitacion;
+        this.finInhabilitacion = finInhabilitacion;
+        this.reservado = reservado;
+    }
 
-	/**
-	 * @return the capacidad
-	 */
-	public int getCapacidad() {
-		return capacidad;
-	}
+    /**
+     * @return the id
+     */
+    public long getId() {
+        return id;
+    }
 
-	/**
-	 * @param capacidad the capacidad to set
-	 */
-	public void setCapacidad(int capacidad) {
-		this.capacidad = capacidad;
-	}
-	
-	/**
-	 * @return the nombre
-	 */
-	public String getNombre() {
-		return nombre;
-	}
+    /**
+     * @param id the id to set
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	/**
-	 * @param nombre the nombre to set
-	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    /**
+     * @return the capacidad
+     */
+    public int getCapacidad() {
+        return capacidad;
+    }
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Servicio [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + "]";
-	}
-	
+    /**
+     * @param capacidad the capacidad to set
+     */
+    public void setCapacidad(int capacidad) {
+        this.capacidad = capacidad;
+    }
+
+    /**
+     * @return the nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getInhabilitado() {
+        return inhabilitado;
+    }
+
+    public Date getInicioInhabilitacion() {
+        return inicioInhabilitacion;
+    }
+
+    public Date getFinInhabilitacion() {
+        return finInhabilitacion;
+    }
+
+    public String getReservado() {
+        return reservado;
+    }
+
+    /**
+     * @param nombre the nombre to set
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setInhabilitado(String inhabilitado) {
+        this.inhabilitado = inhabilitado;
+    }
+
+    public void setInicioInhabilitacion(Date inicioInhabilitacion) {
+        this.inicioInhabilitacion = inicioInhabilitacion;
+    }
+
+    public void setFinInhabilitacion(Date finInhabilitacion) {
+        this.finInhabilitacion = finInhabilitacion;
+    }
+
+    public void setReservado(String reservado) {
+        this.reservado = reservado;
+    }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "Servicio [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + "]";
+    }
+
 }

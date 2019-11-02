@@ -58,6 +58,8 @@ public class Controller {
 
     private List<Paciente> listaPacientes;
 
+    private List<Horario> listaHorarios;
+
     public Controller() {
         view = new View();
         listaEPS = new ArrayList<>();
@@ -284,46 +286,34 @@ public class Controller {
 
                     //Agregar un servicio
                     case 4:
-                        view.printMessage("Ingresw el servicio que desea agregar");
+                        view.printMessage("Ingrese el servicio que desea agregar");
                         view.printServiciosMenu();
                         String respSer = sc.next();
-                        String servicio = "";
+                        String servicioNombre = "";
                         if (respSer.equalsIgnoreCase("a")) {
-                            servicio = "Procedimiento Medico";
+                            servicioNombre = "Procedimiento Medico".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("b")) {
-                            servicio = "Hospitalizacion";
+                            servicioNombre = "Hospitalizacion".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("c")) {
-                            servicio = "Examen Diagnostico";
+                            servicioNombre = "Examen Diagnostico".toUpperCase();
                         } else if (respSer.equalsIgnoreCase("d")) {
-                            servicio = "Terapia";
+                            servicioNombre = "Terapia".toUpperCase();
                         }
 
-                        view.printMessage("Ingrese la capacidad del servicio");
+                        view.printMessage("Ingrese en que horario atiende este servicio: ");
+//                        view.printHorarios();
+                        int idHorarioServicio = sc.nextInt();
+
+                        view.printMessage("ingrese la capacidad del servicio");
                         int capacidadServicio = sc.nextInt();
 
-
-                        VOServicio ser = agregarServicio(servicio.toUpperCase(), capacidadServicio);
-
-                        view.printMessage("ingrese a cuantas IPS presta servicio");
-                        int presta = sc.nextInt();
-                        int countSer = 0;
-                        view.printMessage("ingrese a cuales IPS presta el servicio");
-                        long[] ipsIds = new long[presta];
-
-                        while (countSer < presta) {
-                            String ipsServicio = sc.next();
-                            ipsServicio = ipsServicio.concat(sc.nextLine());
-                            if (containsIPS(ipsServicio)) {
-                                ipsIds[countSer] = getidIps(ipsServicio);
-                                countSer++;
-                            }
-                        }
+                        view.printMessage("Ingrese a cuantas Ips se agrega este servicio: ");
+                        int cantidadServiciosIps = sc.nextInt();
 
 
                         break;
                     //Agregar camapaña
                     case 5:
-                        view
                         System.out.println("Ingrese la cantidad de personas a inscribir");
                         int c_personas = sc.nextInt();
                         view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
@@ -331,12 +321,14 @@ public class Controller {
                         String[] periodos = input.split("/");
                         String[] periodo1 = periodos[0].split("-");
                         String[] periodo2 = periodos[1].split("-");
-                        int m1 = Integer.parseInt(periodo1[1]);
-                        int d1 = Integer.parseInt(periodo1[2]);
-                        Date f_inicio = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
-                        int m2 = Integer.parseInt(periodo2[1]);
-                        int d2 = Integer.parseInt(periodo2[2]);
-                        Date f_fin = Date.valueOf(String.valueOf(LocalDateTime.of(2019, m1, d1, 0, 0)));
+                        int m1 = Integer.parseInt(periodo1[0]);
+                        int d1 = Integer.parseInt(periodo1[1]);
+                        Date f_inicio = Date.valueOf(LocalDate.of(2019, m1, d1));
+                        int m2 = Integer.parseInt(periodo2[0]);
+                        int d2 = Integer.parseInt(periodo2[1]);
+                        Date f_fin = Date.valueOf(LocalDate.of(2019, m2, d2));
+                        System.out.println("Ingrese el ID del organizador de la campana");
+                        int idOrg = sc.nextInt();
                         while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
                             view.printMessage("La primera fecha debe ser menor que la segunda fecha");
                             view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
@@ -351,7 +343,7 @@ public class Controller {
                             d2 = Integer.parseInt(periodo2[2]);
                             Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
                         }
-
+                        registrarCampana(idOrg, c_personas, f_inicio, f_fin);
                         // Cancelar servicio de la camppaña
                     case 6:
                         break;
@@ -775,6 +767,30 @@ public class Controller {
         return null;
     }
 
+    public void registrarCampana(int idOrg, int cant, Date inicio, Date fin) {
+        try {
+            Campana c = epsAndes.registrarCampana(idOrg, cant, inicio, fin);
+            if (c == null)
+                throw new Exception("La campana es nula");
+            String resultado = "En registrar campana \n\n";
+            resultado += "Campana adicionada exitosamente: " + c;
+            resultado += "\n Operacion terminada";
+            view.printMessage(resultado);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+    }
+
+    public void reqConsulta1(Date f_inicio, Date f_fin, int año) {
+        try {
+            epsAndes.reqConsulta1(f_inicio, f_fin, año);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
 
     /**
      * @param

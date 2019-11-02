@@ -1,5 +1,6 @@
 package it.persistencia;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.LinkedList;
 import java.util.List;
@@ -68,6 +69,9 @@ public class PersistenciaEPSAndes {
 
     private SQLSecretaria sqlSecretaria;
 
+    private SQLCampana sqlCampana;
+
+    private SQLServicio sqlServicio;
 
     /**
      *
@@ -187,7 +191,7 @@ public class PersistenciaEPSAndes {
         sqlPaciente = new SQLPaciente(this);
         sqlSecretaria = new SQLSecretaria(this);
         sqlUtil = new SQLUtil(this);
-
+        sqlCampana = new SQLCampana(this);
     }
 
     /**
@@ -602,4 +606,31 @@ public class PersistenciaEPSAndes {
     }
 
 
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long idCampana = nextval();
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, idOrg, participantes, f_inicio, f_fin);
+            tx.commit();
+
+            log.trace("Inserción de campaña: " + tuplasInsertadas);
+            return new Campana(idCampana, participantes, f_inicio, f_fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));
+            return null;
+        }
+        finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
+        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, año);
+    }
 }

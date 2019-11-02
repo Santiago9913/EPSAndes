@@ -122,9 +122,11 @@ public class EPSAndes {
         return orden;
     }
 
-    public void registrarCampana(int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
         log.info("Adicionando campaña");
+        Campana campana = ep.registrarCampana(idOrg, participantes, f_inicio, f_fin);
         log.info("Saliendo de adicionar campaña");
+        return campana;
     }
 
     public void registrarConsulta() {
@@ -142,5 +144,10 @@ public class EPSAndes {
 
     }
 
-
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
+        log.info("Calculando la cantidad de servicios prestados por una IPS en el periodo: " + f_inicio.toString() + " - " +
+                    f_fin.toString() + ", en el año: " + año);
+        Object resp = ep.reqConsulta1(f_inicio, f_fin, año);
+        return resp;
+    }
 }

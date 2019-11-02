@@ -11,7 +11,7 @@ class SQLServicio {
 
     public SQLServicio(PersistenciaEPSAndes ep) {this.ep = ep;}
 
-    public Object reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin, int año) {
+    public Object reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin, int ano) {
         String query = "SELECT ips.id, ser.nombre, count(*)";
         query += " FROM ";
         query += ep.getTablaIps() + " AS ips, ";

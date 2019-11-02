@@ -107,10 +107,10 @@ public class EPSAndes {
     }
 
 
-    public Servicio registrarServicio(int capacidad, String nombre) {
-        log.info("Registrando Servicio: " + nombre);
-        Servicio ser = ep.registrarServicio(nombre, capacidad);
-        log.info("Registrando Servicio: " + ser);
+    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
+        log.info("Actualizando Servicio: " + nombre);
+        boolean ser = ep.deshabilitarServicio(nombre, inicio, fin);
+        log.info("Actualizando Servicio: " + ser);
         return ser;
     }
 
@@ -144,10 +144,10 @@ public class EPSAndes {
 
     }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {
         log.info("Calculando la cantidad de servicios prestados por una IPS en el periodo: " + f_inicio.toString() + " - " +
-                    f_fin.toString() + ", en el año: " + año);
-        Object resp = ep.reqConsulta1(f_inicio, f_fin, año);
+                f_fin.toString() + ", en el año: " + ano);
+        Object resp = ep.reqConsulta1(f_inicio, f_fin, ano);
         return resp;
     }
 }

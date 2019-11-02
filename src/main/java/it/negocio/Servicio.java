@@ -3,21 +3,21 @@ package it.negocio;
 import java.sql.Date;
 
 public class Servicio implements VOServicio {
-    private long id;
-    private int capacidad;
-    private String nombre;
-    private String inhabilitado;
-    private Date inicioInhabilitacion;
-    private Date finInhabilitacion;
-    private String reservado;
+    public long id;
+    public int capacidad;
+    public String nombre;
+    public String inhabilitado;
+    public Date inicio_Inhabilitacion;
+    public Date fin_Inhabilitacion;
+    public String reservado;
 
     public Servicio() {
         this.id = 0;
         this.capacidad = 0;
         this.nombre = "";
         this.inhabilitado = "";
-        this.inicioInhabilitacion = null;
-        this.finInhabilitacion = null;
+        this.inicio_Inhabilitacion = null;
+        this.fin_Inhabilitacion = null;
         this.reservado = "";
     }
 
@@ -25,13 +25,13 @@ public class Servicio implements VOServicio {
      * @param id
      * @param capacidad
      */
-    public Servicio(long id, int capacidad, String nombre, String inhabilitado, Date inicioInhabilitacion, Date finInhabilitacion, String reservado) {
+    public Servicio(long id, int capacidad, String nombre, String inhabilitado, Date inicio_Inhabilitacion, Date fin_Inhabilitacion, String reservado) {
         this.id = id;
         this.capacidad = capacidad;
         this.nombre = nombre;
         this.inhabilitado = inhabilitado;
-        this.inicioInhabilitacion = inicioInhabilitacion;
-        this.finInhabilitacion = finInhabilitacion;
+        this.inicio_Inhabilitacion = inicio_Inhabilitacion;
+        this.fin_Inhabilitacion = fin_Inhabilitacion;
         this.reservado = reservado;
     }
 
@@ -74,12 +74,12 @@ public class Servicio implements VOServicio {
         return inhabilitado;
     }
 
-    public Date getInicioInhabilitacion() {
-        return inicioInhabilitacion;
+    public Date getinicio_Inhabilitacion() {
+        return inicio_Inhabilitacion;
     }
 
-    public Date getFinInhabilitacion() {
-        return finInhabilitacion;
+    public Date getfin_Inhabilitacion() {
+        return fin_Inhabilitacion;
     }
 
     public String getReservado() {
@@ -97,12 +97,12 @@ public class Servicio implements VOServicio {
         this.inhabilitado = inhabilitado;
     }
 
-    public void setInicioInhabilitacion(Date inicioInhabilitacion) {
-        this.inicioInhabilitacion = inicioInhabilitacion;
+    public void setinicio_Inhabilitacion(Date inicio_Inhabilitacion) {
+        this.inicio_Inhabilitacion = inicio_Inhabilitacion;
     }
 
-    public void setFinInhabilitacion(Date finInhabilitacion) {
-        this.finInhabilitacion = finInhabilitacion;
+    public void setfin_Inhabilitacion(Date fin_Inhabilitacion) {
+        this.fin_Inhabilitacion = fin_Inhabilitacion;
     }
 
     public void setReservado(String reservado) {

@@ -2,6 +2,8 @@ package it.negocio;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -107,10 +109,10 @@ public class EPSAndes {
     }
 
 
-    public Servicio registrarServicio(int capacidad, String nombre) {
-        log.info("Registrando Servicio: " + nombre);
-        Servicio ser = ep.registrarServicio(nombre, capacidad);
-        log.info("Registrando Servicio: " + ser);
+    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
+        log.info("Actualizando Servicio: " + nombre);
+        boolean ser = ep.deshabilitarServicio(nombre, inicio, fin);
+        log.info("Actualizando Servicio: " + ser);
         return ser;
     }
 
@@ -122,10 +124,10 @@ public class EPSAndes {
         return orden;
     }
 
-    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
-        log.info("Adicionando campaña");
-        Campana campana = ep.registrarCampana(idOrg, participantes, f_inicio, f_fin);
-        log.info("Saliendo de adicionar campaña");
+    public Campana registrarCampana(Usuario org, int participantes, ArrayList<Integer> servs, Date f_inicio, Date f_fin) {
+        log.info("Adicionando campana");
+        Campana campana = ep.registrarCampana(org, participantes, servs, f_inicio, f_fin);
+        log.info("Saliendo de adicionar campana");
         return campana;
     }
 
@@ -144,10 +146,39 @@ public class EPSAndes {
 
     }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {
         log.info("Calculando la cantidad de servicios prestados por una IPS en el periodo: " + f_inicio.toString() + " - " +
-                    f_fin.toString() + ", en el año: " + año);
-        Object resp = ep.reqConsulta1(f_inicio, f_fin, año);
+                f_fin.toString() + ", en el año: " + ano);
+        Object resp = ep.reqConsulta1(f_inicio, f_fin, ano);
         return resp;
+    }
+
+    public Object reqConsulta2(Date f_inicio, Date f_fin) {
+        log.info("Calculando los 20 servicios más solicitados en el periodo " + f_inicio.toString() + " - " + f_fin.toString());
+        Object resp = ep.reqConsulta2(f_inicio, f_fin);
+        return resp;
+    }
+
+    public Object reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
+        log.info("Consultando la utilización de servicios del afiliado con id " + idPac + " en el periodo: " +
+                f_inicio + " - " + f_fin);
+        Object resp = ep.reqConsulta5(f_inicio, f_fin, idPac);
+        return resp;
+    }
+
+    public Object reqConsulta7() {
+        log.info("Consultando los afiliados exigentes");
+        Object resp = ep.reqConsulta7();
+        return resp;
+    }
+
+    public void reabrirServicios(List<Integer> listSer) {
+        log.info("Reabriendo servicios: ");
+        Iterator<Integer> it = listSer.iterator();
+        while (it.hasNext()) {
+            Integer current = it.next();
+            log.info(current + ", ");
+        }
+        ep.reabrirServicios(listSer);
     }
 }

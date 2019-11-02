@@ -2,6 +2,7 @@ package it.view;
 
 import it.negocio.EPS;
 import it.negocio.IPS;
+import it.negocio.Servicio;
 
 import javax.jdo.JDODataStoreException;
 import java.util.List;
@@ -106,6 +107,14 @@ public class View {
         for (IPS ips : list) {
             int i = 1;
             System.out.println(i + ". " + ips.getNombre());
+            i++;
+        }
+    }
+
+    public void printListaServicios(List<Servicio> list){
+        for(Servicio ser : list){
+            int i = 1;
+            System.out.println(i +  ". " + ser.getNombre());
             i++;
         }
     }

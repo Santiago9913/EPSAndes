@@ -1,5 +1,6 @@
 package it.persistencia;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -115,6 +116,12 @@ public class SQLAdministrador {
     public long adicionarMedicoAIps(PersistenceManager pm, long numDoc, long idIps) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps_Medico() + "(ID_IPS, ID_MEDICO) VALUES(?,?)");
         q.setParameters(idIps, numDoc);
+        return (long) q.executeUnique();
+    }
+
+    public long deshabilitarServicio(PersistenceManager pm, String nombre, Date inicio, Date fin) {
+        Query q = pm.newQuery(SQL, "UPDATE " + pe.getTablaServicio() + " SET INICIO_INHABILITACION = ?, FIN_INHABILITACION = ?, INHABILITADO = ? WHERE NOMBRE = ?");
+        q.setParameters(inicio, fin, "S", nombre);
         return (long) q.executeUnique();
     }
 

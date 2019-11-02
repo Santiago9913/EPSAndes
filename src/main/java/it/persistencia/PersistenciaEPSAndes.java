@@ -536,54 +536,6 @@ public class PersistenciaEPSAndes {
     }
 
 
-//    public Medico registrarMedico(long id, String nombre, String correo, String especialidad) {
-//        PersistenceManager pm = pmf.getPersistenceManager();
-//        Transaction tx = pm.currentTransaction();
-//        try {
-//            tx.begin();
-//            long idMed = id;
-//            long tuplasInsertadas = sqlAdministrador.adicionarMedico(pm, idMed, nombre, correo, especialidad);
-//            tx.commit();
-//
-//            log.trace("Insercion de tipo de bebida: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-//            return new Medico(idMed, nombre, correo, especialidad);
-//
-//        } catch (Exception e) {
-//            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-//            return null;
-//
-//        } finally {
-//            if (tx.isActive()) {
-//                tx.rollback();
-//            }
-//            pm.close();
-//        }
-//    }
-
-
-    public Servicio registrarServicio(String nombre, int capacidad) {
-        PersistenceManager pm = pmf.getPersistenceManager();
-        Transaction tx = pm.currentTransaction();
-        try {
-            tx.begin();
-            long idServicio = nextval();
-            long tuplasInsertadas = sqlAdministrador.adicionarServicio(pm, idServicio, capacidad, nombre);
-            tx.commit();
-
-            log.trace("Insercion de servicio: " + nombre + ": " + tuplasInsertadas + "tuplas insertadad");
-            return new Servicio(idServicio, capacidad, nombre);
-        } catch (Exception e) {
-            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
-            return null;
-        } finally {
-            if (tx.isActive()) {
-                tx.rollback();
-            }
-            pm.close();
-        }
-    }
-
-
     public Orden registrarOrden(String desc) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -596,6 +548,30 @@ public class PersistenciaEPSAndes {
             log.trace("Insercion de orden: " + tuplas);
             return new Orden(desc, idConsulta);
         } catch (Exception e) {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+
+    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long idCampana = nextval();
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, idOrg, participantes, f_inicio, f_fin);
+            tx.commit();
+
+            log.trace("Inserción de campaña: " + tuplasInsertadas);
+            return new Campana(idCampana, participantes, f_inicio, f_fin);
+        } catch (Exception e) {
+            e.printStackTrace();
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
             return null;
         } finally {
@@ -621,10 +597,9 @@ public class PersistenciaEPSAndes {
             return new Campana(idCampana, participantes, (int) org.getId(), servs, f_inicio, f_fin);
         } catch (Exception e) {
             e.printStackTrace();
-            log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));
-            return null;
-        }
-        finally {
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        } finally {
             if (tx.isActive()) {
                 tx.rollback();
             }
@@ -632,8 +607,35 @@ public class PersistenciaEPSAndes {
         }
     }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
-        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, año);
+
+
+    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long servicioDeshabilitado = sqlAdministrador.deshabilitarServicio(pmf.getPersistenceManager(), nombre, inicio, fin);
+            tx.commit();
+
+            log.trace("Inhabilitacion de servicio: " + servicioDeshabilitado);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
+
+
+
+    public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {
+        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, ano);
     }
 
     public Object reqConsulta2(Date f_inicio, Date f_fin) {

@@ -7,6 +7,7 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -368,9 +369,34 @@ public class Controller {
                         registrarCampana(org, c_personas, servs, f_inicio, f_fin);
                         // Cancelar servicio de la camppaña
                     case 6:
+
+
                         break;
                     // Deshabilitar servicio
                     case 7:
+                        view.printMessage("Indique el servicio de desea deshabilitar");
+                        view.printListaServicios(listaServicios);
+                        view.printMessage("Ingrese el nombre del servicio: ");
+                        String servicioDeshabilitar = sc.next();
+                        servicioDeshabilitar = servicioDeshabilitar.concat(sc.nextLine());
+                        view.printMessage("Ingrese la fecha en la que inicia la inhabilitacion (dd/mm/yyyy): ");
+                        String inicioInhabilitacion = sc.next();
+                        view.printMessage("Ingrese el inicio en la que finaliza la inhabilitacion (dd/mm/yyyy): ");
+                        String finInhabilitacion = sc.next();
+                        String[] parseInicio = inicioInhabilitacion.split("/");
+                        String[] parseFin = finInhabilitacion.split("/");
+                        int diaInicioInh = Integer.parseInt(parseInicio[0]);
+                        int mesInicioInh = Integer.parseInt(parseInicio[1]);
+                        int anoInicioInh = Integer.parseInt(parseInicio[2]);
+                        int diaFinInh = Integer.parseInt(parseFin[0]);
+                        int mesFinInh = Integer.parseInt(parseFin[1]);
+                        int anoFinInh = Integer.parseInt(parseFin[2]);
+
+                        Date inicioInhabilitacionServicio = Date.valueOf(LocalDate.of(anoInicioInh, mesInicioInh, diaInicioInh));
+                        Date finInhabilitacionServicio = Date.valueOf(LocalDate.of(anoFinInh, mesFinInh, diaFinInh));
+
+
+                        deshabilitarServicio(servicioDeshabilitar.toUpperCase(), inicioInhabilitacionServicio, finInhabilitacionServicio);
                         break;
 
                     // Registrar reapertura
@@ -741,30 +767,24 @@ public class Controller {
     }
 
 
-    public VOServicio agregarServicio(String servicio, int capacidad) {
+    private void deshabilitarServicio(String nombre, Date inicio, Date fin) {
         try {
-            String nombre = servicio;
-            int cap = capacidad;
-
-            if (nombre != null && cap > 0) {
-                VOServicio ser = epsAndes.registrarServicio(cap, nombre);
-                if (ser == null) {
-                    throw new Exception("No se puede agregar Servicio");
+            if (nombre != null && inicio != null && fin != null) {
+                boolean ser = epsAndes.deshabilitarServicio(nombre, inicio, fin);
+                if (ser == false) {
+                    throw new Exception("No se pudo actualizar la informacion");
                 }
-                String resultado = "En registrarIPS\n\n";
-                resultado += "Servicio adicionado exitosamente: " + ser;
+                String resultado = "En deshabilitar servicio \n\n";
+                resultado += "Servicio actualizado exitosamente: " + ser;
                 resultado += "\n Operacion terminada";
                 view.printMessage(resultado);
-                return ser;
             }
         } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);
         }
 
-        return null;
     }
-
 
     public VOOrden adicionarOrden(String desc) {
         try {
@@ -828,7 +848,7 @@ public class Controller {
 
     public void reqConsulta1(Date f_inicio, Date f_fin, int año) {
         try {
-            epsAndes.reqConsulta1(f_inicio, f_fin, año);
+            epsAndes.reqConsulta1(f_inicio, f_fin, ano);
         } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);

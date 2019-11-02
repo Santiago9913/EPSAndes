@@ -17,7 +17,9 @@ class SQLServicio {
         query += ep.getTablaIps() + " AS ips, ";
         query += ep.getTablaIps_Servicios() + " AS ipsr, ";
         query += ep.getTablaServicio() + " AS ser";
-        query += "WHERE ";
+        query += " WHERE ips.id = ipsr.id_ips ";
+        query += " AND ipsr.id_servicio = ser.id ";
+        query += "GROUP BY ips.id, servicio.nombre";
         return null;
     }
 }

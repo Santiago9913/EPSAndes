@@ -30,6 +30,15 @@ public class Usuario implements VOUsuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    //Constructor de organizador
+    public Usuario(int idOrg, String nOrg, String cOrg, String tdOrg, String org) {
+        this.id = idOrg;
+        this.nombre = nOrg;
+        this.correo = cOrg;
+        this.tipoDocumento = tdOrg;
+        this.tipoUsuario = org;
+        fechaNacimiento = null;
+    }
 
     public String getCorreo() {
         return this.correo;

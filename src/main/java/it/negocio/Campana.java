@@ -1,11 +1,14 @@
 package it.negocio;
 
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Campana {
 
     private long id;
     private int cantInscritos;
+    private int idOrg;
+    private ArrayList<Integer> servs;
     private Date fInicio;
     private Date fFin;
 
@@ -16,9 +19,11 @@ public class Campana {
         fFin = null;
     }
 
-    public Campana(long id, int cantInscritos, Date fInicio, Date fFin) {
+    public Campana(long id, int cantInscritos, int idOrg, ArrayList<Integer> servs, Date fInicio, Date fFin) {
         this.id = id;
         this.cantInscritos = cantInscritos;
+        this.idOrg = idOrg;
+        this.servs = servs;
         this.fInicio = fInicio;
         this.fFin = fFin;
     }

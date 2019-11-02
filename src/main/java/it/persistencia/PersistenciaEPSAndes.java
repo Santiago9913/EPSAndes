@@ -2,6 +2,7 @@ package it.persistencia;
 
 import java.sql.Date;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -606,17 +607,18 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Campana registrarCampana(int idOrg, int participantes, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(Usuario org, int participantes, ArrayList<Integer> servs, Date f_inicio, Date f_fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
             long idCampana = nextval();
-            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, idOrg, participantes, f_inicio, f_fin);
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, (int) org.getId(), participantes, f_inicio, f_fin);
+            sqlServicio.adicionarCampana(pmf.getPersistenceManager(), servs);
             tx.commit();
 
             log.trace("Inserción de campaña: " + tuplasInsertadas);
-            return new Campana(idCampana, participantes, f_inicio, f_fin);
+            return new Campana(idCampana, participantes, (int) org.getId(), servs, f_inicio, f_fin);
         } catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: "+e.getMessage()+"\n"+darDetalleException(e));
@@ -632,5 +634,21 @@ public class PersistenciaEPSAndes {
 
     public Object reqConsulta1(Date f_inicio, Date f_fin, int año) {
         return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, año);
+    }
+
+    public Object reqConsulta2(Date f_inicio, Date f_fin) {
+        return sqlServicio.reqConsulta2(pmf.getPersistenceManager(), f_inicio, f_fin);
+    }
+
+    public Object reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
+        return sqlServicio.reqConsulta5(pmf.getPersistenceManager(), f_inicio, f_fin, idPac);
+    }
+
+    public Object reqConsulta7() {
+        return sqlServicio.reqConsulta7(pmf.getPersistenceManager());
+    }
+
+    public void reabrirServicios(List<Integer> listSer) {
+        sqlServicio.reabrirServicios(pmf.getPersistenceManager(), listSer);
     }
 }

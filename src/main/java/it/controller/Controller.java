@@ -325,6 +325,8 @@ public class Controller {
                             System.out.println("Numero de servicios inválido, ingrese un numero valido");
                             numSer = sc.nextInt();
                         }
+                        System.out.println("Seleccione los servicios que desea: ");
+                        view.printListaServicios(listaServicios);
                         ArrayList<Integer> servs = new ArrayList<>();
                         int i = 0;
                         while (numSer > i++) {

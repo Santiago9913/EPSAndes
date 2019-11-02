@@ -2,6 +2,7 @@ package it.controller;
 
 import java.io.FileReader;
 import java.sql.Date;
+import java.sql.SQLOutput;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.sound.midi.Soundbank;
 import javax.swing.JOptionPane;
 
 import it.negocio.*;
@@ -317,7 +319,19 @@ public class Controller {
                     case 5:
                         System.out.println("Ingrese la cantidad de personas a inscribir");
                         int c_personas = sc.nextInt();
-                        view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm-dd/mm-dd)");
+                        System.out.println("Ingrese el numero de servicios de la campana");
+                        int numSer = sc.nextInt();
+                        while (numSer <= 0) {
+                            System.out.println("Numero de servicios inválido, ingrese un numero valido");
+                            numSer = sc.nextInt();
+                        }
+                        ArrayList<Integer> servs = new ArrayList<>();
+                        int i = 0;
+                        while(numSer > i++) {
+                            System.out.println("Ingrese el ID del servicio");
+                            servs.add(sc.nextInt());
+                        }
+                        view.printMessage("Ingrese el periodo de tiempo: (Ej.: mm1-dd1/mm2-dd2)");
                         String input = sc.next();
                         String[] periodos = input.split("/");
                         String[] periodo1 = periodos[0].split("-");
@@ -328,11 +342,9 @@ public class Controller {
                         int m2 = Integer.parseInt(periodo2[0]);
                         int d2 = Integer.parseInt(periodo2[1]);
                         Date f_fin = Date.valueOf(LocalDate.of(2019, m2, d2));
-                        System.out.println("Ingrese el ID del organizador de la campana");
-                        int idOrg = sc.nextInt();
                         while (f_inicio.compareTo(f_fin) > 0 || f_inicio.compareTo(f_fin) == 0) {
                             view.printMessage("La primera fecha debe ser menor que la segunda fecha");
-                            view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: YYYY-mm-dd/YYYY-mm-dd)");
+                            view.printMessage("Vuelva a ingresar el periodo de tiempo: (Ej.: mm1-dd1/mm2-dd2)");
                             input = sc.next();
                             periodos = input.split("/");
                             periodo1 = periodos[0].split("-");
@@ -344,9 +356,18 @@ public class Controller {
                             d2 = Integer.parseInt(periodo2[2]);
                             Date fecha2 = Date.valueOf(LocalDate.of(2019, m2, d2));
                         }
-                        registrarCampana(idOrg, c_personas, f_inicio, f_fin);
-                        break;
-                    // Cancelar servicio de la camppaña
+                        //Registro del usuario del organizador
+                        System.out.println("Ingrese la identificacion del organizador");
+                        int idOrg = sc.nextInt();
+                        System.out.println("Ingrese el nombre del organizador");
+                        String nOrg = sc.next();
+                        System.out.println("Ingrese el correo del organizador");
+                        String cOrg = sc.next();
+                        System.out.println("Ingrese el tipo de documento del organizador");
+                        String tdOrg = sc.next();
+                        Usuario org = new Usuario(idOrg, nOrg, cOrg, tdOrg, "ORGANIZADOR_CAMPANA");
+                        registrarCampana(org, c_personas, servs, f_inicio, f_fin);
+                        // Cancelar servicio de la camppaña
                     case 6:
 
 
@@ -788,9 +809,13 @@ public class Controller {
         return null;
     }
 
-    public void registrarCampana(int idOrg, int cant, Date inicio, Date fin) {
+    //Requerimiento funcional 10
+    public void registrarCampana(Usuario org, int cant, ArrayList<Integer> servs, Date inicio, Date fin) {
         try {
-            Campana c = epsAndes.registrarCampana(idOrg, cant, inicio, fin);
+            Usuario u = epsAndes.registrarUsuario(org.tipoUsuario(), org.getNombre(), null, org.tipoDocumento(), org.getId(), org.getCorreo());
+            if (u == null)
+                throw new Exception("El organizador es nulo");
+            Campana c = epsAndes.registrarCampana(org, cant, servs, inicio, fin);
             if (c == null)
                 throw new Exception("La campana es nula");
             String resultado = "En registrar campana \n\n";
@@ -804,9 +829,53 @@ public class Controller {
 
     }
 
-    public void reqConsulta1(Date f_inicio, Date f_fin, int ano) {
+    //Requerimiento funcional 13 (Registrar la reapertura de los servicios de salud)
+    public void reabrirServicios(List<Integer> listSer) {
+        try {
+            epsAndes.reabrirServicios(listSer);
+            String resultado = "Se han reabierto los servicios: ";
+            Iterator<Integer> it = listSer.iterator();
+            while (it.hasNext()) {
+                resultado += it.next() + ", ";
+            }
+            resultado += "\n Operación exitosa";
+            view.printMessage(resultado);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void reqConsulta1(Date f_inicio, Date f_fin, int año) {
         try {
             epsAndes.reqConsulta1(f_inicio, f_fin, ano);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void reqConsulta2(Date f_inicio, Date f_fin) {
+        try {
+            epsAndes.reqConsulta2(f_inicio, f_fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void reqConsulta5 (Date f_inicio, Date f_fin, int idPac) {
+        try {
+            epsAndes.reqConsulta5(f_inicio, f_fin, idPac);
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
+    public void reqConsulta7 () {
+        try {
+            epsAndes.reqConsulta7();
         } catch (Exception e) {
             e.printStackTrace();
             view.printErrMessage(e);

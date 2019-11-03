@@ -17,14 +17,14 @@ public class View {
         System.out.println("2. Agregar una EPS");
         System.out.println("3. Agregar una IPS");
         System.out.println("4. Agregar Servicio");
-        System.out.println("5. Agregar Campaña");
-        System.out.println("6. Cancelar servicios de la campaña");
+        System.out.println("5. Agregar Campana");
+        System.out.println("6. Cancelar servicios de la campana");
         System.out.println("7. Deshabilitar servicios de salud");
         System.out.println("8. Registrar la reapertura de servicios de salud");
         System.out.println();
         System.out.println("---------------FUNCIONES DE CONSULTA---------------");
         System.out.println("9. Mostrar la cantidad de servicios prestados por cada ips durante un \n"
-                + "periodo de tiempo y en el año corrido");
+                + "periodo de tiempo y en el ano corrido");
         System.out.println("10. Mostrar los 20 servicios mas solicitados");
         System.out.println("11. Mostrar el indice de uso de cada uno de los servicios provistos");
         System.out.println("12. Mostrar los servicios que cumplen con cierta caracteristica");
@@ -82,7 +82,7 @@ public class View {
                 + "b) MEDICO" + "\n"
                 + "c) GERENTE" + "\n"
                 + "d) RECEPCIONISTA " + "\n"
-                + "e) ORGANIZADOR CAMPAÑA"
+                + "e) ORGANIZADOR CAMPAnA"
         );
     }
 
@@ -96,26 +96,32 @@ public class View {
     }
 
     public void printEpsList(List<EPS> lista) {
+        int i = 1;
         for (EPS eps : lista) {
-            int i = 1;
             System.out.println(i + ". " + eps.getNombre());
             i++;
         }
     }
 
     public void printIpsLista(List<IPS> list) {
+        int i = 1;
         for (IPS ips : list) {
-            int i = 1;
             System.out.println(i + ". " + ips.getNombre());
             i++;
         }
     }
 
     public void printListaServicios(List<Servicio> list) {
+        int i = 1;
         for (Servicio ser : list) {
-            int i = 1;
             System.out.println(i + ". " + ser.getNombre() + " Id: " + ser.getId());
             i++;
         }
+    }
+
+    public void printListaOpcionesConsulta() {
+        System.out.println("a) Rango fechas");
+        System.out.println("b) Prestan a cierta Ips");
+        System.out.println("c) Ha sido solicitado n veces en cierta fecha");
     }
 }

@@ -51,9 +51,16 @@ public class EPSAndes {
         return lista;
     }
 
-    public List<Servicio> darListaServicios() {
+    public List<Servicio> darListaServicios(long idIps) {
         log.info("Consultando servicios: ");
-        List<Servicio> lista = ep.darListaServicios();
+        List<Servicio> lista = ep.darListaServicios(idIps);
+        log.info("Consultando los servicios: " + lista.size());
+        return lista;
+    }
+
+    public List<Servicio> darListaServiciosReservados(long idIps) {
+        log.info("Consultando servicios: ");
+        List<Servicio> lista = ep.darListaServiciosReservados(idIps);
         log.info("Consultando los servicios: " + lista.size());
         return lista;
     }
@@ -109,11 +116,25 @@ public class EPSAndes {
     }
 
 
-    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
-        log.info("Actualizando Servicio: " + nombre);
-        boolean ser = ep.deshabilitarServicio(nombre, inicio, fin);
+    public boolean deshabilitarServicio(long idServicio, long idIps, Date inicio, Date fin) {
+        log.info("Actualizando Servicio: " + idServicio);
+        boolean ser = ep.deshabilitarServicio(idServicio, idIps, inicio, fin);
         log.info("Actualizando Servicio: " + ser);
         return ser;
+    }
+
+    public List<Servicio> buscarServiciosPorFecha(Date inicio, Date fin) {
+        log.info("Recopilando servicios...");
+        List<Servicio> servicios = ep.buscarServiciosPorFechas(inicio, fin);
+        log.info("Recopilando servicios...");
+        return servicios;
+    }
+
+    public List<IPS> darServicioEnIps(long idServicio) {
+        log.info("Buscando en Ips´s");
+        List<IPS> list = ep.darServicioEnIps(idServicio);
+        log.info("Buscando en Ips´s " + list.size());
+        return list;
     }
 
 

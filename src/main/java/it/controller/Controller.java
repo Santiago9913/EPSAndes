@@ -57,6 +57,8 @@ public class Controller {
 
     private List<Servicio> listaServicios;
 
+    private List<Servicio> listaServiciosReservados;
+
     private List<Medicamento> listaMedicamentos;
 
     private List<Paciente> listaPacientes;
@@ -70,6 +72,7 @@ public class Controller {
         listaServicios = new ArrayList<>();
         listaMedicamentos = new ArrayList<>();
         listaPacientes = new ArrayList<>();
+        listaServiciosReservados = new ArrayList<>();
     }
 
     public void run() {
@@ -81,7 +84,6 @@ public class Controller {
         crearConexion();
         listaEPS = darListaEps();
         listaIPS = darListaIps();
-        listaServicios = darListaServicios();
         listaMedicamentos = darListaMedicamentos();
         listaPacientes = darListaPacientes();
 
@@ -369,18 +371,30 @@ public class Controller {
                         String tdOrg = sc.next();
                         Usuario org = new Usuario(idOrg, nOrg, cOrg, tdOrg, "ORGANIZADOR_CAMPANA");
                         registrarCampana(org, c_personas, servs, f_inicio, f_fin);
-                        // Cancelar servicio de la camppaña
+                        break;
+
+                    // Cancelar servicio de la camppaña
                     case 6:
 
 
                         break;
                     // Deshabilitar servicio
                     case 7:
-                        view.printMessage("Indique el servicio de desea deshabilitar");
-                        view.printListaServicios(listaServicios);
-                        view.printMessage("Ingrese el nombre del servicio: ");
-                        String servicioDeshabilitar = sc.next();
-                        servicioDeshabilitar = servicioDeshabilitar.concat(sc.nextLine());
+                        view.printMessage("Indique la Ips den donde desea deshabilitar el servicio: ");
+                        view.printIpsLista(listaIPS);
+                        view.printMessage("Ingrese el nombre de la Ips: ");
+                        String nombreIpsDesh = sc.next();
+                        nombreIpsDesh = nombreIpsDesh.concat(sc.nextLine());
+                        long ipsIdDesh = getidIps(nombreIpsDesh.toUpperCase());
+                        System.out.println();
+
+                        view.printMessage("Servicios en Ips: ");
+                        view.printListaServicios(darListaServicios(ipsIdDesh));
+                        view.printMessage("Seleccion el Id del servicio: ");
+                        long idServicioDesh = sc.nextInt();
+                        System.out.println();
+
+
                         view.printMessage("Ingrese la fecha en la que inicia la inhabilitacion (dd/mm/yyyy): ");
                         String inicioInhabilitacion = sc.next();
                         view.printMessage("Ingrese el inicio en la que finaliza la inhabilitacion (dd/mm/yyyy): ");
@@ -398,7 +412,7 @@ public class Controller {
                         Date finInhabilitacionServicio = Date.valueOf(LocalDate.of(anoFinInh, mesFinInh, diaFinInh));
 
 
-                        deshabilitarServicio(servicioDeshabilitar.toUpperCase(), inicioInhabilitacionServicio, finInhabilitacionServicio);
+                        deshabilitarServicio(idServicioDesh, ipsIdDesh, inicioInhabilitacionServicio, finInhabilitacionServicio);
                         break;
 
                     // Registrar reapertura
@@ -420,6 +434,55 @@ public class Controller {
 
                     // RFC 4
                     case 12:
+                        view.printMessage("Ingrese bajo que caracteristica desea buscar: ");
+                        view.printListaOpcionesConsulta();
+                        view.printMessage("Seleccione una opcion: ");
+                        String opcionRFC4 = sc.next().toLowerCase();
+
+                        if (opcionRFC4.equals("a")) {
+                            view.printMessage("Ingrese la fecha de inicio (dd/mm/yyyy): ");
+                            String fechaInicioRFC4 = sc.next();
+                            view.printMessage("Ingrese la fecha de fin (dd/mm/yyyy): ");
+                            String fechaFinRFC4 = sc.next();
+
+                            String[] parseInicioRFC4 = fechaInicioRFC4.split("/");
+                            String[] parseFinRFC4 = fechaFinRFC4.split("/");
+                            int anoInicioRFC4 = Integer.parseInt(parseInicioRFC4[2]);
+                            int mesInicioRFC4 = Integer.parseInt(parseInicioRFC4[1]);
+                            int diaInicioRFC4 = Integer.parseInt(parseInicioRFC4[0]);
+                            int anoFinRFC4 = Integer.parseInt(parseFinRFC4[2]);
+                            int mesFinRFC4 = Integer.parseInt(parseFinRFC4[1]);
+                            int diaFinRFC4 = Integer.parseInt(parseFinRFC4[0]);
+
+                            Date inicioRFC4 = Date.valueOf(LocalDate.of(anoInicioRFC4, mesInicioRFC4, diaInicioRFC4));
+                            Date finRFC4 = Date.valueOf(LocalDate.of(anoFinRFC4, mesFinRFC4, diaFinRFC4));
+                            System.out.println();
+                            view.printMessage("Los servicios son: ");
+
+                            List<Servicio> rfc4 = buscarServiciosPorFechas(inicioRFC4, finRFC4);
+                            for (Servicio serRfc4 : rfc4) {
+                                view.printMessage(serRfc4.toString());
+                            }
+                            break;
+                        } else if (opcionRFC4.equals("b")) {
+//                            view.printMessage("Indique el servicio sobre el que quier consultar: ");
+//                            view.printListaServicios(listaServicios);
+//                            view.printMessage("Ingrese el nombre: ");
+//                            String servicioRFC4 = sc.next();
+//                            servicioRFC4 = servicioRFC4.concat(sc.nextLine());
+//                            long idSerRFC4 = getIdServicioGeneral(servicioRFC4.toUpperCase());
+//                            System.out.println();
+//                            view.printMessage("Las Ips son son: ");
+//
+//                            List<IPS> ipsRFC4 = darServicioEnIps(idSerRFC4);
+//
+//                            for (IPS ipRfc4 : ipsRFC4) {
+//                                view.printMessage(ipRfc4.toString());
+//                            }
+//                            break;
+                        }
+
+
                         break;
 
                     // RFC 5
@@ -469,12 +532,12 @@ public class Controller {
                             String servicio = sc.next();
                             servicio = servicio.concat(sc.nextLine());
 
-                            if (containsServicio(servicio.toUpperCase())) {
-                                idSer_Or = getIdServicio(servicio.toUpperCase());
-                            } else {
-                                view.printMessage("El servicio no existe, asegurese de ingresarlo correctamente...");
-                                break;
-                            }
+//                            if (containsServicio(servicio.toUpperCase())) {
+//                                idSer_Or = getIdServicio(servicio.toUpperCase());
+//                            } else {
+//                                view.printMessage("El servicio no existe, asegurese de ingresarlo correctamente...");
+//                                break;
+//                            }
 
                         }
 
@@ -578,9 +641,22 @@ public class Controller {
         return null;
     }
 
-    public List<Servicio> darListaServicios() {
+    public List<Servicio> darListaServicios(long idIps) {
         try {
-            List<Servicio> lista = epsAndes.darListaServicios();
+            if (idIps > 0) {
+                List<Servicio> lista = epsAndes.darListaServicios(idIps);
+                return lista;
+            }
+        } catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+    }
+
+    public List<Servicio> darListaServiciosReservados(long idIps) {
+        try {
+            List<Servicio> lista = epsAndes.darListaServiciosReservados(idIps);
             return lista;
         } catch (Exception e) {
             view.printMessage("Las restricciones fueron violadas");
@@ -769,10 +845,10 @@ public class Controller {
     }
 
 
-    private void deshabilitarServicio(String nombre, Date inicio, Date fin) {
+    private void deshabilitarServicio(long idServicio, long idIps, Date inicio, Date fin) {
         try {
-            if (nombre != null && inicio != null && fin != null) {
-                boolean ser = epsAndes.deshabilitarServicio(nombre, inicio, fin);
+            if (idServicio > 0 && idIps > 0 && inicio != null && fin != null) {
+                boolean ser = epsAndes.deshabilitarServicio(idServicio, idIps, inicio, fin);
                 if (ser == false) {
                     throw new Exception("No se pudo actualizar la informacion");
                 }
@@ -785,7 +861,36 @@ public class Controller {
             e.printStackTrace();
             view.printErrMessage(e);
         }
+    }
 
+    private List<Servicio> buscarServiciosPorFechas(Date inicio, Date fin) {
+        try {
+            List<Servicio> servicios = epsAndes.buscarServiciosPorFecha(inicio, fin);
+            if (servicios == null) {
+                throw new Exception("No se logro buscar los servicios");
+            }
+            return servicios;
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+        return null;
+    }
+
+    private List<IPS> darServicioEnIps(long idServicio) {
+        try {
+            if (idServicio > 0) {
+                List<IPS> list = epsAndes.darServicioEnIps(idServicio);
+                if (list == null) {
+                    throw new Exception("No se pudo encontrar en que Ips se prestan los servicios");
+                }
+                return list;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+        return null;
     }
 
     public VOOrden adicionarOrden(String desc) {
@@ -866,6 +971,7 @@ public class Controller {
         }
     }
 
+
     public void reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
         try {
             epsAndes.reqConsulta5(f_inicio, f_fin, idPac);
@@ -919,9 +1025,9 @@ public class Controller {
         return contains;
     }
 
-    private boolean containsServicio(String servicio) {
+    private boolean containsServicio(String servicio, long idIps) {
         boolean contains = false;
-        listaServicios = darListaServicios();
+        listaServicios = darListaServicios(idIps);
         Iterator<Servicio> it = listaServicios.iterator();
 
         while (!contains) {
@@ -967,12 +1073,12 @@ public class Controller {
         return id;
     }
 
-    private long getIdServicio(String servicio) {
+    private long getIdServicio(String servicio, long idIps) {
 
         boolean contains = false;
         long id = 0;
-        listaServicios = darListaServicios();
-        Iterator<Servicio> it = darListaServicios().iterator();
+        listaServicios = darListaServicios(idIps);
+        Iterator<Servicio> it = darListaServicios(idIps).iterator();
 
         while (!contains) {
             Servicio ser = it.next();

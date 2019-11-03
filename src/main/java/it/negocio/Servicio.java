@@ -114,7 +114,8 @@ public class Servicio implements VOServicio {
      */
     @Override
     public String toString() {
-        return "Servicio [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + "]";
+        return "Servicio [id=" + id + ", capacidad=" + capacidad + ", nombre=" + nombre + ", inicio inhabilitacion= " + inicio_Inhabilitacion + ", fin inhabilitacion= "
+                + fin_Inhabilitacion + ", reservado= " + reservado + ", inhabilitado= " + inhabilitado + "]";
     }
 
 }

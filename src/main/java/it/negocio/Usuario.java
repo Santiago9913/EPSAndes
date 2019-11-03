@@ -4,9 +4,10 @@ import java.util.Date;
 
 public class Usuario implements VOUsuario {
 
-    protected String nombre;
-    protected Date fechaNacimiento;
     protected long id;
+    protected long idCampana;
+    protected Date fechaNacimiento;
+    protected String nombre;
     protected String correo;
     protected String tipoDocumento;
     protected String tipoUsuario;
@@ -18,13 +19,14 @@ public class Usuario implements VOUsuario {
         this.correo = "";
         this.tipoDocumento = "";
         this.tipoUsuario = "";
+        this.idCampana = 0;
     }
 
-
-    public Usuario(String nombre, Date fechaNacimiento, long id, String correo, String tipoDocumento, String tipoUsuario){
-        this.nombre = nombre;
-        this.fechaNacimiento = fechaNacimiento;
+    public Usuario(long id, long idCampana, Date fechaNacimiento, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
         this.id = id;
+        this.idCampana = idCampana;
+        this.fechaNacimiento = fechaNacimiento;
+        this.nombre = nombre;
         this.correo = correo;
         this.tipoDocumento = tipoDocumento;
         this.tipoUsuario = tipoUsuario;
@@ -38,6 +40,15 @@ public class Usuario implements VOUsuario {
         this.tipoDocumento = tdOrg;
         this.tipoUsuario = org;
         fechaNacimiento = null;
+    }
+
+    public Usuario(String nombre, Date fechaNacimiento, long id, String correo, String tipoDocumento, String tipoUsuario) {
+        this.nombre = nombre;
+        this.fechaNacimiento = fechaNacimiento;
+        this.id = id;
+        this.correo = correo;
+        this.tipoDocumento =tipoDocumento;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public String getCorreo() {
@@ -91,6 +102,22 @@ public class Usuario implements VOUsuario {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public long getIdCampana() {
+        return idCampana;
+    }
+
+    public void setIdCampana(long idCampana) {
+        this.idCampana = idCampana;
+    }
+
+    public String getTipoDocumento() {
+        return tipoDocumento;
+    }
+
+    public String getTipoUsuario() {
+        return tipoUsuario;
     }
 
     @Override

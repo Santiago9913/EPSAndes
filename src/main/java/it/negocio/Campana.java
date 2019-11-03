@@ -8,7 +8,7 @@ public class Campana {
     private long id;
     private int cantInscritos;
     private int idOrg;
-    private ArrayList<Integer> servs;
+    private ArrayList<String> servs;
     private Date fInicio;
     private Date fFin;
 
@@ -19,7 +19,7 @@ public class Campana {
         fFin = null;
     }
 
-    public Campana(long id, int cantInscritos, int idOrg, ArrayList<Integer> servs, Date fInicio, Date fFin) {
+    public Campana(long id, int cantInscritos, int idOrg, ArrayList<String> servs, Date fInicio, Date fFin) {
         this.id = id;
         this.cantInscritos = cantInscritos;
         this.idOrg = idOrg;
@@ -62,7 +62,7 @@ public class Campana {
 
     @Override
     public String toString() {
-        return "Campaña{" +
+        return "Campana{" +
                 "id=" + id +
                 ", cantInscritos=" + cantInscritos +
                 ", fInicio=" + fInicio +

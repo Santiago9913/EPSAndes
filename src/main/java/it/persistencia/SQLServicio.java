@@ -12,7 +12,9 @@ class SQLServicio {
 
     private PersistenciaEPSAndes ep;
 
-    public SQLServicio(PersistenciaEPSAndes ep) {this.ep = ep;}
+    public SQLServicio(PersistenciaEPSAndes ep) {
+        this.ep = ep;
+    }
 
     public List<Object> reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin) {
         String query = "SELECT ipser.id_ips AS ID_IPS, count(*) AS CANT_SERVICIOS ";

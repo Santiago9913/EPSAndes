@@ -412,8 +412,12 @@ public class PersistenciaEPSAndes {
         return sqlAdministrador.darListaIps(pmf.getPersistenceManager());
     }
 
-    public List<Servicio> darListaServicios() {
-        return sqlAdministrador.darListaServicios(pmf.getPersistenceManager());
+    public List<Servicio> darListaServicios(long idIps) {
+        return sqlAdministrador.darListaServicios(pmf.getPersistenceManager(), idIps);
+    }
+
+    public List<Servicio> darListaServiciosReservados(long idIps) {
+        return sqlAdministrador.darListaServiciosReservados(pmf.getPersistenceManager(), idIps);
     }
 
     public List<Medicamento> darListaMedicamentos() {
@@ -587,12 +591,12 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
+    public boolean deshabilitarServicio(long idServicio, long idIps, Date inicio, Date fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
-            long servicioDeshabilitado = sqlAdministrador.deshabilitarServicio(pmf.getPersistenceManager(), nombre, inicio, fin);
+            long servicioDeshabilitado = sqlAdministrador.deshabilitarServicio(pmf.getPersistenceManager(), idServicio, idIps, inicio, fin);
             tx.commit();
 
             log.trace("Inhabilitacion de servicio: " + servicioDeshabilitado);
@@ -606,6 +610,26 @@ public class PersistenciaEPSAndes {
                 tx.rollback();
             }
             pm.close();
+        }
+    }
+
+    public List<Servicio> buscarServiciosPorFechas(Date inicio, Date fin) {
+        try {
+            return sqlAdministrador.buscarServiciosPorFechas(pmf.getPersistenceManager(), inicio, fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
+
+    public List<IPS> darServicioEnIps(long idServicio) {
+        try {
+            return sqlAdministrador.darServicioEnIps(pmf.getPersistenceManager(), idServicio);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
         }
     }
 

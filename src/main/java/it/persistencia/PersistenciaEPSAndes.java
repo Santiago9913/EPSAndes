@@ -3,6 +3,7 @@ package it.persistencia;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -73,6 +74,8 @@ public class PersistenciaEPSAndes {
     private SQLCampana sqlCampana;
 
     private SQLServicio sqlServicio;
+
+    private SQLEps sqlEps;
 
     /**
      *
@@ -193,6 +196,8 @@ public class PersistenciaEPSAndes {
         sqlSecretaria = new SQLSecretaria(this);
         sqlUtil = new SQLUtil(this);
         sqlCampana = new SQLCampana(this);
+        sqlServicio = new SQLServicio(this);
+        sqlEps = new SQLEps(this);
     }
 
     /**
@@ -407,8 +412,12 @@ public class PersistenciaEPSAndes {
         return sqlAdministrador.darListaIps(pmf.getPersistenceManager());
     }
 
-    public List<Servicio> darListaServicios() {
-        return sqlAdministrador.darListaServicios(pmf.getPersistenceManager());
+    public List<Servicio> darListaServicios(long idIps) {
+        return sqlAdministrador.darListaServicios(pmf.getPersistenceManager(), idIps);
+    }
+
+    public List<Servicio> darListaServiciosReservados(long idIps) {
+        return sqlAdministrador.darListaServiciosReservados(pmf.getPersistenceManager(), idIps);
     }
 
     public List<Medicamento> darListaMedicamentos() {
@@ -419,21 +428,19 @@ public class PersistenciaEPSAndes {
         return sqlAdministrador.darListaPacientes(pmf.getPersistenceManager());
     }
 
-    public Usuario registrarUsuario(String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
+    public Usuario registrarUsuario(long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
-
         try {
             tx.begin();
-            long usuarioInsertado = sqlAdministrador.adicionarUsuario(pm, rol, nombre, fechaNacimiento, tipoDocumento, numDoc, correo);
+            long usuarioInsertado = sqlAdministrador.adicionarUsuario(pm, id, idCampana, fechaNac, nombre, correo, tipoDocumento, tipoUsuario);
             tx.commit();
 
-            log.trace("Insercion de usuario: " + numDoc + ": " + usuarioInsertado + " Usuario insertado");
-            return new Usuario(nombre, fechaNacimiento, numDoc, correo, tipoDocumento, rol);
+            log.trace("Insercion de usuario: " + id + ": " + usuarioInsertado + " Usuario insertado");
+            return new Usuario(id, idCampana, fechaNac, nombre, correo, tipoDocumento, tipoUsuario);
         } catch (Exception e) {
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
             return null;
-
         } finally {
             if (tx.isActive()) {
                 tx.rollback();
@@ -559,17 +566,17 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Campana registrarCampana(Usuario org, int participantes, ArrayList<Integer> servs, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(Usuario org, int participantes, ArrayList<String> servs, Date f_inicio, Date f_fin, String eps) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
             long idCampana = nextval();
-            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, (int) org.getId(), participantes, f_inicio, f_fin);
-            sqlServicio.adicionarCampana(pmf.getPersistenceManager(), servs);
+            long tuplasInsertadas = sqlCampana.adicionarCampana(pmf.getPersistenceManager(), idCampana, participantes, f_inicio, f_fin);
+            sqlEps.adicionarCampana(pm, eps, idCampana);
+            sqlServicio.adicionarCampana(pm, servs, eps);
             tx.commit();
-
-            log.trace("Inserción de campaña: " + tuplasInsertadas);
+            log.trace("Insercion de campana: " + tuplasInsertadas);
             return new Campana(idCampana, participantes, (int) org.getId(), servs, f_inicio, f_fin);
         } catch (Exception e) {
             e.printStackTrace();
@@ -584,12 +591,12 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public boolean deshabilitarServicio(String nombre, Date inicio, Date fin) {
+    public boolean deshabilitarServicio(long idServicio, long idIps, Date inicio, Date fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
         try {
             tx.begin();
-            long servicioDeshabilitado = sqlAdministrador.deshabilitarServicio(pmf.getPersistenceManager(), nombre, inicio, fin);
+            long servicioDeshabilitado = sqlAdministrador.deshabilitarServicio(pmf.getPersistenceManager(), idServicio, idIps, inicio, fin);
             tx.commit();
 
             log.trace("Inhabilitacion de servicio: " + servicioDeshabilitado);
@@ -606,9 +613,29 @@ public class PersistenciaEPSAndes {
         }
     }
 
+    public List<Servicio> buscarServiciosPorFechas(Date inicio, Date fin) {
+        try {
+            return sqlAdministrador.buscarServiciosPorFechas(pmf.getPersistenceManager(), inicio, fin);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {
-        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin, ano);
+    public List<IPS> darServicioEnIps(long idServicio) {
+        try {
+            return sqlAdministrador.darServicioEnIps(pmf.getPersistenceManager(), idServicio);
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
+
+
+    public Object reqConsulta1(Date f_inicio, Date f_fin) {
+        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin);
     }
 
     public Object reqConsulta2(Date f_inicio, Date f_fin) {
@@ -623,7 +650,7 @@ public class PersistenciaEPSAndes {
         return sqlServicio.reqConsulta7(pmf.getPersistenceManager());
     }
 
-    public void reabrirServicios(List<Integer> listSer) {
+    public void reabrirServicios(Hashtable<Integer, ArrayList<Integer>> listSer) {
         sqlServicio.reabrirServicios(pmf.getPersistenceManager(), listSer);
     }
 }

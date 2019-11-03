@@ -62,8 +62,20 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
-    public List<Servicio> darListaServicios(PersistenceManager pm) {
-        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaServicio());
+    public List<Servicio> darListaServicios(PersistenceManager pm, long idIps) {
+        Query q = pm.newQuery(SQL, "SELECT DISTINCT S.ID, ISS.CAPACIDAD, S.NOMBRE, ISS.INHABILITADO, ISS.INICIO_INHABILITACION, ISS.FIN_INHABILITACION, ISS.RESERVADO " +
+                "FROM IPS_SERVICIOS ISS, IPS IP, SERVICIO S " +
+                "WHERE S.ID = ISS.ID_SERVICIO AND ISS.ID_IPS = ?");
+        q.setParameters(idIps);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+    public List<Servicio> darListaServiciosReservados(PersistenceManager pm, long idIps) {
+        Query q = pm.newQuery(SQL, "SELECT DISTINCT S.ID, ISS.CAPACIDAD, S.NOMBRE, ISS.INHABILITADO, ISS.INICIO_INHABILITACION, ISS.FIN_INHABILITACION, ISS.RESERVADO " +
+                "FROM IPS_SERVICIOS ISS, IPS IP, SERVICIO S " +
+                "WHERE S.ID = ISS.ID_SERVICIO AND ISS.ID_IPS = ? AND ISS.RESERVADO = 'S'");
+        q.setParameters(idIps);
         q.setResultClass(Servicio.class);
         return q.executeList();
     }
@@ -92,16 +104,16 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
-    public long adicionarUsuario(PersistenceManager pm, String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + "(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) "
-                + "VALUES(?,?,?,?,?,?,?,?,?)");
-        q.setParameters(numDoc, null, null, null, fechaNacimiento, nombre, correo, tipoDocumento, rol);
+    public long adicionarUsuario(PersistenceManager pm, long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + " (ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, ID_CAMPANA_USUARIO, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?) ");
+        q.setParameters(id, null, null, null, idCampana, nombre, correo, tipoDocumento, tipoUsuario);
         return (long) q.executeUnique();
     }
 
 
     public long adicionarPaciente(PersistenceManager pm, long numDocumento, long idEps, String estado) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaPaciente() + "(ID_USUARIO, ID_EPS, ESTADO_SALUD) VALUES (?,?,?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + "(ID_USUARIO, ID_EPS, ESTADO_SALUD) VALUES (?,?,?)");
         q.setParameters(numDocumento, idEps, estado);
         return (long) q.executeUnique();
     }
@@ -113,15 +125,35 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
+    public List<Servicio> buscarServiciosPorFechas(PersistenceManager pm, Date inicio, Date fin) {
+        Query q = pm.newQuery(SQL, "SELECT DISTINCT S.ID, ISS.CAPACIDAD, S.NOMBRE, ISS.INHABILITADO, ISS.INICIO_INHABILITACION, ISS.FIN_INHABILITACION, ISS.RESERVADO " +
+                "FROM IPS_SERVICIOS ISS, IPS IP, SERVICIO S, ORDENES_SERVICIOS OS, ORDEN O  " +
+                "WHERE S.ID = OS.ID_SERVICIO AND S.ID = ISS.ID_SERVICIO AND (OS.ID_ORDEN = O.ID AND O.FECHA BETWEEN ? AND ?)");
+        q.setParameters(inicio, fin);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+    public List<IPS> darServicioEnIps(PersistenceManager pm, long idServicio) {
+        Query q = pm.newQuery(SQL, "SELECT DISTINCT I.ID, I.ID_EPS, I.NOMBRE, I.CAPACIDAD, I.LOCALIZACION " +
+                "FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S " +
+                "WHERE ? = ISS.ID_SERVICIO AND I.ID = ISS.ID_IPS");
+        q.setParameters(idServicio);
+        q.setResultClass(IPS.class);
+        return q.executeList();
+    }
+
     public long adicionarMedicoAIps(PersistenceManager pm, long numDoc, long idIps) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps_Medico() + "(ID_IPS, ID_MEDICO) VALUES(?,?)");
         q.setParameters(idIps, numDoc);
         return (long) q.executeUnique();
     }
 
-    public long deshabilitarServicio(PersistenceManager pm, String nombre, Date inicio, Date fin) {
-        Query q = pm.newQuery(SQL, "UPDATE " + pe.getTablaServicio() + " SET INICIO_INHABILITACION = ?, FIN_INHABILITACION = ?, INHABILITADO = ? WHERE NOMBRE = ?");
-        q.setParameters(inicio, fin, "S", nombre);
+    public long deshabilitarServicio(PersistenceManager pm, long idServicio, long idIps, Date inicio, Date fin) {
+        Query q = pm.newQuery(SQL, "UPDATE IPS_SERVICIOS " +
+                "SET INICIO_INHABILITACION = ? , FIN_INHABILITACION = ? , INHABILITADO = 'S' " +
+                "WHERE ID_IPS = ? AND ID_SERVICIO = ?");
+        q.setParameters(inicio, fin, idServicio, idIps);
         return (long) q.executeUnique();
     }
 

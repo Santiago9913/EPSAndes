@@ -92,16 +92,16 @@ public class SQLAdministrador {
         return (long) q.executeUnique();
     }
 
-    public long adicionarUsuario(PersistenceManager pm, String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + "(ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) "
-                + "VALUES(?,?,?,?,?,?,?,?,?)");
-        q.setParameters(numDoc, null, null, null, fechaNacimiento, nombre, correo, tipoDocumento, rol);
+    public long adicionarUsuario(PersistenceManager pm, long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + " (ID, ID_EPS_GERENTE, ID_EPS_ADMIN, ID_IPS_RECEPCIONISTA, ID_CAMPANA_USUARIO, FECHA_NACIMIENTO, NOMBRE, CORREO, TIPO_DOCUMENTO, TIPO_USUARIO) "
+                + " VALUES (?,?,?,?,?,?,?,?,?,?) ");
+        q.setParameters(id, null, null, null, idCampana, nombre, correo, tipoDocumento, tipoUsuario);
         return (long) q.executeUnique();
     }
 
 
     public long adicionarPaciente(PersistenceManager pm, long numDocumento, long idEps, String estado) {
-        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaPaciente() + "(ID_USUARIO, ID_EPS, ESTADO_SALUD) VALUES (?,?,?)");
+        Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaUsuario() + "(ID_USUARIO, ID_EPS, ESTADO_SALUD) VALUES (?,?,?)");
         q.setParameters(numDocumento, idEps, estado);
         return (long) q.executeUnique();
     }

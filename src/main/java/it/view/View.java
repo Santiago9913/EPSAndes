@@ -111,10 +111,10 @@ public class View {
         }
     }
 
-    public void printListaServicios(List<Servicio> list){
-        for(Servicio ser : list){
+    public void printListaServicios(List<Servicio> list) {
+        for (Servicio ser : list) {
             int i = 1;
-            System.out.println(i +  ". " + ser.getNombre());
+            System.out.println(i + ". " + ser.getNombre() + " Id: " + ser.getId());
             i++;
         }
     }

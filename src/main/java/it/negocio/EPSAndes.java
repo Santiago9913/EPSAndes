@@ -3,6 +3,7 @@ package it.negocio;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 
@@ -79,9 +80,9 @@ public class EPSAndes {
         return lista;
     }
 
-    public Usuario registrarUsuario(String rol, String nombre, Timestamp fechaNacimiento, String tipoDocumento, long numDoc, String correo) {
-        log.info("Registrando usuario: " + numDoc);
-        Usuario us = ep.registrarUsuario(rol, nombre, fechaNacimiento, tipoDocumento, numDoc, correo);
+    public Usuario registrarUsuario(long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
+        log.info("Registrando usuario: " + id);
+        Usuario us = ep.registrarUsuario(id, idCampana, fechaNac, nombre, correo, tipoDocumento, tipoUsuario);
         log.info("Registrando usuario: " + us);
         return us;
     }
@@ -145,9 +146,9 @@ public class EPSAndes {
         return orden;
     }
 
-    public Campana registrarCampana(Usuario org, int participantes, ArrayList<Integer> servs, Date f_inicio, Date f_fin) {
+    public Campana registrarCampana(Usuario org, int participantes, ArrayList<String> servs, Date f_inicio, Date f_fin, String eps) {
         log.info("Adicionando campana");
-        Campana campana = ep.registrarCampana(org, participantes, servs, f_inicio, f_fin);
+        Campana campana = ep.registrarCampana(org, participantes, servs, f_inicio, f_fin, eps);
         log.info("Saliendo de adicionar campana");
         return campana;
     }
@@ -167,10 +168,10 @@ public class EPSAndes {
 
     }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin, int ano) {
+    public Object reqConsulta1(Date f_inicio, Date f_fin) {
         log.info("Calculando la cantidad de servicios prestados por una IPS en el periodo: " + f_inicio.toString() + " - " +
-                f_fin.toString() + ", en el año: " + ano);
-        Object resp = ep.reqConsulta1(f_inicio, f_fin, ano);
+                f_fin.toString());
+        Object resp = ep.reqConsulta1(f_inicio, f_fin);
         return resp;
     }
 
@@ -193,13 +194,9 @@ public class EPSAndes {
         return resp;
     }
 
-    public void reabrirServicios(List<Integer> listSer) {
-        log.info("Reabriendo servicios: ");
-        Iterator<Integer> it = listSer.iterator();
-        while (it.hasNext()) {
-            Integer current = it.next();
-            log.info(current + ", ");
-        }
+    public void reabrirServicios(Hashtable<Integer, ArrayList<Integer>> listSer) {
+        log.info("Reabriendo los servicios solicitados ");
         ep.reabrirServicios(listSer);
     }
+
 }

@@ -2,10 +2,9 @@ package it.persistencia;
 
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
+import java.sql.Array;
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 class SQLServicio {
 
@@ -17,15 +16,10 @@ class SQLServicio {
         this.ep = ep;
     }
 
-    public List<Object> reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin, int ano) {
-        String query = "SELECT ips.id, ser.nombre, count(*)";
-        query += " FROM ";
-        query += ep.getTablaIps() + " AS ips, ";
-        query += ep.getTablaIps_Servicios() + " AS ipsr, ";
-        query += ep.getTablaServicio() + " AS ser";
-        query += " WHERE ips.id = ipsr.id_ips ";
-        query += " AND ipsr.id_servicio = ser.id ";
-        query += " GROUP BY ips.id, servicio.nombre ";
+    public List<Object> reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin) {
+        String query = "SELECT ipser.id_ips AS ID_IPS, count(*) AS CANT_SERVICIOS ";
+        query += "FROM IPS_SERVICIOS ipser, ";
+        query += " WHERE  ";
 
         Query q = pm.newQuery(SQL, query);
         return q.executeList();
@@ -71,27 +65,82 @@ class SQLServicio {
         return q.executeList();
     }
 
-    public void reabrirServicios(PersistenceManager pm, List<Integer> listSer) {
-        Iterator<Integer> it = listSer.iterator();
-        while (it.hasNext()) {
-            String query = "UPDATE SERVICIO\n" +
-                    "SET inicio_inhabilitacion = NULL, fin_inhabilitacion = NULL, reservado = 'S'\n" +
-                    "WHERE id = ?";
-            Query q = pm.newQuery(SQL, query);
-            q.setParameters(it.next());
-            q.execute();
+    public void reabrirServicios(PersistenceManager pm, Hashtable<Integer, ArrayList<Integer>> listSer) {
+        Enumeration<Integer> keys = listSer.keys();
+        Integer next = null;
+        while ( (next = keys.nextElement()) != null ) {
+            ArrayList<Integer> currServs = listSer.get(next);
+            for (Integer current: currServs) {
+                String query = "UPDATE IPS_SERVICIOS " +
+                        "SET INHABILITADO = 'N', " +
+                        "INICIO_INHABILITACION = NULL, " +
+                        "FIN_INHABILITACION = NULL " +
+                        "WHERE id_ips = ? AND id_servicio = ?";
+                Query q = pm.newQuery(SQL, query);
+                q.setParameters(next, current);
+                q.execute();
+            }
         }
     }
 
-    public void adicionarCampana(PersistenceManager pm, ArrayList<Integer> servs) {
-        Iterator<Integer> it = servs.iterator();
-        while (it.hasNext()) {
-            String query = "UPDATE SERVICIO " +
-                    "SET RESERVADO = 'S' " +
-                    "WHERE id = ?";
-            Query q = pm.newQuery(SQL, query);
-            q.setParameters(it.next());
-            q.execute();
+    public void adicionarCampana(PersistenceManager pm, ArrayList<String> servs, String eps) {
+        try {
+            //Obtiene el id de la EPS
+            String idQuery = "SELECT ID " +
+                    "FROM " + ep.getTablaEps() +
+                    " WHERE NOMBRE = ?";
+            Query idQ = pm.newQuery(SQL, idQuery);
+            idQ.setParameters(eps);
+            int idEps = (int) idQ.execute();
+
+            //Obtiene las ips correspondientes a la eps
+            String sQuery = "SELECT ID" +
+                    "FROM " + ep.getTablaIps() +
+                    " WHERE ID_EPS = ?";
+            Query sq = pm.newQuery(SQL, sQuery);
+            sq.setParameters(idEps);
+            ArrayList<Integer> idsIps = (ArrayList<Integer>) sq.execute(SQL, sq);
+
+            //Obtiene los id de los servicios
+            ArrayList<Integer> idsServ = new ArrayList<>();
+            Iterator<String> itServ = servs.iterator();
+            while (itServ.hasNext()) {
+                String servQuery = "SELECT ID " +
+                        "FROM " + ep.getTablaServicio() +
+                        " WHERE nombre = ?";
+                Query servQ = pm.newQuery(SQL, servQuery);
+                String currName = itServ.next();
+                servQ.setParameters(currName);
+                idsServ.add((int)servQ.execute());
+            }
+
+            //Actualiza IPS_SERVICIOS
+            Iterator<Integer> it = idsServ.iterator();
+            while (it.hasNext()) {
+                //Fija los parametros y el parametro inicial del servicio actual
+                Map<String, Object> params = new HashMap<>();
+                int currServ = it.next();
+                params.put("servParam", currServ);
+
+                String query = "UPDATE " + ep.getTablaIps_Servicios() +
+                        " SET RESERVADO = 'S' ";
+                for (int i = 0; i < idsIps.size(); i++) {
+                    String currIpsParam = "ipsParam"+i;
+                    if (i == 0) {
+                        query += "WHERE (id_servicio = servParam AND id_ips = " + currIpsParam + ") ";
+                    }
+                    else {
+                        query += "OR (id_servicio = servParam AND id_ips = " + currIpsParam + ") ";
+                    }
+                    params.put(currIpsParam, idsIps.get(i));
+                }
+                query += "LIMIT 1 ";
+                Query q = pm.newQuery(SQL, query);
+                q.executeWithMap(params);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
     }
 }

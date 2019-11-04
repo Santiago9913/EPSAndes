@@ -145,10 +145,24 @@ public class EPSAndes {
         return list;
     }
 
+    public List<Servicio> calcularIndice(long idServicio){
+        log.info("Calculando indice...");
+        List<Servicio> list = ep.calcularIndice(idServicio);
+        log.info("Calculando indice...");
+        return list;
+    }
+
     public List<Servicio> darServiciosCampana(long idCampana){
         log.info("Buscando Campanas...");
         List<Servicio> list = ep.darServiciosCampana(idCampana);
         log.info("Buscando Campanas..."+ list.size());
+        return list;
+    }
+
+    public List<Servicio> darListaServiciosTotal(){
+        log.info("Buscando servicios...");
+        List<Servicio> list = ep.darListaServiciosTotal();
+        log.info("Buscando servicios..." + list.size());
         return list;
     }
 

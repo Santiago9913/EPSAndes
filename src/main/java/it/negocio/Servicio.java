@@ -11,6 +11,7 @@ public class Servicio implements VOServicio {
     public Date inicio_Inhabilitacion;
     public Date fin_Inhabilitacion;
     public String reservado;
+    public double porcentajeUso;
 
     public Servicio() {
         this.id = 0;
@@ -21,6 +22,7 @@ public class Servicio implements VOServicio {
         this.fin_Inhabilitacion = null;
         this.reservado = "";
         this.id_ips = 0;
+        this.porcentajeUso = 0;
     }
 
     /**
@@ -36,6 +38,12 @@ public class Servicio implements VOServicio {
         this.fin_Inhabilitacion = fin_Inhabilitacion;
         this.reservado = reservado;
         this.id_ips = id_ips;
+    }
+
+    public Servicio(long id, String nombre, double porcentajeUso){
+        this.id = id;
+        this.nombre = nombre;
+        this.porcentajeUso = porcentajeUso;
     }
 
     /**
@@ -91,6 +99,14 @@ public class Servicio implements VOServicio {
 
     public long getId_ips() {
         return id_ips;
+    }
+
+    public double getPorcentajeUso() {
+        return porcentajeUso;
+    }
+
+    public void setPorcentajeUso(double porcentajeUso) {
+        this.porcentajeUso = porcentajeUso;
     }
 
     /**

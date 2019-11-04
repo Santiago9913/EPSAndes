@@ -508,6 +508,31 @@ public class Controller {
                         break;
                     // RFC 3
                     case 11:
+                        List<Servicio> listRFC3 = darListaServiciosTotal();
+                        double[] por = new double[listRFC3.size()];
+                        int i3 = 0;
+                        int k = 0;
+                        List<Servicio> in = null;
+                        Servicio serF3 = null;
+                        for(Servicio ser3 : listRFC3){
+                            serF3 = null;
+                            long id3 = ser3.getId();
+                            in =  calcularIndice(id3);
+                            if(in.size() > 0){
+                                serF3 = in.get(0);
+                                por[k] = serF3.getPorcentajeUso() ;
+                                k++;
+                            }
+                            else{
+                                por[k] = 0.0 ;
+                                k++;
+                                continue;
+                            }
+                        }
+
+                        for(int ind = 0; ind < por.length; ind++){
+                            System.out.println(ind +1 +". " + por[ind]);
+                        }
                         break;
 
                     // RFC 4
@@ -543,21 +568,19 @@ public class Controller {
                             }
                             break;
                         } else if (opcionRFC4.equals("b")) {
-//                            view.printMessage("Indique el servicio sobre el que quier consultar: ");
-//                            view.printListaServicios(listaServicios);
-//                            view.printMessage("Ingrese el nombre: ");
-//                            String servicioRFC4 = sc.next();
-//                            servicioRFC4 = servicioRFC4.concat(sc.nextLine());
-//                            long idSerRFC4 = getIdServicioGeneral(servicioRFC4.toUpperCase());
-//                            System.out.println();
-//                            view.printMessage("Las Ips son son: ");
-//
-//                            List<IPS> ipsRFC4 = darServicioEnIps(idSerRFC4);
-//
-//                            for (IPS ipRfc4 : ipsRFC4) {
-//                                view.printMessage(ipRfc4.toString());
-//                            }
-//                            break;
+                            view.printMessage("Indique el servicio sobre el que quiere consultar: ");
+                            view.printListaServiciosTotal(darListaServiciosTotal());
+                            view.printMessage("Ingrese el id: ");
+                            long servicioRFC4 = sc.nextInt();
+                            System.out.println();
+                            view.printMessage("Las Ips son son: ");
+
+                            List<IPS> ipsRFC4 = darServicioEnIps(servicioRFC4);
+
+                            for (IPS ipRfc4 : ipsRFC4) {
+                                view.printMessage(ipRfc4.toString());
+                            }
+                            break;
                         }
 
 
@@ -845,51 +868,6 @@ public class Controller {
         }
     }
 
-
-//    public void agregarGerente(long id, String nombre, String correo) {
-//        try {
-//            long idGerente = id;
-//            String nomGerente = nombre;
-//            String correoGerente = correo;
-//
-//            if (id > 0 && nomGerente != null && correoGerente != null) {
-//                VOUsuario re = epsAndes.registrarGerente(idGerente, nomGerente, correoGerente);
-//                if (re == null) {
-//                    throw new Exception("No se pudo agregar recepcionista");
-//                }
-//                String resultado = "En registrarRecepcionista\n\n";
-//                resultado += "Recepcionista adicionado exitosamente: " + re;
-//                resultado += "\n Operacion terminada";
-//                view.printMessage(resultado);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            view.printErrMessage(e);
-//        }
-//    }
-
-//    public void agregarRecepcionista(long id, String nombre, String correo) {
-//        try {
-//            long idRecep = id;
-//            String nomRecep = nombre;
-//            String correoRecep = correo;
-//
-//            if (id > 0 && nomRecep != null && correoRecep != null) {
-//                VOUsuario re = epsAndes.registrarRecepcionista(idRecep, nomRecep, correoRecep);
-//                if (re == null) {
-//                    throw new Exception("No se pudo agregar recepcionista");
-//                }
-//                String resultado = "En registrarRecepcionista\n\n";
-//                resultado += "Recepcionista adicionado exitosamente: " + re;
-//                resultado += "\n Operacion terminada";
-//                view.printMessage(resultado);
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            view.printErrMessage(e);
-//        }
-//    }
-
     public void agregarEPS(String nombre) {
         try {
             String nom = nombre;
@@ -1074,6 +1052,23 @@ public class Controller {
         return null;
     }
 
+    private List<Servicio> darListaServiciosTotal(){
+        try{
+            List<Servicio> list = epsAndes.darListaServiciosTotal();
+            if(list == null){
+                throw new Exception("No se han encontrado servicios por algun error");
+            }
+            return list;
+
+        }catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
+
+    }
+
     public void reqConsulta1(Date f_inicio, Date f_fin) {
         try {
             epsAndes.reqConsulta1(f_inicio, f_fin);
@@ -1192,6 +1187,23 @@ public class Controller {
         }
 
         return id;
+    }
+
+    private List<Servicio> calcularIndice(long idSer){
+        try{
+            if(idSer > 0){
+                List<Servicio> ser = epsAndes.calcularIndice(idSer);
+                if(ser == null){
+                    throw new Exception("No se pudo calcular el indice");
+                }
+                return ser;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
     }
 
     private long getIdServicio(String servicio, long idIps) {

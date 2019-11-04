@@ -142,10 +142,20 @@ public class SQLAdministrador {
 
     public List<IPS> darServicioEnIps(PersistenceManager pm, long idServicio) {
         Query q = pm.newQuery(SQL, "SELECT DISTINCT I.ID, I.ID_EPS, I.NOMBRE, I.CAPACIDAD, I.LOCALIZACION " +
-                "FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S " +
-                "WHERE ? = ISS.ID_SERVICIO AND I.ID = ISS.ID_IPS");
+                "FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S  " +
+                "WHERE S.ID = ? and ISS.ID_IPS =I.ID ");
         q.setParameters(idServicio);
         q.setResultClass(IPS.class);
+        return q.executeList();
+    }
+
+    public List<Servicio> calcularIndice(PersistenceManager pm, long idServicio){
+        Query q = pm.newQuery(SQL, "select s.id, s.nombre, (count(os.id_servicio) / (select count(*) from ordenes_servicios))*100 porcentajeUso " +
+                "from ordenes_servicios os, servicio s " +
+                "where os.id_servicio = ? and s.id = os.id_servicio " +
+                "group by os.id_servicio, s.id, s.nombre");
+        q.setParameters(idServicio);
+        q.setResultClass(Servicio.class);
         return q.executeList();
     }
 
@@ -155,6 +165,12 @@ public class SQLAdministrador {
                 "from campana c, eps e, ips ip, servicio s, ips_servicios iss " +
                 "where (e.id_campana = ?) and (ip.id_eps = e.id) and (iss.id_ips = ip.id )and (iss.id_servicio = s.id) and (iss.reservado = 'S')");
         q.setParameters(idCampana);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+    public List<Servicio> darListaServiciosTotales(PersistenceManager pm){
+        Query q = pm.newQuery(SQL, "select * from servicio");
         q.setResultClass(Servicio.class);
         return q.executeList();
     }

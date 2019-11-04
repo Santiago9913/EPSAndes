@@ -665,9 +665,29 @@ public class PersistenciaEPSAndes {
         }
     }
 
+    public List<Servicio> calcularIndice(long idServicio){
+        try{
+            return sqlAdministrador.calcularIndice(pmf.getPersistenceManager(), idServicio);
+        }catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
+
     public List<Servicio> darServiciosCampana(long idCampana){
         try{
             return sqlAdministrador.darServiciosCampana(pmf.getPersistenceManager(), idCampana);
+        }catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
+
+    public List<Servicio> darListaServiciosTotal(){
+        try{
+            return sqlAdministrador.darListaServiciosTotales(pmf.getPersistenceManager());
         }catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));

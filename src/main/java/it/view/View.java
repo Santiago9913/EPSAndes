@@ -124,11 +124,18 @@ public class View {
     public void printListaServicios(List<Servicio> list) {
         int i = 1;
         for (Servicio ser : list) {
-            System.out.println(i + ". " + ser.getNombre() + " Id: " + ser.getId());
+            System.out.println(i+". " + ser.toString());
             i++;
         }
     }
 
+    public void printListaServiciosTotal(List<Servicio> list) {
+        int i = 1;
+        for (Servicio ser : list) {
+            System.out.println(i+". ID =" + ser.getId()+ ", NOMBRE = " + ser.getNombre());
+            i++;
+        }
+    }
     public void printListaOpcionesConsulta() {
         System.out.println("a) Rango fechas");
         System.out.println("b) Prestan a cierta Ips");

@@ -1,5 +1,6 @@
 package it.view;
 
+import it.negocio.Campana;
 import it.negocio.EPS;
 import it.negocio.IPS;
 import it.negocio.Servicio;
@@ -103,6 +104,15 @@ public class View {
         }
     }
 
+    public void printCampanas(List<Campana> lista){
+        System.out.println("Id por campaña: ");
+        int i = 1;
+        for(Campana c : lista){
+            System.out.println(i+". " + c.getId());
+            i++;
+        }
+    }
+
     public void printIpsLista(List<IPS> list) {
         int i = 1;
         for (IPS ips : list) {
@@ -114,11 +124,18 @@ public class View {
     public void printListaServicios(List<Servicio> list) {
         int i = 1;
         for (Servicio ser : list) {
-            System.out.println(i + ". " + ser.getNombre() + " Id: " + ser.getId());
+            System.out.println(i+". " + ser.toString());
             i++;
         }
     }
 
+    public void printListaServiciosTotal(List<Servicio> list) {
+        int i = 1;
+        for (Servicio ser : list) {
+            System.out.println(i+". ID =" + ser.getId()+ ", NOMBRE = " + ser.getNombre());
+            i++;
+        }
+    }
     public void printListaOpcionesConsulta() {
         System.out.println("a) Rango fechas");
         System.out.println("b) Prestan a cierta Ips");

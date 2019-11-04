@@ -39,6 +39,13 @@ WHERE sq.id_paciente = ?
 
 
 --RFC7
-SELECT 
+SELECT sq2.id_paciente
+FROM (SELECT a.id_paciente id_paciente, b.id_servicio id_servicio, count(*) AS rtda
+    FROM CONSULTA a, ORDENES_SERVICIOS b
+    WHERE a.id_orden = b.id_orden
+    GROUP BY a.id_paciente, b.id_servicio) sq2
+GROUP BY sq2.id_paciente, sq2.id_servicio
+HAVING count(sq2.id_servicio) >= 3
+    AND sum(sq2.rtda) >= 12;
 
 --RFC8

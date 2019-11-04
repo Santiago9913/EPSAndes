@@ -2,10 +2,7 @@ package it.negocio;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 import org.apache.log4j.Logger;
 
@@ -168,29 +165,29 @@ public class EPSAndes {
 
     }
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin) {
+    public LinkedList<Object[]> reqConsulta1(Date f_inicio, Date f_fin) {
         log.info("Calculando la cantidad de servicios prestados por una IPS en el periodo: " + f_inicio.toString() + " - " +
                 f_fin.toString());
-        Object resp = ep.reqConsulta1(f_inicio, f_fin);
+        LinkedList<Object[]> resp = ep.reqConsulta1(f_inicio, f_fin);
         return resp;
     }
 
-    public Object reqConsulta2(Date f_inicio, Date f_fin) {
+    public LinkedList<Object[]> reqConsulta2(Date f_inicio, Date f_fin) {
         log.info("Calculando los 20 servicios más solicitados en el periodo " + f_inicio.toString() + " - " + f_fin.toString());
-        Object resp = ep.reqConsulta2(f_inicio, f_fin);
+        LinkedList<Object[]> resp = ep.reqConsulta2(f_inicio, f_fin);
         return resp;
     }
 
-    public Object reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
+    public LinkedList<Object[]> reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
         log.info("Consultando la utilización de servicios del afiliado con id " + idPac + " en el periodo: " +
                 f_inicio + " - " + f_fin);
-        Object resp = ep.reqConsulta5(f_inicio, f_fin, idPac);
+        LinkedList<Object[]> resp = ep.reqConsulta5(f_inicio, f_fin, idPac);
         return resp;
     }
 
-    public Object reqConsulta7() {
+    public LinkedList<Object> reqConsulta7() {
         log.info("Consultando los afiliados exigentes");
-        Object resp = ep.reqConsulta7();
+        LinkedList<Object> resp = ep.reqConsulta7();
         return resp;
     }
 

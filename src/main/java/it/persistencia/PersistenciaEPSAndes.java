@@ -1,5 +1,6 @@
 package it.persistencia;
 
+import java.math.BigDecimal;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -634,20 +635,56 @@ public class PersistenciaEPSAndes {
     }
 
 
-    public Object reqConsulta1(Date f_inicio, Date f_fin) {
-        return sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin);
+    public LinkedList<Object[]> reqConsulta1(Date f_inicio, Date f_fin) {
+        List<Object[]> req = sqlServicio.reqConsulta1(pmf.getPersistenceManager(), f_inicio, f_fin);
+        LinkedList<Object[]> resp = new LinkedList<>();
+        for (Object[] tupla: req) {
+            long idIps = ( (BigDecimal) tupla[0] ).longValue();
+            int cantServs = (int) tupla[1];
+            Object[] respTupla = new Object[2];
+            respTupla[0] = idIps;
+            respTupla[1] = cantServs;
+            resp.add(respTupla);
+        }
+        return resp;
     }
 
-    public Object reqConsulta2(Date f_inicio, Date f_fin) {
-        return sqlServicio.reqConsulta2(pmf.getPersistenceManager(), f_inicio, f_fin);
+    public LinkedList<Object[]> reqConsulta2(Date f_inicio, Date f_fin) {
+        List<Object[]> req = sqlServicio.reqConsulta2(pmf.getPersistenceManager(), f_inicio, f_fin);
+        LinkedList<Object[]> resp = new LinkedList<>();
+        for (Object[] tupla: req) {
+            String nomSer = (String) tupla[0];
+            int cantSol = (int) tupla[1];
+            Object[] respTupla = new Object[2];
+            respTupla[0] = nomSer;
+            respTupla[1] = cantSol;
+            resp.add(respTupla);
+        }
+        return resp;
     }
 
-    public Object reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
-        return sqlServicio.reqConsulta5(pmf.getPersistenceManager(), f_inicio, f_fin, idPac);
+    public LinkedList<Object[]> reqConsulta5(Date f_inicio, Date f_fin, int idPac) {
+        List<Object[]> req = sqlServicio.reqConsulta5(pmf.getPersistenceManager(), f_inicio, f_fin, idPac);
+        LinkedList<Object[]> resp = new LinkedList<>();
+        for (Object[] tupla: req) {
+            long idServicio = ((BigDecimal) tupla[0]).longValue();
+            int utilizacion = (int) tupla[1];
+            Object[] respTupla = new Object[2];
+            respTupla[0] = idServicio;
+            respTupla[1] = utilizacion;
+            resp.add(respTupla);
+        }
+        return resp;
     }
 
-    public Object reqConsulta7() {
-        return sqlServicio.reqConsulta7(pmf.getPersistenceManager());
+    public LinkedList<Object> reqConsulta7() {
+        List<Object> req = sqlServicio.reqConsulta7(pmf.getPersistenceManager());
+        LinkedList<Object> resp = new LinkedList<>();
+        for (Object tupla: req) {
+            long idPaciente = ((BigDecimal) tupla).longValue();
+            resp.add(idPaciente);
+        }
+        return resp;
     }
 
     public void reabrirServicios(Hashtable<Integer, ArrayList<Integer>> listSer) {

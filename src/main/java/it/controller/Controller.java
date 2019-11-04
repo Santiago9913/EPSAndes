@@ -7,12 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
+import java.util.function.Consumer;
 
+import javax.jdo.PersistenceManager;
 import javax.sound.midi.Soundbank;
 import javax.swing.JOptionPane;
 
 import it.negocio.*;
 import javafx.util.converter.TimeStringConverter;
+import oracle.net.aso.s;
 import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
@@ -61,6 +64,8 @@ public class Controller {
 
     private List<Horario> listaHorarios;
 
+    private List<Campana> campanas;
+
     public Controller() {
         view = new View();
         listaEPS = new ArrayList<>();
@@ -69,6 +74,7 @@ public class Controller {
         listaMedicamentos = new ArrayList<>();
         listaPacientes = new ArrayList<>();
         listaServiciosReservados = new ArrayList<>();
+        campanas = new ArrayList<>();
     }
 
     public void run() {
@@ -82,6 +88,7 @@ public class Controller {
         listaIPS = darListaIps();
         listaMedicamentos = darListaMedicamentos();
         listaPacientes = darListaPacientes();
+
 
         while (!inicia) {
             view.printInicioSesion();
@@ -366,12 +373,41 @@ public class Controller {
                         System.out.println("Ingrese el tipo de documento del organizador");
                         String tdOrg = sc.next();
                         Usuario org = new Usuario(idOrg, nOrg, cOrg, tdOrg, "ORGANIZADOR_CAMPANA");
-                        registrarCampana(org, c_personas, servs, f_inicio, f_fin);
+                        registrarCampana(org, c_personas, servs, f_inicio, f_fin, eps);
                         break;
 
                     // Cancelar servicio de la camppaña
                     case 6:
+                        view.printCampanas(getCampanas());
 
+                        view.printMessage("Ingrese el Id de la campña: ");
+                        long idCampana6 = sc.nextInt();
+
+                        view.printMessage("Estos son los servicios de la campaña " + idCampana6 + ":");
+                        List<Servicio> listSer6 = darServiciosCamapan(idCampana6);
+                        Servicio actual = null;
+                        for(Servicio s6 : listSer6){
+                            System.out.println(s6.toString());
+                        }
+                        System.out.println();
+                        view.printMessage("Seleccione el id del servicio que desea cancelar: ");
+                        long aCancelar = sc.nextInt();
+
+                        long idIps6 = 0;
+
+                        for(Servicio sId6 : listSer6){
+                            if(sId6.getId() == aCancelar){
+                                idIps6 = sId6.getId_ips();
+                            }
+                        }
+
+                        if(idIps6 > 0){
+                            cancelarServicioCampana(aCancelar, idIps6);
+                            view.printMessage("Servicio cancelado exitosamente");
+                        }
+                        else{
+                            view.printMessage("Lo sentimos, no se pudo conseguir la ips asociada");
+                        }
 
                         break;
                     // Deshabilitar servicio
@@ -728,9 +764,18 @@ public class Controller {
             view.printErrMessage(e);
         }
         return null;
-
     }
 
+    public List<Campana> getCampanas() {
+        try{
+            List<Campana> list = epsAndes.getCampanas();
+            return list;
+        }catch (Exception e) {
+            view.printMessage("Las restricciones fueron violadas");
+            view.printErrMessage(e);
+        }
+        return null;
+    }
 
     private void agregarUsuario(int numDoc, int idC, Timestamp fechaNacimiento, String nombre, String correo, String tipoDocumento, String rol) {
         try {
@@ -978,6 +1023,17 @@ public class Controller {
 
     }
 
+    private void cancelarServicioCampana(long idServicio, long idIps){
+        try{
+            if(idServicio > 0){
+               boolean can = epsAndes.cancelarServicioCampana(idServicio, idIps);
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+    }
+
     //Requerimiento funcional 13 (Registrar la reapertura de los servicios de salud)
     public void reabrirServicios(Hashtable<Integer, ArrayList<Integer>> listSer) {
         try {
@@ -998,6 +1054,24 @@ public class Controller {
             e.printStackTrace();
             view.printErrMessage(e);
         }
+    }
+
+    private List<Servicio> darServiciosCamapan(long idCampana){
+        try{
+            if(idCampana > 0){
+                List<Servicio> list = epsAndes.darServiciosCampana(idCampana);
+                if(list == null){
+                    throw new Exception("No se han encontrado servicios por algun error");
+                }
+                return list;
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            view.printErrMessage(e);
+        }
+
+        return null;
     }
 
     public void reqConsulta1(Date f_inicio, Date f_fin) {

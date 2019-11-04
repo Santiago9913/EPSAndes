@@ -80,6 +80,13 @@ public class EPSAndes {
         return lista;
     }
 
+    public List<Campana> getCampanas(){
+        log.info("Consultando campanas...");
+        List<Campana> list = ep.getCampanas();
+        log.info("Consultando campanas..." + list.size());
+        return list;
+    }
+
     public Usuario registrarUsuario(long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
         log.info("Registrando usuario: " + id);
         Usuario us = ep.registrarUsuario(id, idCampana, fechaNac, nombre, correo, tipoDocumento, tipoUsuario);
@@ -138,6 +145,20 @@ public class EPSAndes {
         return list;
     }
 
+    public List<Servicio> darServiciosCampana(long idCampana){
+        log.info("Buscando Campanas...");
+        List<Servicio> list = ep.darServiciosCampana(idCampana);
+        log.info("Buscando Campanas..."+ list.size());
+        return list;
+    }
+
+    public boolean cancelarServicioCampana(long idServicio, long idIps){
+        log.info("Cancelando servicio: " + idServicio + "en campana: " + idIps);
+        boolean can = ep.cancelarServicioCampana(idServicio, idIps);
+        log.info("Cancelando servicio en campana: " + "("+idIps + " , " +idIps+")");
+        return can;
+    }
+
 
     public Orden registrarOrden(String desc) {
         log.info("Registrando Orden con la descripcion: " + desc);
@@ -145,6 +166,8 @@ public class EPSAndes {
         log.info("Registrando orden: " + orden);
         return orden;
     }
+
+
 
     public Campana registrarCampana(Usuario org, int participantes, ArrayList<String> servs, Date f_inicio, Date f_fin, String eps) {
         log.info("Adicionando campana");

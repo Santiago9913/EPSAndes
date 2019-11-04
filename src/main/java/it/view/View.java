@@ -1,5 +1,6 @@
 package it.view;
 
+import it.negocio.Campana;
 import it.negocio.EPS;
 import it.negocio.IPS;
 import it.negocio.Servicio;
@@ -99,6 +100,15 @@ public class View {
         int i = 1;
         for (EPS eps : lista) {
             System.out.println(i + ". " + eps.getNombre());
+            i++;
+        }
+    }
+
+    public void printCampanas(List<Campana> lista){
+        System.out.println("Id por campaña: ");
+        int i = 1;
+        for(Campana c : lista){
+            System.out.println(i+". " + c.getId());
             i++;
         }
     }

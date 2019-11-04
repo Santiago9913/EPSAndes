@@ -92,6 +92,12 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
+    public List<Campana> darListaCampanas(PersistenceManager pm){
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaCamapana());
+        q.setResultClass(Campana.class);
+        return q.executeList();
+    }
+
     /**
      * @param pm     - El manejador de persistencia
      * @param id
@@ -143,6 +149,16 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
+
+    public List<Servicio> darServiciosCampana(PersistenceManager pm, long idCampana){
+        Query q = pm.newQuery(SQL, "select distinct s.id, iss.id_ips, iss.capacidad, s.nombre, iss.inhabilitado, iss.inicio_inhabilitacion, iss.fin_inhabilitacion, iss.reservado " +
+                "from campana c, eps e, ips ip, servicio s, ips_servicios iss " +
+                "where (e.id_campana = ?) and (ip.id_eps = e.id) and (iss.id_ips = ip.id )and (iss.id_servicio = s.id) and (iss.reservado = 'S')");
+        q.setParameters(idCampana);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
     public long adicionarMedicoAIps(PersistenceManager pm, long numDoc, long idIps) {
         Query q = pm.newQuery(SQL, "INSERT INTO " + pe.getTablaIps_Medico() + "(ID_IPS, ID_MEDICO) VALUES(?,?)");
         q.setParameters(idIps, numDoc);
@@ -154,6 +170,14 @@ public class SQLAdministrador {
                 "SET INICIO_INHABILITACION = ? , FIN_INHABILITACION = ? , INHABILITADO = 'S' " +
                 "WHERE ID_IPS = ? AND ID_SERVICIO = ?");
         q.setParameters(inicio, fin, idServicio, idIps);
+        return (long) q.executeUnique();
+    }
+
+    public long cancelarServicioCampana(PersistenceManager pm, long idServicio, long idIps){
+        Query q = pm.newQuery(SQL,"update ips_servicios " +
+                "set reservado = 'N' " +
+                "where id_servicio = ? and id_ips = ? " );
+        q.setParameters(idServicio,idIps);
         return (long) q.executeUnique();
     }
 

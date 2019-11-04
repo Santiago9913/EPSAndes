@@ -2866,3 +2866,151 @@ ORA-00904: "RESERVADO": identificador no válido
 10:46:47,781 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
 10:46:47,924 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
 >>>>>>> master
+17:47:24,097 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+17:47:31,658 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+17:47:32,913 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+17:47:32,913 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+17:47:32,970 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+17:47:32,970 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+17:47:32,991 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+17:47:32,991 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+17:47:33,015 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+17:51:40,241 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+17:51:40,263 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+17:51:50,781 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+17:52:01,577 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+17:53:10,102 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+17:53:13,965 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+17:53:14,167 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+17:53:14,167 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+17:53:14,205 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+17:53:14,205 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+17:53:14,225 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+17:53:14,225 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+17:53:14,246 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+17:54:41,406 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+17:54:45,305 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+17:54:45,532 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+17:54:45,532 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+17:54:45,559 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+17:54:45,559 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+17:54:45,579 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+17:54:45,579 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+17:54:45,600 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+17:56:12,668 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+17:56:12,689 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+17:56:30,943 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+17:56:38,779 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...0
+18:04:09,786 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+18:04:14,025 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+18:04:14,270 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+18:04:14,270 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+18:04:14,293 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+18:04:14,293 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+18:04:14,313 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+18:04:14,313 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+18:04:14,331 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+18:04:22,164 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+18:04:22,183 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+18:04:25,555 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+18:04:33,051 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+18:29:39,047 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+18:29:45,255 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+18:29:45,493 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+18:29:45,493 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+18:29:45,516 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+18:29:45,516 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+18:29:45,535 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+18:29:45,536 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+18:29:45,556 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+18:30:00,833 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+18:30:00,850 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+18:30:03,061 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+18:30:09,560 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+18:30:27,866 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+18:30:27,919 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:21:34,293 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:21:34,352 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:23:05,541 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+19:23:10,036 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:23:10,279 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:23:10,279 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+19:23:10,303 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+19:23:10,303 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+19:23:10,323 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+19:23:10,323 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+19:23:10,354 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+19:23:15,066 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:23:15,086 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:23:16,324 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+19:23:21,184 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+19:23:31,166 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+19:23:31,226 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:24:25,728 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+19:24:30,367 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:24:30,610 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:24:30,610 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+19:24:30,646 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+19:24:30,646 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+19:24:30,669 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+19:24:30,669 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+19:24:30,691 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+19:24:37,811 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:24:37,830 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:24:38,994 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+19:24:42,214 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+19:24:51,600 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+19:24:51,666 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:25:41,341 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+19:25:45,656 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:25:45,865 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:25:45,865 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+19:25:45,895 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+19:25:45,895 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+19:25:45,918 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+19:25:45,918 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+19:25:45,948 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+19:25:51,114 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:25:51,138 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:25:52,368 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+19:25:54,372 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+19:25:56,959 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+19:25:56,983 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:40:28,270 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+19:40:32,347 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:40:32,579 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:40:32,579 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+19:40:32,609 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+19:40:32,609 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+19:40:32,638 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+19:40:32,638 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+19:40:32,662 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+19:40:41,207 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:40:41,226 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:40:42,293 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+19:40:50,287 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+19:40:59,158 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+19:40:59,215 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:41:55,270 (main) INFO  [it.negocio.EPSAndes] - Cancelando servicio: 1en campana: 1
+19:41:55,335 (main) INFO  [it.negocio.EPSAndes] - Cancelando servicio en campana: (1 , 1)
+19:46:34,136 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:46:34,161 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:46:47,240 (main) INFO  [it.controller.Controller] - Se encontrï¿½ un archivo de configuraciï¿½n vï¿½lido: Tablas BD
+19:46:53,005 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:46:53,257 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:46:53,257 (main) INFO  [it.negocio.EPSAndes] - Consultando Ips
+19:46:53,292 (main) INFO  [it.negocio.EPSAndes] - Consultando las ips: 6
+19:46:53,292 (main) INFO  [it.negocio.EPSAndes] - Consultando medicamentos: 
+19:46:53,321 (main) INFO  [it.negocio.EPSAndes] - Consultando los medicamentos: 0
+19:46:53,321 (main) INFO  [it.negocio.EPSAndes] - Consultando pacientes
+19:46:53,344 (main) INFO  [it.negocio.EPSAndes] - Consultando los pacientes: 0
+19:47:00,006 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:47:00,041 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas
+19:47:01,194 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...
+19:47:05,305 (main) INFO  [it.negocio.EPSAndes] - Consultando campanas...4
+19:47:13,276 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...
+19:47:13,337 (main) INFO  [it.negocio.EPSAndes] - Buscando Campanas...1
+19:47:31,372 (main) INFO  [it.negocio.EPSAndes] - Cancelando servicio: 1en campana: 2
+19:47:46,202 (main) INFO  [it.negocio.EPSAndes] - Cancelando servicio en campana: (2 , 2)
+19:47:53,947 (main) INFO  [it.negocio.EPSAndes] - Consultando Epsï¿½s
+19:47:53,992 (main) INFO  [it.negocio.EPSAndes] - Consultando las epsï¿½s: 0 epsï¿½s agregadas

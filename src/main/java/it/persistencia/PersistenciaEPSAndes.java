@@ -19,6 +19,7 @@ import org.apache.log4j.Logger;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import org.omg.PortableServer.LIFESPAN_POLICY_ID;
 
 
 public class PersistenciaEPSAndes {
@@ -428,6 +429,15 @@ public class PersistenciaEPSAndes {
         return sqlAdministrador.darListaPacientes(pmf.getPersistenceManager());
     }
 
+    public List<Campana> getCampanas(){
+        try{
+            return sqlAdministrador.darListaCampanas(pmf.getPersistenceManager());
+        }catch (Exception e){
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+        }
+        return null;
+    }
+
     public Usuario registrarUsuario(long id, long idCampana, Date fechaNac, String nombre, String correo, String tipoDocumento, String tipoUsuario) {
         PersistenceManager pm = pmf.getPersistenceManager();
         Transaction tx = pm.currentTransaction();
@@ -590,6 +600,28 @@ public class PersistenciaEPSAndes {
         }
     }
 
+    public boolean cancelarServicioCampana(long idServicio, long idIps){
+        PersistenceManager pm = pmf.getPersistenceManager();
+        Transaction tx = pm.currentTransaction();
+        try {
+            tx.begin();
+            long servicioCancelado = sqlAdministrador.cancelarServicioCampana(pmf.getPersistenceManager(), idServicio, idIps);
+            tx.commit();
+
+            log.trace("Cancelacion de servicio: " + servicioCancelado);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return false;
+        } finally {
+            if (tx.isActive()) {
+                tx.rollback();
+            }
+            pm.close();
+        }
+    }
+
 
     public boolean deshabilitarServicio(long idServicio, long idIps, Date inicio, Date fin) {
         PersistenceManager pm = pmf.getPersistenceManager();
@@ -627,6 +659,16 @@ public class PersistenciaEPSAndes {
         try {
             return sqlAdministrador.darServicioEnIps(pmf.getPersistenceManager(), idServicio);
         } catch (Exception e) {
+            e.printStackTrace();
+            log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
+            return null;
+        }
+    }
+
+    public List<Servicio> darServiciosCampana(long idCampana){
+        try{
+            return sqlAdministrador.darServiciosCampana(pmf.getPersistenceManager(), idCampana);
+        }catch (Exception e) {
             e.printStackTrace();
             log.error("Exception: " + e.getMessage() + "\n" + darDetalleException(e));
             return null;

@@ -16,21 +16,22 @@ class SQLServicio {
         this.ep = ep;
     }
 
-    public List<Object> reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin) {
+    public List<Object[]> reqConsulta1(PersistenceManager pm, Date f_inicio, Date f_fin) {
         String query = "SELECT ipser.id_ips AS ID_IPS, count(*) AS CANT_SERVICIOS ";
-        query += "FROM IPS_SERVICIOS ipser, ";
-        query += " WHERE  ";
+        query += "FROM IPS_SERVICIOS ipser, SERVICIO_HORARIO serHor, HORARIO hor";
+        query += " WHERE ipser.id_servicio = serHor.id_servicio" +
+                " AND serHor.id_horario = hor.id" +
+                " GROUP BY ipser.id_ips";
 
         Query q = pm.newQuery(SQL, query);
         return q.executeList();
     }
 
-    public List<Object> reqConsulta2(PersistenceManager pm, Date f_inicio, Date f_fin) {
+    public List<Object[]> reqConsulta2(PersistenceManager pm, Date f_inicio, Date f_fin) {
         String query = "SELECT TOP 20 ser.nombre, count(*) ";
-        query += "FROM ORDEN ord, ORDEN_SERVICIOS ordser, SERVICIO ser, HORARIO hor ";
-        query += "WHERE ord.id = ordser.id_orden ";
-        query += "AND ordser.id_servicio = ser.id ";
-        query += "AND ser.id_horario = hor.id ";
+        query += "FROM ORDEN_SERVICIOS ordser, SERVICIO_HORARIO serhor, HORARIO hor ";
+        query += "AND ordser.id_servicio = serhor.id_servicio ";
+        query += "AND serhor.id_horario = hor.id ";
         query += "AND hor.hora_inicio < ? ";
         query += "AND hor.hora_fin > ? ";
         query += "GROUP BY ser.nombre ";
@@ -41,8 +42,8 @@ class SQLServicio {
         return q.executeList();
     }
 
-    public List<Object> reqConsulta5(PersistenceManager pm, Date f_inicio, Date f_fin, int idPac) {
-        String query = "SELECT sq.id_paciente, sq.id_servicio, sq.utilizacion_servicio ";
+    public List<Object[]> reqConsulta5(PersistenceManager pm, Date f_inicio, Date f_fin, int idPac) {
+        String query = "SELECT sq.id_servicio, sq.utilizacion_servicio ";
         query += "FROM (SELECT pac.id AS ID_PACIENTE, ords.id_servicio AS ID_SERVICIO, count(*) AS UTILIZACION_SERVICIO ";
         query += "FROM PACIENTE pac, CONSULTA con, ORDENES_SERVICIOS ords, SERVICIO ser, HORARIO hor ";
         query += "WHERE pac.id = con.id_paciente ";
@@ -60,7 +61,14 @@ class SQLServicio {
     }
 
     public List<Object> reqConsulta7(PersistenceManager pm) {
-        String query = "";
+        String query = "SELECT sq2.id_paciente \n" +
+                "FROM (SELECT a.id_paciente id_paciente, b.id_servicio id_servicio, count(*) AS rtda \n" +
+                "    FROM CONSULTA a, ORDENES_SERVICIOS b \n" +
+                "    WHERE a.id_orden = b.id_orden \n" +
+                "    GROUP BY a.id_paciente, b.id_servicio) sq2 \n" +
+                "GROUP BY sq2.id_paciente, sq2.id_servicio \n" +
+                "HAVING count(sq2.id_servicio) >= 3 \n" +
+                "    AND sum(sq2.rtda) >= 12 ";
         Query q = pm.newQuery(SQL, query);
         return q.executeList();
     }

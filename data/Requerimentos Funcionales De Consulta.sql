@@ -62,6 +62,8 @@ HAVING count(sq2.id_servicio) >= 3
 
 --RFC8
 
+(Iteración 3)
+
 --RFC9
 
 --RFC10

@@ -78,9 +78,10 @@ WHERE
 SELECT a.id_servicio AS ServicioNoCumplido, b.id_servicio AS ServicioNoUtilizado, 
 FROM
 (
-	SELECT b.id_servicio AS id_servicio, b.fecha AS fecha, b.ips AS ips, c.id_paciente AS id_paciente
-	FROM Ordenes_Servicios b, Consulta c
+	SELECT b.id_servicio AS id_servicio, o.fecha AS fecha, b.ips AS ips, c.id_paciente AS id_paciente
+	FROM Ordenes_Servicios b, Consulta c, Orden o
 	WHERE b.id_orden = c.id_orden
+	AND o.id_orden = b.id_orden
 	AND c.cumplida = 'N'
 ) a,
 

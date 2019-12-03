@@ -73,28 +73,32 @@ WHERE
 	AND a.cumplida = 'S'
 	AND a.id_orden = b.id_orden						    
 	
---RFC10
-
-SELECT a.id_servicio AS ServicioNoCumplido, b.id_servicio AS ServicioNoUtilizado, 
-FROM
-(
-	SELECT b.id_servicio AS id_servicio, o.fecha AS fecha, b.ips AS ips, c.id_paciente AS id_paciente
-	FROM Ordenes_Servicios b, Consulta c, Orden o
-	WHERE b.id_orden = c.id_orden
-	AND o.id_orden = b.id_orden
-	AND c.cumplida = 'N'
-) a,
-
-(	
-	SELECT id_servicio AS id_servicio
-	FROM Servicio
-	WHERE id_servicio NOT IN (Ordenes_Servicios)
-) b,
-
-(	SELECT id_usuario AS id_usuario
-	FROM Paciente
-	WHERE id.usuario NOT IN (Consulta)
-) c
+--RFC10						    
+							    
+SELECT servs.id_servicio
+FROM (
+	-- Servicios no reservados + servicios reservados y no cumplidos							    							    
+	SELECT a.id_servicio
+	FROM ( -- Servicios reservados pero no cumplidos
+		SELECT b.id_servicio
+		FROM Ordenes_Servicios b, Consulta c
+		WHERE b.id_orden = c.id_orden
+		AND o.id_orden = b.id_orden
+		AND c.cumplida = 'N'
+	)
+	UNION
+	SELECT b.id_servicio
+	FROM ( -- Servicios que nisiquiera fueron reservados
+		SELECT id_servicio
+		FROM Servicio
+		WHERE id_servicio NOT IN (Ordenes_Servicios)
+	)	
+) servs,
+Ips_Servicios ipsServ, Horario hor, IPS ips, Servicio
+WHERE servs.id_servicio	= servicio.id
+	AND servicio.id = ips_servicios.id_servicio						    
+	AND ips_servicios.id_ips = ips.id						    
+							    
 
 --RFC11
 

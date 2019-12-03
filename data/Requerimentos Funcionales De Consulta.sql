@@ -17,9 +17,21 @@ GROUP BY ser.nombre
 ORDER BY count(*) DESC;
 
 --RFC3
+select s.id, s.nombre, (os.id_servicio / (select count(*) from ordenes_servicios))*100 porcentajeUso
+from ordenes_servicios os, servicio s
+where os.id_servicio = 1 and s.id = os.id_servicio
 
 
 --RFC4
+--variante a
+SELECT DISTINCT S.ID, ISS.CAPACIDAD, S.NOMBRE, ISS.INHABILITADO, ISS.INICIO_INHABILITACION, ISS.FIN_INHABILITACION, ISS.RESERVADO
+FROM IPS_SERVICIOS ISS, IPS IP, SERVICIO S, ORDENES_SERVICIOS OS, ORDEN O 
+WHERE S.ID = OS.ID_SERVICIO AND S.ID = ISS.ID_SERVICIO AND (OS.ID_ORDEN = O.ID AND O.FECHA BETWEEN ? AND ?
+
+--variante b
+SELECT DISTINCT I.ID, I.ID_EPS, I.NOMBRE, I.CAPACIDAD, I.LOCALIZACION
+FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S
+WHERE S.ID = ? and ISS.ID_IPS =I.ID
 
 
 --RFC5

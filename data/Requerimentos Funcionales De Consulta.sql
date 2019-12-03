@@ -61,3 +61,11 @@ HAVING count(sq2.id_servicio) >= 3
     AND sum(sq2.rtda) >= 12;
 
 --RFC8
+
+--RFC9
+
+--RFC10
+
+--RFC11
+
+--RFC12

@@ -92,6 +92,12 @@ public class SQLAdministrador {
         return q.executeList();
     }
 
+    public List<Campana> darListaCampanas(PersistenceManager pm){
+        Query q = pm.newQuery(SQL, "SELECT * FROM " + pe.getTablaCamapana());
+        q.setResultClass(Campana.class);
+        return q.executeList();
+    }
+
     /**
      * @param pm     - El manejador de persistencia
      * @param id
@@ -136,10 +142,36 @@ public class SQLAdministrador {
 
     public List<IPS> darServicioEnIps(PersistenceManager pm, long idServicio) {
         Query q = pm.newQuery(SQL, "SELECT DISTINCT I.ID, I.ID_EPS, I.NOMBRE, I.CAPACIDAD, I.LOCALIZACION " +
-                "FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S " +
-                "WHERE ? = ISS.ID_SERVICIO AND I.ID = ISS.ID_IPS");
+                "FROM IPS I, IPS_SERVICIOS ISS, SERVICIO S  " +
+                "WHERE S.ID = ? and ISS.ID_IPS =I.ID ");
         q.setParameters(idServicio);
         q.setResultClass(IPS.class);
+        return q.executeList();
+    }
+
+    public List<Servicio> calcularIndice(PersistenceManager pm, long idServicio){
+        Query q = pm.newQuery(SQL, "select s.id, s.nombre, (count(os.id_servicio) / (select count(*) from ordenes_servicios))*100 porcentajeUso " +
+                "from ordenes_servicios os, servicio s " +
+                "where os.id_servicio = ? and s.id = os.id_servicio " +
+                "group by os.id_servicio, s.id, s.nombre");
+        q.setParameters(idServicio);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+
+    public List<Servicio> darServiciosCampana(PersistenceManager pm, long idCampana){
+        Query q = pm.newQuery(SQL, "select distinct s.id, iss.id_ips, iss.capacidad, s.nombre, iss.inhabilitado, iss.inicio_inhabilitacion, iss.fin_inhabilitacion, iss.reservado " +
+                "from campana c, eps e, ips ip, servicio s, ips_servicios iss " +
+                "where (e.id_campana = ?) and (ip.id_eps = e.id) and (iss.id_ips = ip.id )and (iss.id_servicio = s.id) and (iss.reservado = 'S')");
+        q.setParameters(idCampana);
+        q.setResultClass(Servicio.class);
+        return q.executeList();
+    }
+
+    public List<Servicio> darListaServiciosTotales(PersistenceManager pm){
+        Query q = pm.newQuery(SQL, "select * from servicio");
+        q.setResultClass(Servicio.class);
         return q.executeList();
     }
 
@@ -154,6 +186,14 @@ public class SQLAdministrador {
                 "SET INICIO_INHABILITACION = ? , FIN_INHABILITACION = ? , INHABILITADO = 'S' " +
                 "WHERE ID_IPS = ? AND ID_SERVICIO = ?");
         q.setParameters(inicio, fin, idServicio, idIps);
+        return (long) q.executeUnique();
+    }
+
+    public long cancelarServicioCampana(PersistenceManager pm, long idServicio, long idIps){
+        Query q = pm.newQuery(SQL,"update ips_servicios " +
+                "set reservado = 'N' " +
+                "where id_servicio = ? and id_ips = ? " );
+        q.setParameters(idServicio,idIps);
         return (long) q.executeUnique();
     }
 

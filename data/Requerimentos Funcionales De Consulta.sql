@@ -54,7 +54,34 @@ HAVING count(sq2.id_servicio) >= 3
 
 --RFC9
 
+SELECT p.*, b.id_servicio, a.fecha, b.id_ips
+FROM Paciente p, Consulta a, Ordenes_Servicios b
+WHERE
+	a.id_paciente = p.id_paciente
+	a.cumplida = 'S'
+	AND a.id_orden = b.id_orden
+	
 --RFC10
+
+SELECT a.id_servicio AS ServicioNoCumplido, b.id_servicio AS ServicioNoUtilizado, 
+FROM
+(
+	SELECT b.id_servicio AS id_servicio, b.fecha AS fecha, b.ips AS ips, c.id_paciente AS id_paciente
+	FROM Ordenes_Servicios b, Consulta c
+	WHERE b.id_orden = c.id_orden
+	AND c.cumplida = 'N'
+) a,
+
+(	
+	SELECT id_servicio AS id_servicio
+	FROM Servicio
+	WHERE id_servicio NOT IN (Ordenes_Servicios)
+) b,
+
+(	SELECT id_usuario AS id_usuario
+	FROM Paciente
+	WHERE id.usuario NOT IN (Consulta)
+) c
 
 --RFC11
 

@@ -1,6 +1,6 @@
 --RFC1
-SELECT ips., ser.nombre, count()
-FROM IPS, IPS_SERVICIOS ipsr, SERVICIOS ser
+SELECT ips.id, ser.nombre, count(*)
+FROM IPS AS ips, IPS_SERVICIOS AS ipsr, SERVICIOS AS ser
 WHERE ips.id = ipsr.id_IPS
     AND ipsr.id_servicio = ser.id
 GROUP BY ips., ser.nombre;
@@ -20,7 +20,6 @@ ORDER BY count(*) DESC;
 select s.id, s.nombre, (os.id_servicio / (select count(*) from ordenes_servicios))*100 porcentajeUso
 from ordenes_servicios os, servicio s
 where os.id_servicio = 1 and s.id = os.id_servicio
-
 
 --RFC4
 --variante a

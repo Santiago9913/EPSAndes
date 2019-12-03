@@ -65,12 +65,13 @@ HAVING count(sq2.id_servicio) >= 3
 
 --RFC9
 
-SELECT p.*, b.id_servicio, a.fecha, b.id_ips
-FROM Paciente p, Consulta a, Ordenes_Servicios b
+SELECT p.id_usuario, u.nombre, b.id_servicio, a.fecha, b.id_ips
+FROM Paciente p, Consulta a, Ordenes_Servicios b, Usuario u
 WHERE
-	a.id_paciente = p.id_paciente
-	a.cumplida = 'S'
-	AND a.id_orden = b.id_orden
+	a.id_usuario = p.id_usuario
+	AND p.id_usuario = u.id				    
+	AND a.cumplida = 'S'
+	AND a.id_orden = b.id_orden						    
 	
 --RFC10
 

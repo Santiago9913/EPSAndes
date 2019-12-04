@@ -113,4 +113,58 @@ WHERE p.id_usuario = u.id
 							    
 --RFC11
 
+--Servicio Mas Consumido por Semana
+select Año, Semana, max(cant)
+from (
+    select s.nombre, to_char(o.fecha - 7/24,'IYYY') Año , to_char(o.fecha - 7/24,'IW') Semana ,count(s.id) cant
+    from ordenes_servicios os, servicio s, orden o
+    where os.id_servicio = s.id
+    and os.id_orden = o.id
+    group by  s.nombre, o.fecha, s.id, to_char(o.fecha - 7/24,'IYYY'), to_char(o.fecha- 7/24,'IW')
+    order by o.fecha
+) m 
+group by Año, Semana
+order by Semana;
+
+--Servicio Menos Consumido por Semana
+select Año, Semana, max(cant)
+from (
+    select s.nombre, to_char(o.fecha - 7/24,'IYYY') Año , to_char(o.fecha - 7/24,'IW') Semana ,count(s.id) cant
+    from ordenes_servicios os, servicio s, orden o
+    where os.id_servicio = s.id
+    and os.id_orden = o.id
+    group by  s.nombre, o.fecha, s.id, to_char(o.fecha - 7/24,'IYYY'), to_char(o.fecha- 7/24,'IW')
+    order by o.fecha
+) m 
+group by Año, Semana
+order by Semana;
+
+--Ips Mas Solicitada
+select  Año, Semana,  max(cant)
+from (
+    select i.nombre IPS, to_char(o.fecha - 7/24,'IYYY') Año , to_char(o.fecha - 7/24,'IW') Semana ,count(os.id_ips) cant
+    from ordenes_servicios os, servicio s, orden o, IPS i
+    where os.id_servicio = s.id
+    and os.id_orden = o.id
+    and os.id_ips = i.id 
+    group by  i.nombre, o.fecha, s.id, to_char(o.fecha - 7/24,'IYYY'), to_char(o.fecha- 7/24,'IW')
+    order by o.fecha
+) m 
+group by  Año, Semana
+order by Semana;
+
+--Ips Menos Solicitada
+select  Año, Semana,  min(cant)
+from (
+    select i.nombre IPS, to_char(o.fecha - 7/24,'IYYY') Año , to_char(o.fecha - 7/24,'IW') Semana ,count(os.id_ips) cant
+    from ordenes_servicios os, servicio s, orden o, IPS i
+    where os.id_servicio = s.id
+    and os.id_orden = o.id
+    and os.id_ips = i.id 
+    group by  i.nombre, o.fecha, s.id, to_char(o.fecha - 7/24,'IYYY'), to_char(o.fecha- 7/24,'IW')
+    order by o.fecha
+) m 
+group by  Año, Semana
+order by Semana;
+
 --RFC12

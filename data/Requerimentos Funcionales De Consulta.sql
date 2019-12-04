@@ -78,10 +78,10 @@ WHERE
 --RFC10						    
 
 --Selecciona los nombres de servicios que no fueron prestados y sus ips que no los prestaron							  
-SELECT servicio.nombre, ips.nombre
+SELECT ser.nombre as servicio, ips.nombre as ips
 FROM (
 	-- Servicios no reservados + servicios reservados y no cumplidos							    							    
-	SELECT a.id_servicio
+	SELECT a.id_servicio as id_servicio
 	FROM ( -- Servicios reservados pero no cumplidos
 		SELECT b.id_servicio as id_servicio
 		FROM Ordenes_Servicios b, Consulta c
@@ -95,11 +95,10 @@ FROM (
 		FROM Servicio s
 		WHERE s.id NOT IN (SELECT id_servicio FROM Ordenes_Servicios) 
     ) b
-) servs,
-Ips_Servicios ipsServ, IPS ips, Servicio
-WHERE servs.id_servicio	= servicio.id
-	AND servicio.id = ips_servicios.id_servicio						    
-	AND ips_servicios.id_ips = ips.id;					    
+) servs, Ips_Servicios ipsServ, IPS ips, Servicio ser
+WHERE servs.id_servicio	= ser.id
+	AND ser.id = ipsServ.id_servicio						    
+	AND ipsServ.id_ips = ips.id;				    
 
 --Selecciona las fechas en las que los servicios no fueron utilizados
 SELECT c.fecha

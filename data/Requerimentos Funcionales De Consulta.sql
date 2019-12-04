@@ -74,32 +74,42 @@ WHERE
 	AND a.id_orden = b.id_orden						    
 	
 --RFC10						    
-							    
-SELECT servs.id_servicio
+
+--Selecciona los nombres de servicios que no fueron prestados y sus ips que no los prestaron							  
+SELECT servicio.nombre, ips.nombre
 FROM (
 	-- Servicios no reservados + servicios reservados y no cumplidos							    							    
 	SELECT a.id_servicio
 	FROM ( -- Servicios reservados pero no cumplidos
-		SELECT b.id_servicio
+		SELECT b.id_servicio as id_servicio
 		FROM Ordenes_Servicios b, Consulta c
 		WHERE b.id_orden = c.id_orden
-		AND o.id_orden = b.id_orden
 		AND c.cumplida = 'N'
-	)
+	) a
 	UNION
 	SELECT b.id_servicio
 	FROM ( -- Servicios que nisiquiera fueron reservados
-		SELECT id_servicio
-		FROM Servicio
-		WHERE id_servicio NOT IN (Ordenes_Servicios)
-	)	
+		SELECT s.id_servicio
+		FROM Servicio s
+		WHERE s.id_servicio NOT IN (SELECT id_servicio FROM Ordenes_Servicios)
+	) b	
 ) servs,
-Ips_Servicios ipsServ, Horario hor, IPS ips, Servicio
+Ips_Servicios ipsServ, IPS ips, Servicio
 WHERE servs.id_servicio	= servicio.id
 	AND servicio.id = ips_servicios.id_servicio						    
-	AND ips_servicios.id_ips = ips.id						    
-							    
+	AND ips_servicios.id_ips = ips.id;					    
 
+--Selecciona las fechas en las que los servicios no fueron utilizados
+SELECT c.fecha
+FROM Consulta c
+WHERE c.cumplida = 'N';
+
+--Selecciona los afiliados que no utilizaron servicios							    
+SELECT u.nombre
+FROM Usuario u, Paciente p, Consulta c
+WHERE p.id_usuario = u.id
+	AND p.id_usuario NOT IN (SELECT id_paciente FROM Consulta);							  
+							    
 --RFC11
 
 --RFC12

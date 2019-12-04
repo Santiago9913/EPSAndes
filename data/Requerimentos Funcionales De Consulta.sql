@@ -91,10 +91,10 @@ FROM (
 	UNION
 	SELECT b.id_servicio
 	FROM ( -- Servicios que nisiquiera fueron reservados
-		SELECT s.id_servicio
+		SELECT s.id as id_servicio
 		FROM Servicio s
-		WHERE s.id_servicio NOT IN (SELECT id_servicio FROM Ordenes_Servicios)
-	) b	
+		WHERE s.id NOT IN (SELECT id_servicio FROM Ordenes_Servicios) 
+    ) b
 ) servs,
 Ips_Servicios ipsServ, IPS ips, Servicio
 WHERE servs.id_servicio	= servicio.id

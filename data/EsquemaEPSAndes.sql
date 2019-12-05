@@ -213,5 +213,23 @@ CREATE TABLE CAMPANA_HORARIO(
   CONSTRAINT FK_CH_HOR FOREIGN KEY (ID_HORARIO) REFERENCES HORARIO(ID)
 ); 
 
+CREATE INDEX SD_IDX
+ON Consulta (Fecha);
+
+CREATE INDEX SD_USUARIO
+ON Usuario (Nombre, Fecha_Nacimiento);
+
+CREATE INDEX SD_IPS
+ON Ips (Nombre, Localizacion);
+
+CREATE INDEX PM_IPS
+ON Ips (ID);
+
+CREATE INDEX PM_IPS_SERVICIOS
+ON Ips_Servicios (id_servicio, id_ips);
+
+CREATE INDEX SD_CONSULTA
+ON Consulta (ID_ORDEN, CUMPLIDA);                                
+                                
 COMMIT; 
 
